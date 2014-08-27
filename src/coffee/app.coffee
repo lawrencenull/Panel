@@ -10,3 +10,5 @@ class Some extends Service
 class App extends App
   constructor: ->
     return []
+
+

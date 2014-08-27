@@ -6,7 +6,9 @@ uglify = require 'gulp-uglify'
 imagemin = require 'gulp-imagemin'
 sourcemaps = require 'gulp-sourcemaps'
 less = require 'gulp-less'
+watch = require 'gulp-watch'
 del = require 'del'
+tinylr = require('tiny-lr')()
 
 #paths =
 #  scripts: ['dist/coffee/**/*.coffee'],
@@ -22,6 +24,9 @@ del = require 'del'
 #  gulp.src 'src/**/*.coffee'
 #    .pipe ngClassify()
 #    .pipe gulp.dest 'dist'
+
+
+
 
 gulp.task 'scripts', ->
   gulp.src('src/**/*.coffee')
@@ -54,4 +59,25 @@ gulp.task 'html', ->
   gulp.src('src/**/*html')
     .pipe(gulp.dest('build'));
 
-gulp.task('default', ['vendor','scripts','less','html'])
+gulp.task 'express', ->
+  express = require 'express'
+  app = express()
+  app.use(require('connect-livereload')(port: 4002))
+  app.use(express.static(__dirname+'/build'))
+  app.listen 4000
+
+gulp.task 'watch',->
+  gulp.watch('src/**/*.coffee', ['scripts']);
+  gulp.watch('src/**/*.less', ['less']);
+  gulp.watch('src/**/*html', ['html']);
+  gulp.watch('build/**/*.*', (event) ->
+    fileName = require('path').relative(__dirname, event.path)
+    tinylr.changed
+      body:
+        files: [fileName]
+  )
+
+gulp.task 'livereload', ->
+  tinylr.listen 4002
+
+gulp.task('default', ['vendor','scripts','less','html', 'express','livereload','watch'])

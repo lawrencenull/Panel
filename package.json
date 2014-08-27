@@ -18,7 +18,13 @@
     "gulp-ng-classify": "^4.0.0",
     "gulp-sourcemaps": "^1.1.1",
     "gulp-uglify": "^0.3.1",
+    "gulp-watch": "^0.6.9",
     "ng-classify": "^4.0.2"
   },
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "connect-livereload": "^0.4.0",
+    "express": "^4.8.5",
+    "tiny-lr": "^0.1.1"
+  }
 }
