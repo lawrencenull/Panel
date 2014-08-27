@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,57 +18,39 @@
 <body>
 
 <div class="container">
-    <header>
-        <ul class="nav nav-pills ">
-            <li class="active"><a href="#">NLMK GROUP</a></li>
-            <li><a href="#">NLMK RUSSIA</a></li>
-            <li><a href="#">NLMK EUROPE</a></li>
-            <li><a href="#">NLMK USA</a></li>
-        </ul>
-    </header>
+    <div ng-controller="mainController">
+        <header>
+            <ul class="nav nav-pills ">
+                <li ng-class="{'active':$routeParams.division == 'group'}"><a href="#/info/group">NLMK GROUP</a></li>
+                <li ng-class="{'active':$routeParams.division == 'russia'}"><a href="#/info/russia">NLMK RUSSIA</a></li>
+                <li ng-class="{'active':$routeParams.division == 'europe'}"><a href="#/info/europe">NLMK EUROPE</a></li>
+                <li ng-class="{'active':$routeParams.division == 'usa'}"><a href="#/info/usa">NLMK USA</a></li>
+            </ul>
+        </header>
 
+        <div class="row">
+            <div class="col-md-12">
+                <div ng-view>
 
-    <div class="row">
-        <div class="col-lg-6">
-            <h4>Subheading</h4>
-
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-            <h4>Subheading</h4>
-
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
-                fermentum.</p>
-
-            <h4>Subheading</h4>
-
-            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                </div>
+            </div>
         </div>
-
-        <div class="col-lg-6">
-            <h4>Subheading</h4>
-
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-            <h4>Subheading</h4>
-
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
-                fermentum.</p>
-
-            <h4>Subheading</h4>
-
-            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
+        <hr />
+        <pre>$location.path() = {{$location.path()}}</pre>
+        <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+        <pre>$route.current.params = {{$route.current.params}}</pre>
+        <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+        <pre>$routeParams = {{$routeParams.division}}</pre>
+        <footer>
+            <ul class="nav nav-pills ">
+                <li><a ng-href="#/info/{{$routeParams.division}}">About</a></li>
+                <li><a ng-href="#/history/{{$routeParams.division}}">History</a></li>
+                <li><a ng-href="#/products/{{$routeParams.division}}">Production</a></li>
+                <li><a ng-href="#/highlights/{{$routeParams.division}}">Highlights</a></li>
+                <li><a ng-href="#/map/{{$routeParams.division}}">Map</a></li>
+            </ul>
+        </footer>
     </div>
-
-    <footer>
-        <ul class="nav nav-pills ">
-            <li class="active"><a href="#">About</a></li>
-            <li><a href="#">History</a></li>
-            <li><a href="#">Production</a></li>
-            <li><a href="#">Highlights</a></li>
-            <li><a href="#">Map</a></li>
-        </ul>
-    </footer>
 </div>
 <script src="js/vendor.min.js"></script>
 <script src="js/all.min.js"></script>

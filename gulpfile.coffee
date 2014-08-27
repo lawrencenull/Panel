@@ -34,7 +34,7 @@ gulp.task 'scripts', ->
 #    .pipe gulp.dest 'dist'
     .pipe sourcemaps.init()
     .pipe coffee()
-    .pipe uglify()
+#    .pipe uglify()
     .pipe concat('all.min.js')
     .pipe sourcemaps.write()
     .pipe gulp.dest('build/js')
@@ -42,6 +42,7 @@ gulp.task 'scripts', ->
 gulp.task 'vendor', ->
   gulp.src([
     'bower_components/angular/angular.js'
+    'bower_components/angular-route/angular-route.js'
   ])
     .pipe concat('vendor.min.js')
     .pipe gulp.dest('build/js')
