@@ -13,4 +13,4 @@ $ gulp
 ```
 
 ## Run
-Open build\index.html
+Open http://localhost:4000/
