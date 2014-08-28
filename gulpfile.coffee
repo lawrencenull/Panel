@@ -43,6 +43,7 @@ gulp.task 'vendor', ->
   gulp.src([
     'bower_components/angular/angular.js'
     'bower_components/angular-route/angular-route.js'
+    'bower_components/angular-animate/angular-animate.js'
   ])
     .pipe concat('vendor.min.js')
     .pipe gulp.dest('build/js')

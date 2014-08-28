@@ -30,24 +30,22 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div ng-view>
-
+                <div class="view-animate-container">
+                    <div ng-view class="view-animate"></div>
                 </div>
             </div>
         </div>
-        <hr />
-        <pre>$location.path() = {{$location.path()}}</pre>
-        <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
-        <pre>$route.current.params = {{$route.current.params}}</pre>
-        <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
-        <pre>$routeParams = {{$routeParams.division}}</pre>
         <footer>
             <ul class="nav nav-pills ">
-                <li><a ng-href="#/info/{{$routeParams.division}}">About</a></li>
-                <li><a ng-href="#/history/{{$routeParams.division}}">History</a></li>
-                <li><a ng-href="#/products/{{$routeParams.division}}">Production</a></li>
-                <li><a ng-href="#/highlights/{{$routeParams.division}}">Highlights</a></li>
-                <li><a ng-href="#/map/{{$routeParams.division}}">Map</a></li>
+                <li ng-class="{'active':controller == 'info'}"><a ng-href="#/info/{{$routeParams.division}}">About</a></li>
+                <li ng-show="$routeParams.division == 'group'" ng-class="{'active':controller == 'history'}">
+                    <a ng-href="#/history/{{$routeParams.division}}">History</a>
+                </li>
+                <li ng-show="$routeParams.division == 'group'" ng-class="{'active':controller == 'products'}">
+                    <a ng-href="#/products/{{$routeParams.division}}">Production</a>
+                </li>
+                <li ng-class="{'active':controller == 'highlights'}"><a ng-href="#/highlights/{{$routeParams.division}}">Highlights</a></li>
+                <li ng-class="{'active':controller == 'map'}"><a ng-href="#/map/{{$routeParams.division}}">Map</a></li>
             </ul>
         </footer>
     </div>
