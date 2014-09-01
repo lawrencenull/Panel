@@ -41,6 +41,7 @@ gulp.task 'scripts', ->
 
 gulp.task 'vendor', ->
   gulp.src([
+    'bower_components/chartist/libdist/chartist.js'
     'bower_components/angular/angular.js'
     'bower_components/angular-route/angular-route.js'
     'bower_components/angular-animate/angular-animate.js'
@@ -50,8 +51,10 @@ gulp.task 'vendor', ->
 
 gulp.task 'less', ->
   gulp.src([
-    'bower_components/bootstrap/less/bootstrap.less',
-    'src/**/*.less'
+#    'bower_components/bootstrap/less/bootstrap.less',
+#    'src/**/*.less'
+    'bower_components/chartist/libdist/chartist.min.css'
+    'src/**/*.css'
   ])
   .pipe(less())
   .pipe concat('all.css')
@@ -60,6 +63,10 @@ gulp.task 'less', ->
 gulp.task 'html', ->
   gulp.src('src/**/*html')
     .pipe(gulp.dest('build'));
+
+gulp.task 'img', ->
+  gulp.src('src/img/**/*.*')
+    .pipe(gulp.dest('build/img'));
 
 gulp.task 'express', ->
   express = require 'express'
@@ -70,8 +77,9 @@ gulp.task 'express', ->
 
 gulp.task 'watch',->
   gulp.watch('src/**/*.coffee', ['scripts']);
-  gulp.watch('src/**/*.less', ['less']);
+  gulp.watch('src/**/*.css', ['less']);
   gulp.watch('src/**/*html', ['html']);
+  gulp.watch('src/img/**/*.*', ['img']);
   gulp.watch('build/**/*.*', (event) ->
     fileName = require('path').relative(__dirname, event.path)
     tinylr.changed
@@ -82,4 +90,4 @@ gulp.task 'watch',->
 gulp.task 'livereload', ->
   tinylr.listen 4002
 
-gulp.task('default', ['vendor','scripts','less','html', 'express','livereload','watch'])
+gulp.task('default', ['vendor','scripts','less','html','img','express','livereload','watch'])

@@ -60,6 +60,79 @@ class Some extends Service
     @coolMethod = ->
       $log.info 'someService.coolMethod called'
 
+class LineChart extends Directive
+  constructor: ->
+    return {
+      replace: true
+      scope:
+        data:'=lineChart'
+        name:'@chartTitle'
+      template: '<section class="chart bar-chart"><header>{{name}}</header><section></section></section>'
+      link:(scope,el,attr)->
+        data =
+          labels: []
+          series: [[]]
+        for [x,y] in scope.data
+          data.labels.push x
+          data.series[0].push y
+
+        options = {
+          axisX: {
+            offset: 10,
+            showLabel: true,
+            showGrid: false,
+          },
+          axisY: {
+            offset: 10,
+            showLabel: true,
+            showGrid: false,
+            labelAlign: 'left',
+          },
+          width: '400',
+          height: '300',
+          showLine: true,
+          showPoint: true,
+          lineSmooth: true,
+        }
+        Chartist.Line(el[0].children[1], data,options)
+    }
+class BarChart extends Directive
+  constructor: ->
+    return {
+      replace: true
+      scope:
+        data:'=barChart'
+        name:'@chartTitle'
+      template: '<section class="chart bar-chart"><header>{{name}}</header><section></section></section>'
+      link:(scope,el,attr)->
+        data =
+          labels: []
+          series: [[]]
+        for [x,y] in scope.data
+          data.labels.push x
+          data.series[0].push y
+
+        options = {
+          axisX: {
+            offset: 10,
+            showLabel: true,
+            showGrid: false,
+          },
+          axisY: {
+            offset: 10,
+            showLabel: true,
+            showGrid: false,
+            labelAlign: 'left',
+          },
+          width: '400',
+          height: '300',
+          showLine: false,
+          showPoint: false,
+          lineSmooth: false,
+        }
+        Chartist.Bar(el[0].children[1], data,options)
+    }
+
 class App extends App
   constructor: ->
     return [

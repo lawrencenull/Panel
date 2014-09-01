@@ -1,54 +1,63 @@
 <!DOCTYPE html>
 <html ng-app="app" lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Panel</title>
-
-    <!-- Bootstrap core CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
     <link href="css/all.css" rel="stylesheet">
-
-
 </head>
-
 <body>
-
-<div class="container">
-    <div ng-controller="mainController">
-        <header>
-            <ul class="nav nav-pills ">
-                <li ng-class="{'active':$routeParams.division == 'group'}"><a href="#/info/group">NLMK GROUP</a></li>
-                <li ng-class="{'active':$routeParams.division == 'russia'}"><a href="#/info/russia">NLMK RUSSIA</a></li>
-                <li ng-class="{'active':$routeParams.division == 'europe'}"><a href="#/info/europe">NLMK EUROPE</a></li>
-                <li ng-class="{'active':$routeParams.division == 'usa'}"><a href="#/info/usa">NLMK USA</a></li>
-            </ul>
-        </header>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="view-animate-container">
-                    <div ng-view class="view-animate"></div>
-                </div>
-            </div>
+<div id="layout" ng-controller="mainController">
+    <header>
+        <div class="logo">
+            <img src="/img/logo.png" />
         </div>
-        <footer>
-            <ul class="nav nav-pills ">
-                <li ng-class="{'active':controller == 'info'}"><a ng-href="#/info/{{$routeParams.division}}">About</a></li>
-                <li ng-show="$routeParams.division == 'group'" ng-class="{'active':controller == 'history'}">
-                    <a ng-href="#/history/{{$routeParams.division}}">History</a>
-                </li>
-                <li ng-show="$routeParams.division == 'group'" ng-class="{'active':controller == 'products'}">
-                    <a ng-href="#/products/{{$routeParams.division}}">Production</a>
-                </li>
-                <li ng-class="{'active':controller == 'highlights'}"><a ng-href="#/highlights/{{$routeParams.division}}">Highlights</a></li>
-                <li ng-class="{'active':controller == 'map'}"><a ng-href="#/map/{{$routeParams.division}}">Map</a></li>
-            </ul>
-        </footer>
+        <div class="nav">
+            <a href="#/info/group">
+                <div class="item" ng-class="{'active':$routeParams.division == 'group'}">
+                    <div class="name">Группа</div>
+                    <div class="desc"></div>
+                </div>
+            </a>
+            <a href="#/info/russia">
+                <div class="item" ng-class="{'active':$routeParams.division == 'russia'}">
+                    <div class="name">Россия</div>
+                    <div class="desc"></div>
+                </div>
+            </a>
+            <a href="#/info/europe">
+                <div class="item" ng-class="{'active':$routeParams.division == 'europe'}">
+                    <div class="name">Европа</div>
+                    <div class="desc"></div>
+                </div>
+            </a>
+            <a href="#/info/usa">
+                <div class="item" ng-class="{'active':$routeParams.division == 'usa'}">
+                    <div class="name">США</div>
+                    <div class="desc"></div>
+                </div>
+            </a>
+        </div>
+        <div class="lang">
+            <div class="label ru">Русский</div>
+            <div class="toggle"></div>
+            <div class="label en">English</div>
+        </div>
+    </header>
+    <div id="content">
+        <div class="view-animate-container">
+            <div ng-view class="view-animate"></div>
+        </div>
     </div>
+    <footer>
+        <div class="nav">
+            <a ng-href="#/info/{{$routeParams.division}}"><div class="item" ng-class="{'active':controller == 'info'}">Общая информация</div></a>
+            <a ng-href="#/history/{{$routeParams.division}}"><div class="item" ng-show="$routeParams.division == 'group'" ng-class="{'active':controller == 'history'}">История</div></a>
+            <a ng-href="#/products/{{$routeParams.division}}"><div class="item" ng-show="$routeParams.division == 'group'" ng-class="{'active':controller == 'products'}">Продукция</div></a>
+            <a ng-href="#/highlights/{{$routeParams.division}}"><div class="item" ng-class="{'active':controller == 'highlights'}">Результаты</div></a>
+            <a ng-href="#/map/{{$routeParams.division}}"><div class="item" ng-class="{'active':controller == 'map'}">Карта</div></a>
+        </div>
+    </footer>
 </div>
 <script src="js/vendor.min.js"></script>
 <script src="js/all.min.js"></script>
