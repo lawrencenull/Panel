@@ -246,13 +246,13 @@ footer .nav a:first-child .item.active {
 }
 
 .view-animate.ng-enter {
-    left: 100%;
+    top: 100%;
 }
 .view-animate.ng-enter.ng-enter-active {
-    left: 0;
+    top: 0;
 }
 .view-animate.ng-leave.ng-leave-active {
-    left: -100%;
+    top: -100%;
 }
 .ct-label{
     stroke: white;
@@ -288,3 +288,24 @@ footer .nav a:first-child .item.active {
     font-weight: bold;
     text-align: center;
 }
+body{
+    overflow: hidden;
+}
+
+.slide.ng-hide-add,
+.slide.ng-hide-remove {
+    -webkit-transition: all linear 0.5s;
+    -moz-transition: all linear 0.5s;
+    -o-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+    display: block!important;
+}
+.slide.ng-hide-add.ng-hide-add-active,
+.slide.ng-hide-remove {
+    opacity: 0;
+}
+.slide.ng-hide-add,
+.slide.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+}
+

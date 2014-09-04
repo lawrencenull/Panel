@@ -41,6 +41,14 @@ class Main extends Controller
 class Info extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'info'
+    $scope.images = [
+      src:'media-block--img-1.jpg'
+      title:'Визит Дмитрия Медведева на НЛМК'
+    ,
+      src:'media-block--img-2.jpg'
+      title:'Созданы из стали (посвящается ветеранам НЛМК)'
+    ]
+
 class History extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'history'
@@ -55,10 +63,50 @@ class Map extends Controller
     $scope.$parent.controller = 'map'
 
 
-class Some extends Service
-  constructor: ($log) ->
-    @coolMethod = ->
-      $log.info 'someService.coolMethod called'
+class Slider extends Directive
+  constructor: ($timeout)->
+    return {
+      restrict: 'AE'
+      replace: true
+      scope:
+        images: '='
+      template: '''
+                <div class="slide" ng-repeat="image in images" ng-show="image.visible">
+                  <div class="img"><img src="/img/{{image.src}}" /></div>
+                  <div class="desc">{{image.title}}</div>
+                </div>
+                '''
+
+      link: (scope, elem, attrs)->
+        scope.currentIndex = 0
+        scope.next = ->
+          if scope.currentIndex < scope.images.length-1
+            scope.currentIndex=scope.currentIndex+1
+          else
+            scope.currentIndex = 0
+        scope.prev = ->
+          if scope.currentIndex > 0
+            scope.currentIndex = scope.currentIndex-1
+          else
+            scope.currentIndex = scope.images.length-1
+
+        scope.$watch 'currentIndex', ->
+          image.visible = false for image in scope.images
+          scope.images[scope.currentIndex].visible = true
+
+        timer = null
+        sliderFunc = ->
+          $timeout ->
+            scope.next()
+            timer = sliderFunc()
+          , 2500
+
+        timer = sliderFunc()
+
+        scope.$on '$destroy', ->
+          $timeout.cancel(timer)
+    }
+
 
 class LineChart extends Directive
   constructor: ->

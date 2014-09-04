@@ -51,11 +51,11 @@
     </div>
     <footer>
         <div class="nav">
+            <a ng-href="#/map/{{$routeParams.division}}"><div class="item" ng-class="{'active':controller == 'map'}">Карта</div></a>
             <a ng-href="#/info/{{$routeParams.division}}"><div class="item" ng-class="{'active':controller == 'info'}">Общая информация</div></a>
             <a ng-href="#/history/{{$routeParams.division}}"><div class="item" ng-show="$routeParams.division == 'group'" ng-class="{'active':controller == 'history'}">История</div></a>
             <a ng-href="#/products/{{$routeParams.division}}"><div class="item" ng-show="$routeParams.division == 'group'" ng-class="{'active':controller == 'products'}">Продукция</div></a>
             <a ng-href="#/highlights/{{$routeParams.division}}"><div class="item" ng-class="{'active':controller == 'highlights'}">Результаты</div></a>
-            <a ng-href="#/map/{{$routeParams.division}}"><div class="item" ng-class="{'active':controller == 'map'}">Карта</div></a>
         </div>
     </footer>
 </div>
