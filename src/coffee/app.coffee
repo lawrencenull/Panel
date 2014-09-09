@@ -37,10 +37,12 @@ class Main extends Controller
     $scope.$route = $route
     $scope.$location = $location
     $scope.$routeParams = $routeParams
+    $scope.popup = false
 
 class Info extends Controller
-  constructor: ($scope) ->
+  constructor: ($scope,$sce) ->
     $scope.$parent.controller = 'info'
+    $scope.popup = false
     $scope.images = [
       src:'media-block--img-1.jpg'
       title:'Визит Дмитрия Медведева на НЛМК'
@@ -49,18 +51,124 @@ class Info extends Controller
       title:'Созданы из стали (посвящается ветеранам НЛМК)'
     ]
 
+    $scope.stretchModes = [
+      {label: "None", value: "none"}
+      {label: "Fit", value: "fit"}
+      {label: "Fill", value: "fill"}
+    ]
+
+    $scope.config = {
+      width: 600,
+      height: 400,
+      autoHide: false,
+      autoPlay: false,
+      responsive: true,
+      stretch: $scope.stretchModes[1],
+      theme: {
+        url: "/css/videoangular.css",
+        playIcon: "&#xe000;",
+        pauseIcon: "&#xe001;",
+        volumeLevel3Icon: "&#xe002;",
+        volumeLevel2Icon: "&#xe003;",
+        volumeLevel1Icon: "&#xe004;",
+        volumeLevel0Icon: "&#xe005;",
+        muteIcon: "&#xe006;",
+        enterFullScreenIcon: "&#xe007;",
+        exitFullScreenIcon: "&#xe008;"
+      },
+      plugins: {
+        poster: {
+          url: "/img/videogular.png"
+        }
+      }
+    }
+
+    $scope.currentTime = 0
+    $scope.totalTime = 0
+    $scope.state = null
+    $scope.volume = 1
+    $scope.isCompleted = false
+    $scope.API = null
+
+    $scope.onPlayerReady = (API)->
+      $scope.API = API
+
+    $scope.onCompleteVideo = ->
+      $scope.isCompleted = true
+
+    $scope.onUpdateState = (state) ->
+      $scope.state = state
+
+    $scope.onUpdateTime = (currentTime, totalTime)->
+      $scope.currentTime = currentTime
+      $scope.totalTime = totalTime
+
+    $scope.onUpdateVolume = (newVol)->
+      $scope.volume = newVol
+
+    $scope.onUpdateSize = (width, height) ->
+      $scope.config.width = width
+      $scope.config.height = height
+
+    $scope.config = {
+      autoHide: false,
+      autoHideTime: 3000,
+      autoPlay: true,
+      stretch: 'fill',
+      sources: [
+        {src: $sce.trustAsResourceUrl("http://localhost:4000//video/1.mp4"), type: "video/mp4"}
+      ],
+      transclude: true,
+      theme: {
+        url: "/css/videoangular.css"
+      },
+      plugins: {
+        poster: {
+          url: "/img/videogular.png"
+        }
+      }
+    }
+
+    $scope.config2 = {
+      autoHide: false,
+      autoHideTime: 3000,
+      autoPlay: true,
+      stretch: 'fill',
+      sources: [
+        {src: $sce.trustAsResourceUrl("http://localhost:4000//video/1.mp4"), type: "video/mp4"}
+      ],
+      transclude: true,
+      theme: {
+        url: "/css/videoangular.css"
+      },
+      plugins: {
+        poster: {
+          url: "/img/videogular.png"
+        }
+      }
+    }
+
+    $scope.changeSource = ->
+      $scope.config.sources = [
+        {src: $sce.trustAsResourceUrl("http://localhost:4000//video/1.mp4"), type: "video/mp4"}
+      ]
+
 class History extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'history'
+    $scope.popup = false
 class Products extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'products'
+    $scope.popup = false
 class Highlights extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'highlights'
+    $scope.popup = false
 class Map extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'map'
+    $scope.$parent.popup = true
 
 
 class Slider extends Directive
@@ -72,7 +180,7 @@ class Slider extends Directive
         images: '='
       template: '''
                 <div class="slide" ng-repeat="image in images" ng-show="image.visible">
-                  <div class="img"><img src="/img/{{image.src}}" /></div>
+                  <div class="img"><img ng-src="/img/{{image.src}}" /></div>
                   <div class="desc">{{image.title}}</div>
                 </div>
                 '''
@@ -186,6 +294,11 @@ class App extends App
     return [
       'ngRoute'
       'ngAnimate'
+      'ngSanitize'
+      "com.2fdevs.videogular"
+      "com.2fdevs.videogular.plugins.controls"
+      "com.2fdevs.videogular.plugins.overlayplay"
+      "com.2fdevs.videogular.plugins.poster"
     ]
 
 

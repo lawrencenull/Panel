@@ -1,0 +1,72 @@
+*{
+    outline-style: none !important;
+    outline:0 !important;
+}
+a:focus{
+
+}
+
+*{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    cursor: default !important;
+}
+header .nav .item.active .name {
+    color: black;
+}
+footer .nav a {
+    color: white;
+    text-decoration: none;
+    display: table-cell;
+}
+footer .nav a:active {
+    text-decoration: none;
+}
+
+.selector{
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+footer .nav .selector.info{
+    left:0;
+    width:650px;
+}
+footer .nav .selector.products{
+    left: 650px;
+    width:650px;
+}
+footer .nav .selector.map{
+    left: 1300px;
+    width:520px;
+}
+
+.nav .selector.info.group{
+    left:0;
+    width:500px;
+}
+.nav .selector.history.group{
+    left: 550px;
+    width:250px;
+}
+
+.nav .selector.highlights.group{
+    left: 800px;
+    width:400px;
+
+}
+.nav .selector.products.group{
+    left: 1200px;
+    width:350px;
+}
+.nav .selector.map.group{
+    left: 1550px;
+    width:270px;
+}

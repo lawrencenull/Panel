@@ -1,15 +1,43 @@
-<div class="col col-1">
-    <div class="media-block">
-        <slider images="images" />
-    </div>
-    <div class="media-block">
-        <div class="img">
-            <img src="/img/media-block--img-2.jpg" />
+<div id="content">
+    <div class="col col-1">
+        <div class="media-block">
+            <slider images="images"/>
         </div>
-        <div class="desc video">Созданы из стали (посвящается ветеранам НЛМК)</div>
+        <div class="media-block">
+            <div class="img">
+                <div>
+                    <videogular
+                            vg-player-ready="onPlayerReady"
+                            vg-complete="onCompleteVideo"
+                            vg-update-time="onUpdateTime"
+                            vg-update-volume="onUpdateVolume"
+                            vg-update-state="onUpdateState"
+                            vg-theme="config.theme.url"
+                            vg-autoplay="config.autoPlay">
+                        <vg-video vg-src="config.sources"></vg-video>
+                    </videogular>
+
+                </div>
+            </div>
+            <div class="desc video">Созданы из стали (посвящается ветеранам НЛМК)</div>
+        </div>
     </div>
-</div>
-<div class="col col-2">
-    <h1>Общая информация</h1>
-    <p>С другой стороны дальнейшее развитие различных форм деятельност</p>
+    <div class="col col-2">
+        <h1>Общая информация</h1>
+
+        <p>С другой стороны дальнейшее развитие различных форм деятельност</p>
+
+        <div>
+            <div
+                    line-chart="[[2009,10.6], [2010,11.7], [2011,12.8], [2012,15.2], [2013, 14.8]]"
+                    chart-title="Подажа, млрд тон">
+
+            </div>
+            <div
+                    line-chart="[[2009, 6.14],[2010, 8.35], [2011, 11.73], [2012, 12.16], [2013, 10.91]]"
+                    chart-title="Выручка, млрд $">
+
+            </div>
+        </div>
+    </div>
 </div>

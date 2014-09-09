@@ -41,28 +41,43 @@ gulp.task 'scripts', ->
 
 gulp.task 'vendor', ->
   gulp.src([
+    'bower_components/jquery/dist/jquery.js'
+    'bower_components/perfect-scrollbar/min/perfect-scrollbar.with-mousewheel.min.js'
     'bower_components/chartist/libdist/chartist.js'
     'bower_components/angular/angular.js'
     'bower_components/angular-route/angular-route.js'
     'bower_components/angular-animate/angular-animate.js'
+    'bower_components/angular-sanitize/angular-sanitize.js'
+    'bower_components/videogular/videogular.js'
+    'bower_components/videogular-controls/controls.js'
+    'bower_components/videogular-overlay-play/overlay-play.js'
+    'bower_components/videogular-poster/poster.js'
   ])
     .pipe concat('vendor.min.js')
     .pipe gulp.dest('build/js')
 
-gulp.task 'less', ->
+gulp.task 'css', ->
   gulp.src([
 #    'bower_components/bootstrap/less/bootstrap.less',
 #    'src/**/*.less'
     'bower_components/chartist/libdist/chartist.min.css'
     'src/**/*.css'
   ])
-  .pipe(less())
+#  .pipe(less())
   .pipe concat('all.css')
   .pipe(gulp.dest('./build/css'));
+
+gulp.task 'fonts', ->
+  gulp.src('src/css/fonts/**/*.*')
+    .pipe(gulp.dest('build/css/fonts'));
 
 gulp.task 'html', ->
   gulp.src('src/**/*html')
     .pipe(gulp.dest('build'));
+
+gulp.task 'video', ->
+  gulp.src('src/video/**/*.*')
+    .pipe(gulp.dest('build/video'));
 
 gulp.task 'img', ->
   gulp.src('src/img/**/*.*')
@@ -77,7 +92,7 @@ gulp.task 'express', ->
 
 gulp.task 'watch',->
   gulp.watch('src/**/*.coffee', ['scripts']);
-  gulp.watch('src/**/*.css', ['less']);
+  gulp.watch('src/**/*.css', ['css']);
   gulp.watch('src/**/*html', ['html']);
   gulp.watch('src/img/**/*.*', ['img']);
   gulp.watch('build/**/*.*', (event) ->
@@ -90,4 +105,4 @@ gulp.task 'watch',->
 gulp.task 'livereload', ->
   tinylr.listen 4002
 
-gulp.task('default', ['vendor','scripts','less','html','img','express','livereload','watch'])
+gulp.task('default', ['vendor','scripts','css','fonts','video','html','img','express','livereload','watch'])

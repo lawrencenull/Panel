@@ -1,0 +1,38 @@
+.ct-label{
+    stroke: white;
+}
+.ct-bar{
+    stroke: white;
+    fill: none;
+    stroke-width: 60px;
+}
+.ct-line{
+    stroke: white;
+    fill: none;
+    stroke-dasharray: 50px, 4px;
+    stroke-width: 4px;
+}
+.ct-point{
+    stroke: white;
+    stroke-linecap: round;
+    stroke-width: 10px;
+    animation: 1s ease-out 0s normal none infinite exploding-stroke;
+}
+
+@keyframes exploding-stroke{0%{stroke-width:2px;opacity:1}100%{stroke-width:20px;opacity:0}}
+
+.chart{
+    margin: 150px 110px 0 110px;
+    width: 400px;
+    display: inline-block;
+}
+.results .chart{
+    margin: 30px 95px 0;
+}
+.chart header{
+    background: none;
+    height: auto;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
