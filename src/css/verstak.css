@@ -47,7 +47,10 @@ header {
 header .logo {
     position: absolute;
     top: 53px;
-    left: 52px; }
+    left: 52px;
+    color: white;
+    font-size: 99px;
+    font-weight: bold; }
 header .lang {
     width: 116px;
     position: absolute;
@@ -91,19 +94,20 @@ header .nav .item .name {
     font-weight: 300;
     font-size: 55px;
     line-height: 100%;
-    margin-bottom: 3px;
     letter-spacing: -2px; }
 header .nav .item .desc {
     width: 82px;
     height: 19px;
-    background: url(/img/header--nav--item.png) no-repeat;
-    margin-left: 5px; }
+    margin-left: 5px;
+    font-size: 27px;
+    font-weight: 800;
+    line-height: 100%; }
 header .nav .item.active {
     background: white; }
 header .nav .item.active a {
     color: black; }
 header .nav .item.active .desc {
-    background-position: 0 -19px; }
+    color: black; }
 
 #content {
     height: 765px;
@@ -168,7 +172,7 @@ footer .nav .item {
     text-align: center;
     z-index: 1;
     display: table-cell;
-    padding: 21px 80px 0 80px; }
+    padding: 25px 80px 0 80px; }
 footer .nav .item a {
     color: white;
     text-decoration: none; }
@@ -206,6 +210,14 @@ footer .nav .selector .border--bottom {
     border: 3px solid white;
     border-top: none;
     height: 32px; }
+footer .nav .selector.first .prev {
+    border-right: 3px solid white;
+    width: 21px;
+    background: none; }
+footer .nav .selector.last .next {
+    border-left: 3px solid white;
+    width: 22px;
+    background: none; }
 footer .nav .item.active.first .link {
     border-left: 3px solid white; }
 footer .nav .item.active.last .link {
@@ -326,19 +338,25 @@ footer .nav .item.active .border--bottom {
 /* history */
 #content.history h1 {
     margin-bottom: 10px; }
-#content.history .bar {
-    font-size: 48px;
+#content.history .years {
+    white-space: nowrap;
+    position: absolute;
+    z-index: 2;
     background: #262f3d;
     height: 70px;
-    white-space: nowrap;
+    left: 0;
+    padding-left: 56px; }
+#content.history .years .item {
+    display: inline-block;
+    margin: 0 93px 0 0;
+    font-size: 48px; }
+#content.history .bar {
+    height: 70px;
     margin-bottom: 40px;
     position: relative;
-    margin-left: -56px;
-    padding-left: 56px;
-    width: 1920px !important; }
-#content.history .bar .item {
-    display: inline-block;
-    margin: 0 93px 0 0; }
+    margin-left: 180px;
+    width: 1425px !important;
+    z-index: 3; }
 #content.history .bar .ui-slider-handle {
     width: 101px;
     height: 83px;
@@ -347,7 +365,9 @@ footer .nav .item.active .border--bottom {
     opacity: 0.2;
     position: absolute;
     outline: none;
-    top: -6px; }
+    top: -6px;
+    z-index: 3;
+    margin-left: -180px; }
 #content.history .chain--container {
     white-space: nowrap; }
 #content.history .chain {
@@ -371,85 +391,89 @@ footer .nav .item.active .border--bottom {
 
 /* products */
 .content.products h1,
-#content.products h1 {
+.page--products h1 {
     margin-bottom: 35px; }
 .content.products .col,
-#content.products .col {
+.page--products .col {
     display: table-cell;
     vertical-align: top; }
 .content.products .col-1,
-#content.products .col-1 {
-    width: 397px; }
+.page--products .col-1 {
+    width: 397px !important; }
 .content.products .col-1 .list .item,
-#content.products .col-1 .list .item {
+.page--products .col-1 .list .item {
     font-size: 36px;
     font-family: "Open Sans", sans-serif;
     font-weight: 300;
     height: 95px;
-    padding: 25px 0 0 48px; }
+    padding: 21px 0 0 48px; }
 .content.products .col-1 .list .item.active,
-#content.products .col-1 .list .item.active {
+.page--products .col-1 .list .item.active {
     border-right: none;
-    height: 106px; }
+    height: 95px; }
 .content.products .col-1 .list .item.active + .item,
-#content.products .col-1 .list .item.active + .item {
+.page--products .col-1 .list .item.active + .item {
     border-right: none; }
 .content.products .col-2,
-#content.products .col-2 {
+.page--products .col-2 {
     width: 1300px; }
 .content.products .col-2 .scroll-content,
-#content.products .col-2 .scroll-content {
-    height: 530px;
+.page--products .col-2 .scroll-content {
+    height: 519px;
     overflow: hidden;
     position: relative;
     padding: 0 40px 0 0; }
 .content.products .col-2 .container,
-#content.products .col-2 .container {
+.page--products .col-2 .container {
     padding: 25px 0 20px 12px; }
 .content.products .col-2 h2,
 .content.products .col-2 h4,
-#content.products .col-2 h2,
-#content.products .col-2 h4 {
+.page--products .col-2 h2,
+.page--products .col-2 h4 {
     font-weight: 300;
     line-height: 100%; }
 .content.products .col-2 h2,
-#content.products .col-2 h2 {
+.page--products .col-2 h2 {
     font-size: 48px;
     margin-bottom: 35px; }
 .content.products .col-2 h4,
-#content.products .col-2 h4 {
+.page--products .col-2 h4 {
     font-size: 30px;
     margin-bottom: 10px; }
 .content.products .col-2 .img,
-#content.products .col-2 .img {
+.page--products .col-2 .img {
     float: left; }
 .content.products .col-2 .img img,
-#content.products .col-2 .img img {
+.page--products .col-2 .img img {
     border-radius: 15px;
     margin: 0 40px 0 0; }
 .content.products .col-2 p,
-#content.products .col-2 p {
+.page--products .col-2 p {
     margin-bottom: 35px; }
 
-#content.products .col-1 {
+.page--products .col-1 {
     width: 397px; }
-#content.products .col-1 .list .item {
+.page--products .col-1 .list .item {
     background: url(/img/products--item.png) top left no-repeat; }
-#content.products .col-1 .list .item.active {
+.page--products .col-1 .list .item.active {
     background: url(/img/products--item--active.png) top left no-repeat; }
-#content.products .col-1 .list .item.first.active {
+.page--products .col-1 .list .item.first.active {
     background: url(/img/products--item--first-active.png) top left no-repeat; }
-#content.products .col-1 .list .item.active + .item {
+.page--products .col-1 .list .item.active + .item {
     background: url(/img/products--item--after-active.png) top right no-repeat; }
-#content.products .col-1 .list .item.last {
+.page--products .col-1 .list .item.first.before-active {
+    background: url(/img/products--item--first-before-active.png) top left no-repeat; }
+.page--products .col-1 .list .item.last {
     background: url(/img/products--item--last.png) bottom left no-repeat; }
-#content.products .col-1 .list .item.first {
+.page--products .col-1 .list .item.first {
     background: url(/img/products--item--first.png) top left no-repeat; }
-#content.products .col-1 .list .item.before-active {
+.page--products .col-1 .list .item.before-active {
     background: url(/img/products--item--before-active.png) bottom left no-repeat; }
-#content.products .col-1 .list .item.last.active {
+.page--products .col-1 .list .item.last.active {
     background: url(/img/products--item--last-active.png) top left no-repeat; }
-#content.products .col-2 .container {
+.page--products .col-1 .list .item.active + .item.last {
+    background: url(/img/products--item--last-after-active.png) top right no-repeat; }
+.page--products .col-2 .container {
     border: 3px solid white;
     border-left: none;
     border-bottom-right-radius: 15px;
@@ -467,12 +491,16 @@ footer .nav .item.active .border--bottom {
     background: url(/img/popup-products--item--after-active.png) top left no-repeat; }
 .popup .content.products .col-1 .list .item.before-active {
     background: url(/img/popup-products--item--before-active.png) bottom left no-repeat; }
+.popup .content.products .col-1 .list .item.first.before-active {
+    background: url(/img/popup-products--item--first-before-active.png) top left no-repeat; }
 .popup .content.products .col-1 .list .item.last {
     background: url(/img/popup-products--item--last.png) bottom left no-repeat; }
 .popup .content.products .col-1 .list .item.last.active {
     background: url(/img/popup-products--item--last-active.png) top left no-repeat; }
 .popup .content.products .col-1 .list .item.first {
     background: url(/img/popup-products--item--first.png) top left no-repeat; }
+.popup .content.products .col-1 .list .item.active + .item.last {
+    background: url(/img/popup-products--item--last-after-active.png) top right no-repeat; }
 .popup .content.products .col-2 {
     width: 1156px;
     font-family: "Open Sans", sans-serif;
@@ -484,5 +512,5 @@ footer .nav .item.active .border--bottom {
     border-left: none;
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
-    height: 581px;
+    height: 570px;
     padding-right: 20px; }

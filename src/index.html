@@ -3,14 +3,14 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Panel</title>
-    <link href="css/all.css?1" rel="stylesheet">
+    <link href="css/all.css?2" rel="stylesheet">
 </head>
-<body ng-controller="mainController">
+<body ng-controller="mainController as m">
 
 
 <div id="overlay" ng-class="{'active':popup}"></div>
 <div id="bg">
-    <img src="/img/bg.jpg" />
+    <img ng-src="/img/{{backgroundImg}}" />
 </div>
 <div id="layout">
     <div class="popup" ng-show="popup">
@@ -18,38 +18,36 @@
     </div>
 
     <header>
-        <div class="logo">
-            <img src="/img/logo.png" />
-        </div>
+        <div class="logo" ng-bind="m._('ui','nlmk')"></div>
         <div class="nav">
             <a href="#/info/group">
                 <div class="item" ng-class="{'active':$routeParams.division == 'group'}">
-                    <div class="name">Группа</div>
-                    <div class="desc"></div>
+                    <div class="name" ng-bind="m._('ui','group')"></div>
+                    <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
             <a href="#/info/russia">
                 <div class="item" ng-class="{'active':$routeParams.division == 'russia'}">
-                    <div class="name">Россия</div>
-                    <div class="desc"></div>
+                    <div class="name" ng-bind="m._('ui','russia')"></div>
+                    <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
             <a href="#/info/europe">
                 <div class="item" ng-class="{'active':$routeParams.division == 'europe'}">
-                    <div class="name">Европа</div>
-                    <div class="desc"></div>
+                    <div class="name" ng-bind="m._('ui','europe')"></div>
+                    <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
             <a href="#/info/usa">
                 <div class="item" ng-class="{'active':$routeParams.division == 'usa'}">
-                    <div class="name">США</div>
-                    <div class="desc"></div>
+                    <div class="name" ng-bind="m._('ui','usa')"></div>
+                    <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
         </div>
-        <div class="lang" ng-click="eng=!eng">
+        <div class="lang" ng-click="m.toggleLanguage()">
             <div class="label ru">Русский</div>
-            <div class="toggle" ng-class="{'en':eng}"></div>
+            <div class="toggle" ng-class="m.i18nService.currentLanguage"></div>
             <div class="label en">English</div>
         </div>
     </header>
@@ -70,15 +68,37 @@
                 <div class="border--top"></div>
                 <div class="border--bottom"></div>
             </div>
-            <a ng-href="#/info/{{$routeParams.division}}"><div class="item" ng-class="{'active':controller == 'info'}">Общая информация</div></a>
-            <a ng-href="#/history/{{$routeParams.division}}"><div class="item" ng-show="$routeParams.division == 'group'" ng-class="{'active':controller == 'history'}">История</div></a>
-            <a ng-href="#/highlights/{{$routeParams.division}}"><div class="item" ng-show="$routeParams.division == 'group'" ng-class="{'active':controller == 'highlights'}">Результаты</div></a>
-            <a ng-href="#/products/{{$routeParams.division}}"><div class="item" ng-class="{'active':controller == 'products'}">Продукция</div></a>
-            <a ng-href="#/map/{{$routeParams.division}}"><div class="item" ng-class="{'active':controller == 'map'}">Карта</div></a>
+            <a ng-href="#/info/{{$routeParams.division}}">
+                <div class="item"
+                     ng-class="{'active':controller == 'info'}"
+                     ng-bind="m._('ui','info')"></div>
+            </a>
+            <a ng-href="#/history/{{$routeParams.division}}">
+                <div class="item"
+                     ng-show="$routeParams.division == 'group'"
+                     ng-class="{'active':controller == 'history'}"
+                     ng-bind="m._('ui','history')"></div>
+            </a>
+            <a ng-href="#/highlights/{{$routeParams.division}}">
+                <div class="item"
+                     ng-show="$routeParams.division == 'group'"
+                     ng-class="{'active':controller == 'highlights'}"
+                     ng-bind="m._('ui','highlights')"></div>
+            </a>
+            <a ng-href="#/products/{{$routeParams.division}}">
+                <div class="item"
+                     ng-class="{'active':controller == 'products'}"
+                     ng-bind="m._('ui','products')"></div>
+            </a>
+            <a ng-href="#/map/{{$routeParams.division}}">
+                <div class="item"
+                     ng-class="{'active':controller == 'map'}"
+                     ng-bind="m._('ui','map')"></div>
+            </a>
         </div>
     </footer>
 </div>
-<script src="js/vendor.min.js?1"></script>
-<script src="js/all.min.js?1"></script>
+<script src="js/vendor.min.js?2"></script>
+<script src="js/all.min.js?2"></script>
 </body>
 </html>

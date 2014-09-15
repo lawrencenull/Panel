@@ -1,1 +1,63 @@
-<h1>{{$routeParams.division}} products here!</h1>
+<div id="content" class="page--products">
+    <script>
+        $(function() {
+            $('#content .scroll-content').perfectScrollbar();
+        });
+    </script>
+    <h1 ng-bind="m._('ui','products')"></h1>
+    <div class="col col-1">
+        <div class="list" ng-init="tab=0">
+            <div class="item first"
+                ng-click="tab=0"
+                ng-class="{'active':tab == 0,'before-active':tab == 1}"
+                ng-bind="m._('products','slabs')"></div>
+            <div class="item"
+                ng-click="tab=1"
+                ng-class="{'active':tab == 1,'before-active':tab == 2}"
+                ng-bind="m._('products','blank')"></div>
+            <div  class="item"
+                ng-click="tab=2"
+                ng-class="{'active':tab == 2,'before-active':tab == 3}"
+                ng-bind="m._('products','rod')"></div>
+            <div class="item"
+                 ng-click="tab=3"
+                 ng-class="{'active':tab == 3,'before-active':tab == 4}"
+                 ng-bind="m._('products','fittings')"></div>
+            <div class="item"
+                 ng-click="tab=4"
+                 ng-class="{'active':tab == 4,'before-active':tab == 5}"
+                 ng-bind="m._('products','hardware')"></div>
+            <div class="item last"
+                 ng-click="tab=5"
+                 ng-class="{'active':tab == 5}"
+                 ng-bind="m._('products','hire')"></div>
+        </div>
+    </div>
+    <div class="col col-2">
+        <div class="container">
+            <div class="scroll-content">
+                <div class="img">
+                    <img src="/img/popup--products-img-1.jpg" />
+                </div>
+                <div class="text">
+                    <h2 ng-show="tab==0" ng-bind="m._('products','slabs')"></h2>
+                    <h2 ng-show="tab==1" ng-bind="m._('products','blank')"></h2>
+                    <h2 ng-show="tab==2" ng-bind="m._('products','rod')"></h2>
+                    <h2 ng-show="tab==3" ng-bind="m._('products','fittings')"></h2>
+                    <h2 ng-show="tab==4" ng-bind="m._('products','hardware')"></h2>
+                    <h2 ng-show="tab==5" ng-bind="m._('products','hire')"></h2>
+                    <p>
+                        Марки стали: <b>СТ100 — КТВ400</b><br />
+                        Толщина: <b>180 — 250мм</b><br />
+                        Ширина: <b>0.75 — 2.25м</b><br />
+                        Длина: <b>6 — 12м</b>
+                    </p>
+                    <h4>Производство</h4>
+                    <p style="font-size: 18px;">В 2011 году на Новолипецком металлургическом комбинате получена первая продукция на реконструированной машине непрерывного литья заготовок (МНЛЗ-8) мощностью 2,5 млн т в год. Реконструкция МНЛЗ-8 позволила компании впервые в стране приступить к выпуску слябов толщиной до 355 мм. До запуска данного агрегата максимальная толщина слябов, разливаемых на машинах непрерывного литья заготовок в России, составляла 300 мм. «Широкие» слябы предназначены для последующего изготовления из них толстого листа, в том числе на дочерних предприятиях в Европе – DanSteel и  Clabecq.</p>
+                    <h2>Сбыт</h2>
+                    <p style="font-size: 18px;">Слябы используются в производстве плоского проката на ОАО «НЛМК» и на международных активах Группы. Остальная часть слябов экспортируется в более чем 70 стран мира. Группе НЛМК принадлежит около 16% мирового рынка слябов.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

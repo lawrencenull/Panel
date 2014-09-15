@@ -26,6 +26,12 @@
     width: 400px;
     display: inline-block;
 }
+
+.info .chart{
+    margin:0;
+    width: 600px;
+    display: inline-block;
+}
 .results .chart{
     margin: 30px 95px 0;
 }

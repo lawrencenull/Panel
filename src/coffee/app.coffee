@@ -31,17 +31,80 @@ class Routes extends Config
 
     $locationProvider.html5Mode(false)
 
+class Words extends Constant
+  constructor: ->
+    return {
+      en:
+        ui:
+          nlmk: 'NLMK'
+          group: 'Group'
+          russia: 'Russia'
+          europe: 'Europe'
+          usa: 'USA'
+          info: 'Information'
+          history: 'History'
+          highlights: 'Highlights'
+          products: 'Products'
+          map: 'Map'
+        products:
+          slabs: 'Slabs'
+          blank: 'Blank'
+          rod: 'Rod'
+          fittings: 'Fittings'
+          steel: 'Steel'
+          hire: 'Hire'
+      ru:
+        ui:
+          nlmk: 'НЛМК'
+          group: 'Группа'
+          russia: 'Россия'
+          europe: 'Европа'
+          usa: 'США'
+          info: 'Общая информация'
+          history: 'История'
+          highlights: 'Результаты'
+          products: 'Продукция'
+          map: 'Карта'
+        products:
+          slabs: 'Слябы'
+          blank: 'Заготовка'
+          rod: 'Катанка'
+          fittings: 'Арматура'
+          steel: 'Сталь'
+          hire: 'Прокат'
+    }
+
+class I18n extends Service
+  currentLanguage: 'ru'
+  constructor: (@WORDS) ->
+  setLanguage: (language)->
+    @currentLanguage = language
+  get:(group, key)->
+    @WORDS?[@currentLanguage][group][key]
+
+
+
+
 class Main extends Controller
-  constructor: ($scope, $route, $routeParams, $location) ->
-    $scope.controller = 'main'
+  constructor: ($scope, $route, $routeParams, $location, @i18nService) ->
     $scope.$route = $route
     $scope.$location = $location
     $scope.$routeParams = $routeParams
+
+    $scope.controller = 'main'
     $scope.popup = false
+    $scope.backgroundImg = 'bg.jpg'
+
+  _:(group, key)->
+    @i18nService.get group, key
+  toggleLanguage:->
+    @i18nService.setLanguage if @i18nService.currentLanguage is 'en' then 'ru' else 'en'
+
 
 class Info extends Controller
   constructor: ($scope,$sce) ->
     $scope.$parent.controller = 'info'
+    $scope.$parent.backgroundImg = $scope.$parent.controller+'/'+$scope.$routeParams.division+'.jpg'
     $scope.popup = false
     $scope.images = [
       src:'media-block--img-1.jpg'
@@ -156,19 +219,23 @@ class Info extends Controller
 class History extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'history'
+    $scope.$parent.backgroundImg = $scope.$parent.controller+'/'+$scope.$routeParams.division+'.jpg'
     $scope.popup = false
 class Products extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'products'
+    $scope.$parent.backgroundImg = $scope.$parent.controller+'/'+$scope.$routeParams.division+'.jpg'
     $scope.popup = false
 class Highlights extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'highlights'
+    $scope.$parent.backgroundImg = $scope.$parent.controller+'/'+$scope.$routeParams.division+'.jpg'
     $scope.popup = false
 class Map extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'map'
-    $scope.$parent.popup = true
+    $scope.$parent.backgroundImg = $scope.$parent.controller+'/'+$scope.$routeParams.division+'.png'
+    $scope.$parent.popup = false
 
 
 class Slider extends Directive
@@ -244,7 +311,7 @@ class LineChart extends Directive
             showGrid: false,
             labelAlign: 'left',
           },
-          width: '400',
+          width: '600',
           height: '300',
           showLine: true,
           showPoint: true,

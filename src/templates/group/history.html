@@ -54,17 +54,85 @@
     .scroll-bar-wrap .ui-handle-helper-parent {
         position: absolute;
         top: 0px;
-        width: inherit !important;
     }
 </style>
 <script>
+    $(function () {
+        //scrollpane parts
+        var scrollPane = $(".scroll-pane"),
+                scrollContent = $(".scroll-content");
 
+        //build slider
+        var scrollbar = $(".scroll-bar").slider({
+            slide: function (event, ui) {
+                if (scrollContent.width() > scrollPane.width()) {
+                    scrollContent.css("margin-left", Math.round(
+                            ui.value / 100 * ( scrollPane.width() - scrollContent.width() )
+                    ) + "px");
+                } else {
+                    scrollContent.css("margin-left", 0);
+                }
+            }
+        });
+
+        //append icon to handle
+        var handleHelper = scrollbar.find(".ui-slider-handle")
+                .mousedown(function () {
+                    scrollbar.width(handleHelper.width());
+                })
+                .mouseup(function () {
+                    scrollbar.width("100%");
+                })
+                .append("<span class='ui-icon ui-icon-grip-dotted-vertical'></span>")
+                .wrap("<div class='ui-handle-helper-parent'></div>").parent();
+
+        //change overflow to hidden now that slider handles the scrolling
+        scrollPane.css("overflow", "hidden");
+
+        //size scrollbar and handle proportionally to scroll distance
+        function sizeScrollbar() {
+            var remainder = scrollContent.width() - scrollPane.width();
+            var proportion = remainder / scrollContent.width();
+            var handleSize = scrollPane.width() - ( proportion * scrollPane.width() );
+            scrollbar.find(".ui-slider-handle").css({
+                width: handleSize
+            });
+            handleHelper.width("").width(scrollbar.width());
+        }
+
+        //reset slider value based on scroll content position
+        function resetValue() {
+            var remainder = scrollPane.width() - scrollContent.width();
+            var leftVal = scrollContent.css("margin-left") === "auto" ? 0 :
+                    parseInt(scrollContent.css("margin-left"));
+            var percentage = Math.round(leftVal / remainder * 100);
+            scrollbar.slider("value", percentage);
+        }
+
+        //if the slider is 100% and window gets larger, reveal content
+        function reflowContent() {
+            var showing = scrollContent.width() + parseInt(scrollContent.css("margin-left"), 10);
+            var gap = scrollPane.width() - showing;
+            if (gap > 0) {
+                scrollContent.css("margin-left", parseInt(scrollContent.css("margin-left"), 10) + gap);
+            }
+        }
+
+        //change handle position on window resize
+        $(window).resize(function () {
+            resetValue();
+            sizeScrollbar();
+            reflowContent();
+        });
+        //init scrollbar size
+        setTimeout(sizeScrollbar, 1);//safari wants a timeout
+    });
 </script>
 
 <h1>История</h1>
 
 <div class="bar-wrap scroll-bar-wrap ui-widget-content ui-corner-bottom">
-    <div class="bar scroll-bar">
+    <div class="years">
         <div class="item">1931</div>
         <div class="item">1967</div>
         <div class="item">1981</div>
@@ -75,43 +143,72 @@
         <div class="item">2010</div>
         <div class="item">2015</div>
     </div>
+    <div class="bar scroll-bar"></div>
 </div>
 <div class="chain scroll-pane ui-widget ui-widget-header ui-corner-all" style="width: 1845px;">
     <div class="chain--container scroll-content">
         <div class="item">
-            <div class="date">Начало 2013</div>
+            <div class="date">1931</div>
             <div class="col">
                 <p><b>Запуск НЛМК-Калуга</b></p>
 
-                <p>Группа НЛМК запустила НЛМК-Калуга – современное предприятие по выпуску сортового проката в
-                    Центральной России. </p>
-
-                <p><img src="/img/history--img-1.jpg"/></p>
-
-                <p>Предприятие расположено в Калужской области на территории индустриального</p>
+                <p>
+                    На базе Липецкого железорудного месторождения началось строительство металлургического завода.
+                    Объемы работ, рассчитанные на месяцы, выполнялись за недели. Рабочие не уходили со стройки по
+                    две-три смены, работали без выходных, чтобы в кратчайшие сроки построить самое современное в стране металлургическое производство.
+                </p>
             </div>
+            <div class="date">7 ноября 1934</div>
             <div class="col">
-                <p>парка «Ворсино» в 70 км от Москвы. Строительство НЛМК-Калуга началось в 2008 году и было включено в
-                    список основных инвестиционных проектов Стратегии развития металлургической промышленности РФ до
-                    2020 г. В строительство завода и создание инфраструктуры было инвестировано более 38 млрд руб.<br/>
-                    Мощность НЛМК-Калуга составляет 1,5 млн. тонн в год стали и 0,9 млн. тонн проката. В состав ЭСПЦ
-                    входит электропечь, установка "печь-ковш" и восьмиручьевая сортовая МНЛЗ по выпуску заготовки
-                    сечением 100х100 мм, 125х125 мм, 150х150 мм, 160х160 мм и длиной 6-12 метров. Поставщиком
-                    оборудования является концерн Siemens VAI (Австрия).</p>
+                <p>
+                    Считается днем рождения предприятия. В этот день на Новолипецком металлургическом заводе (НЛМЗ)
+                    был получен первый чгун.
+                </p>
             </div>
         </div>
         <div class="item">
-            <div class="date">Середина 2013</div>
+            <div class="date">1941</div>
             <div class="col">
-                <p><img src="/img/history--img-2.jpg"/></p>
+                <p>
+                    В начале Великой Отечественной войны оборудование доменного цеха и ТЭЦ было демонтировано и
+                    эвакуировано в Челябинск. На оставшейся в Липецке части оборудования выполнялись заказы для
+                    фронта. Восстановление завода на прежней территории началось только в 1947 году. По сути комбинат
+                    отстраивался заново и в кратчайшие сроки. К 1951 году были восстановлены две доменные печи.
+                </p>
             </div>
+            <div class="date">1959</div>
             <div class="col">
-                <p>Прокатный цех состоит из мелко-среднесортного стана "400/215" (SMS Meer, Италия), который
-                    специализируется на производстве арматуры гладкого профиля класса прочности АI диаметром 10-20 мм,
-                    периодического класса прочности А500С диаметром 10-40 мм, а также фасонного проката (равнополочный
-                    уголок с полкой 25-100 мм, швеллер №5-12, балка №8, 10). </p>
-
-                <p><img src="/img/history--img-3.jpg"/></p>
+                <p>
+                    Начал работу электроплавильный цех с установками непрерывной разливки стали (УНРС); впервые в
+                    мире на заводе была освоена 100% разливка стали на УНРС. Уже через год на комбинате запустили
+                    первое в СССР производство анизотропной электротехнической стали по собственной уникальной
+                    технологии. А в 1966 году на предприятии впервые в мире соединили выплавку стали в высокопроиз
+                    водительных конвертерных цехах со 100%-нойразливкой на установке непрерывного литья (УНРС).
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="date">1973</div>
+            <div class="col">
+                <p>
+                    Введена в строй крупнейшая в СССР доменная печь No5 объемом 3 200 м3. А спустя пять лет запущена
+                    доменная печь No6, соединившая в себе целый ряд уникальных для того времени технологических
+                    решений по автоматизации и механизации основных процессов.
+                </p>
+            </div>
+            <div class="date">1980</div>
+            <div class="col">
+                <p>
+                    Начал работу первый в стране цех прокатки углеродистых сталей со станом бесконечной прокатки.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="date">1983</div>
+            <div class="col">
+                <p>
+                    НЛМЗ переименован в Новолипецкий металлургический комбинат (НЛМК).
+                </p>
             </div>
         </div>
         <div class="item">
@@ -120,43 +217,7 @@
                 <p><b>Запуск НЛМК-Калуга</b></p>
 
                 <p>Группа НЛМК запустила НЛМК-Калуга – современное предприятие по выпуску сортового проката в
-                    Центральной России. </p>
-
-                <p><img src="/img/history--img-1.jpg"/></p>
-
-                <p>Предприятие расположено в Калужской области на территории индустриального</p>
-            </div>
-            <div class="col">
-                <p>парка «Ворсино» в 70 км от Москвы. Строительство НЛМК-Калуга началось в 2008 году и было включено в
-                    список основных инвестиционных проектов Стратегии развития металлургической промышленности РФ до
-                    2020 г. В строительство завода и создание инфраструктуры было инвестировано более 38 млрд руб.<br/>
-                    Мощность НЛМК-Калуга составляет 1,5 млн. тонн в год стали и 0,9 млн. тонн проката. В состав ЭСПЦ
-                    входит электропечь, установка "печь-ковш" и восьмиручьевая сортовая МНЛЗ по выпуску заготовки
-                    сечением 100х100 мм, 125х125 мм, 150х150 мм, 160х160 мм и длиной 6-12 метров. Поставщиком
-                    оборудования является концерн Siemens VAI (Австрия).</p>
-            </div>
-        </div>
-        <div class="item">
-            <div class="date">2014</div>
-            <div class="col">
-                <p><img src="/img/history--img-2.jpg"/></p>
-            </div>
-            <div class="col">
-                <p>Прокатный цех состоит из мелко-среднесортного стана "400/215" (SMS Meer, Италия), который
-                    специализируется на производстве арматуры гладкого профиля класса прочности АI диаметром 10-20 мм,
-                    периодического класса прочности А500С диаметром 10-40 мм, а также фасонного проката (равнополочный
-                    уголок с полкой 25-100 мм, швеллер №5-12, балка №8, 10). </p>
-
-                <p><img src="/img/history--img-3.jpg"/></p>
-            </div>
-        </div>
-        <div class="item">
-            <div class="date">Конец 2013</div>
-            <div class="col">
-                <p><b>Запуск НЛМК-Калуга</b></p>
-
-                <p>Группа НЛМК запустила НЛМК-Калуга – современное предприятие по выпуску сортового проката в
-                    Центральной России. </p>
+                    Центральной России. </p>
 
                 <p><img src="/img/history--img-1.jpg"/></p>
 
@@ -192,7 +253,7 @@
                 <p><b>Запуск НЛМК-Калуга</b></p>
 
                 <p>Группа НЛМК запустила НЛМК-Калуга – современное предприятие по выпуску сортового проката в
-                    Центральной России. </p>
+                    Центральной России. </p>
 
                 <p><img src="/img/history--img-1.jpg"/></p>
 
@@ -242,7 +303,7 @@
                 <p><b>Запуск НЛМК-Калуга</b></p>
 
                 <p>Группа НЛМК запустила НЛМК-Калуга – современное предприятие по выпуску сортового проката в
-                    Центральной России. </p>
+                    Центральной России. </p>
 
                 <p><img src="/img/history--img-1.jpg"/></p>
 

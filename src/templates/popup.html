@@ -1,4 +1,4 @@
-<div ng-init="tab=0">
+<div ng-init="tab=0;ptab=0">
 
     <div ng-show="tab==0" class="content info">
         <div class="title">ПО «Вторчермет»</div>
@@ -23,12 +23,30 @@
         <div class="title">Продукция</div>
         <div class="col col-1">
             <div class="list">
-                <div class="item first">Слябы</div>
-                <div class="item">Заготовка</div>
-                <div class="item before-active">Катанка</div>
-                <div class="item active">Арматура</div>
-                <div class="item">Метизы</div>
-                <div class="item last">Прокат</div>
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','slabs')"></div>
+                <div class="item"
+                     ng-click="ptab=1"
+                     ng-class="{'active':ptab == 1,'before-active':ptab == 2}"
+                     ng-bind="m._('products','blank')"></div>
+                <div  class="item"
+                      ng-click="ptab=2"
+                      ng-class="{'active':ptab == 2,'before-active':ptab == 3}"
+                      ng-bind="m._('products','rod')"></div>
+                <div class="item"
+                     ng-click="ptab=3"
+                     ng-class="{'active':ptab == 3,'before-active':ptab == 4}"
+                     ng-bind="m._('products','fittings')"></div>
+                <div class="item"
+                     ng-click="ptab=4"
+                     ng-class="{'active':ptab == 4,'before-active':ptab == 5}"
+                     ng-bind="m._('products','hardware')"></div>
+                <div class="item last"
+                     ng-click="ptab=5"
+                     ng-class="{'active':ptab == 5}"
+                     ng-bind="m._('products','hire')"></div>
             </div>
         </div>
         <div class="col col-2">
@@ -37,7 +55,12 @@
                     <img src="/img/popup--products-img-1.jpg" />
                 </div>
                 <div class="text">
-                    <div class="title">Слябы</div>
+                    <div class="title" ng-show="ptab==0" ng-bind="m._('products','slabs')"></div>
+                    <div class="title" ng-show="ptab==1" ng-bind="m._('products','blank')"></div>
+                    <div class="title" ng-show="ptab==2" ng-bind="m._('products','rod')"></div>
+                    <div class="title" ng-show="ptab==3" ng-bind="m._('products','fittings')"></div>
+                    <div class="title" ng-show="ptab==4" ng-bind="m._('products','hardware')"></div>
+                    <div class="title" ng-show="ptab==5" ng-bind="m._('products','hire')"></div>
                     <p style="font-size: 24px;">
                         Марки стали: <b>СТ100 — КТВ400</b><br />
                         Толщина: <b>180 — 250мм</b><br />
