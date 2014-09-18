@@ -29,51 +29,110 @@ footer .nav a:active {
 }
 
 .selector{
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
 }
+
 footer .nav .selector.info{
-    left:0;
+    left:-3px;
     width:650px;
 }
 footer .nav .selector.products{
     left: 650px;
-    width:650px;
+    width:680px;
 }
 footer .nav .selector.map{
-    left: 1300px;
-    width:520px;
+    left: 1330px;
+    width:490px;
 }
 
 .nav .selector.info.group{
-    left:0;
-    width:500px;
+    left:-3px;
+    width:520px;
 }
 .nav .selector.history.group{
-    left: 550px;
-    width:250px;
+    left: 520px;
+    width:300px;
 }
 
 .nav .selector.highlights.group{
-    left: 800px;
-    width:400px;
+    left: 820px;
+    width:370px;
 
 }
 .nav .selector.products.group{
-    left: 1200px;
+    left: 1190px;
     width:350px;
 }
 .nav .selector.map.group{
-    left: 1550px;
-    width:270px;
+    left: 1540px;
+    width:280px;
 }
 
+footer .nav .selector.info.en{
+    left:-3px;
+    width:550px;
+}
+footer .nav .selector.products.en{
+    left: 550px;
+    width:670px;
+}
+footer .nav .selector.map.en{
+    left: 1220px;
+    width:600px;
+}
+
+.nav .selector.info.group.en{
+    left:-3px;
+    width:400px;
+}
+.nav .selector.history.group.en{
+    left: 400px;
+    width:350px;
+}
+
+.nav .selector.highlights.group.en{
+    left: 750px;
+    width:370px;
+
+}
+.nav .selector.products.group.en{
+    left: 1120px;
+    width:390px;
+}
+.nav .selector.map.group.en{
+    left: 1510px;
+    width:310px;
+}
+
+
+footer .nav .selector.info .prev {
+    border-right: 3px solid white;
+    width: 21px;
+    background: none;
+    margin-left: 1px;
+}
+footer .nav .selector.map .next {
+    border-left: 3px solid white;
+    width: 22px;
+    background: none;
+    margin-right: -1px;
+}
 
 #content.history .bar .ui-handle-helper-parent .ui-slider-handle {
     opacity: 1;
     border: 4px solid white;
     background: transparent;
 }
+
+#layout header .nav a div{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+

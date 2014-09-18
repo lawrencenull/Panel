@@ -83,6 +83,9 @@ gulp.task 'video', ->
 gulp.task 'img', ->
   gulp.src('src/img/**/*.*')
     .pipe(gulp.dest('build/img'));
+gulp.task 'images', ->
+  gulp.src('src/images/**/*.*')
+    .pipe(gulp.dest('build/images'));
 
 gulp.task 'express', ->
   express = require 'express'
@@ -106,4 +109,4 @@ gulp.task 'watch',->
 gulp.task 'livereload', ->
   tinylr.listen 4002
 
-gulp.task('default', ['vendor','scripts','css','fonts','video','html','img','express','livereload','watch'])
+gulp.task('default', ['vendor','scripts','css','fonts','video','html','img','images','express','livereload','watch'])

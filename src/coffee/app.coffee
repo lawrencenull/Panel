@@ -27,7 +27,7 @@ class Routes extends Config
         templateUrl:  (params)->
           "/templates/#{params.division}/map.html"
       .otherwise
-        redirectTo: '/info/group'
+        redirectTo: '/map/group'
 
     $locationProvider.html5Mode(false)
 
@@ -75,14 +75,12 @@ class Words extends Constant
     }
 
 class I18n extends Service
-  currentLanguage: 'ru'
+  currentLanguage: 'en'
   constructor: (@WORDS) ->
   setLanguage: (language)->
     @currentLanguage = language
   get:(group, key)->
     @WORDS?[@currentLanguage][group][key]
-
-
 
 
 class Main extends Controller
@@ -93,7 +91,6 @@ class Main extends Controller
 
     $scope.controller = 'main'
     $scope.popup = false
-    $scope.backgroundImg = 'bg.jpg'
 
   _:(group, key)->
     @i18nService.get group, key
@@ -219,22 +216,18 @@ class Info extends Controller
 class History extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'history'
-    $scope.$parent.backgroundImg = $scope.$parent.controller+'/'+$scope.$routeParams.division+'.jpg'
     $scope.popup = false
 class Products extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'products'
-    $scope.$parent.backgroundImg = $scope.$parent.controller+'/'+$scope.$routeParams.division+'.jpg'
     $scope.popup = false
 class Highlights extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'highlights'
-    $scope.$parent.backgroundImg = $scope.$parent.controller+'/'+$scope.$routeParams.division+'.jpg'
     $scope.popup = false
 class Map extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'map'
-    $scope.$parent.backgroundImg = $scope.$parent.controller+'/'+$scope.$routeParams.division+'.png'
     $scope.$parent.popup = false
 
 

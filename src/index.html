@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="app" lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Panel</title>
     <link href="css/all.css?2" rel="stylesheet">
 </head>
@@ -10,7 +10,53 @@
 
 <div id="overlay" ng-class="{'active':popup}"></div>
 <div id="bg">
-    <img ng-src="/img/{{backgroundImg}}" />
+    <img
+            ng-show="$routeParams.division =='group' && controller == 'info'"
+            src="/images/bg/info/group.jpg"/>
+    <img
+            ng-show="$routeParams.division =='russia' && controller == 'info'"
+            src="/images/bg/info/russia.jpg"/>
+    <img
+            ng-show="$routeParams.division =='europe' && controller == 'info'"
+            src="/images/bg/info/europe.jpg"/>
+    <img
+            ng-show="$routeParams.division =='usa' && controller == 'info'"
+            src="/images/bg/info/usa.jpg"/>
+
+    <img
+            ng-show="$routeParams.division =='group' && controller == 'products'"
+            src="/images/bg/products/group.jpg"/>
+    <img
+            ng-show="$routeParams.division =='russia' && controller == 'products'"
+            src="/images/bg/products/russia.jpg"/>
+    <img
+            ng-show="$routeParams.division =='europe' && controller == 'products'"
+            src="/images/bg/products/europe.jpg"/>
+    <img
+            ng-show="$routeParams.division =='usa' && controller == 'products'"
+            src="/images/bg/products/usa.jpg"/>
+
+    <img
+            ng-show="$routeParams.division =='group' && controller == 'map'"
+            src="/images/bg/map/group.png"/>
+    <img
+            ng-show="$routeParams.division =='russia' && controller == 'map'"
+            src="/images/bg/map/russia.png"/>
+    <img
+            ng-show="$routeParams.division =='europe' && controller == 'map'"
+            src="/images/bg/map/europe.png"/>
+    <img
+            ng-show="$routeParams.division =='usa' && controller == 'map'"
+            src="/images/bg/map/usa.png"/>
+
+
+    <img
+            ng-show="$routeParams.division =='group' && controller == 'history'"
+            src="/images/bg/history/group.jpg"/>
+    <img
+            ng-show="$routeParams.division =='group' && controller == 'highlights'"
+            src="/images/bg/highlights/group.jpg"/>
+
 </div>
 <div id="layout">
     <div class="popup" ng-show="popup">
@@ -20,25 +66,25 @@
     <header>
         <div class="logo" ng-bind="m._('ui','nlmk')"></div>
         <div class="nav">
-            <a href="#/info/group">
+            <a href="#/map/group">
                 <div class="item" ng-class="{'active':$routeParams.division == 'group'}">
                     <div class="name" ng-bind="m._('ui','group')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
-            <a href="#/info/russia">
+            <a href="#/map/russia">
                 <div class="item" ng-class="{'active':$routeParams.division == 'russia'}">
                     <div class="name" ng-bind="m._('ui','russia')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
-            <a href="#/info/europe">
+            <a href="#/map/europe">
                 <div class="item" ng-class="{'active':$routeParams.division == 'europe'}">
                     <div class="name" ng-bind="m._('ui','europe')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
-            <a href="#/info/usa">
+            <a href="#/map/usa">
                 <div class="item" ng-class="{'active':$routeParams.division == 'usa'}">
                     <div class="name" ng-bind="m._('ui','usa')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
@@ -62,7 +108,7 @@
 
     <footer>
         <div class="nav">
-            <div class="selector {{controller}} {{$routeParams.division}}">
+            <div class="selector {{controller}} {{$routeParams.division}} {{m.i18nService.currentLanguage}}">
                 <a class="prev"></a>
                 <a class="next"></a>
                 <div class="border--top"></div>
