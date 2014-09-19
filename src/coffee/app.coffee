@@ -75,7 +75,7 @@ class Words extends Constant
     }
 
 class I18n extends Service
-  currentLanguage: 'en'
+  currentLanguage: 'ru'
   constructor: (@WORDS) ->
   setLanguage: (language)->
     @currentLanguage = language
