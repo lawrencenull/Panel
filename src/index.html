@@ -8,7 +8,7 @@
 <body ng-controller="mainController as m">
 
 
-<div id="overlay" ng-class="{'active':popup}"></div>
+<div id="overlay" ng-class="{'active':m.popupService.isShow}"></div>
 <div id="bg">
     <img
             ng-show="$routeParams.division =='group' && controller == 'info'"
@@ -22,7 +22,6 @@
     <img
             ng-show="$routeParams.division =='usa' && controller == 'info'"
             src="/images/bg/info/usa.jpg"/>
-
     <img
             ng-show="$routeParams.division =='group' && controller == 'products'"
             src="/images/bg/products/group.jpg"/>
@@ -35,7 +34,6 @@
     <img
             ng-show="$routeParams.division =='usa' && controller == 'products'"
             src="/images/bg/products/usa.jpg"/>
-
     <img
             class="map group"
             ng-show="$routeParams.division =='group' && controller == 'map'"
@@ -52,8 +50,6 @@
             class="map"
             ng-show="$routeParams.division =='usa' && controller == 'map'"
             src="/images/bg/map/usa.png"/>
-
-
     <img
             ng-show="$routeParams.division =='group' && controller == 'history'"
             src="/images/bg/history/group.jpg"/>
@@ -63,7 +59,7 @@
 
 </div>
 <div id="layout">
-    <div class="popup" ng-show="popup">
+    <div class="popup" ng-show="m.popupService.isShow">
         <div ng-include="'templates/popup.html'"></div>
     </div>
 

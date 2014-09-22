@@ -47,7 +47,12 @@ class Words extends Constant
           products: 'Products'
           map: 'Map'
         products:
-          slabs: 'Slabs'
+          slabs: 'Slab'
+          hire_hot: 'Hot-rolled hire'
+          hire_cold: 'Cold-rolled hire'
+          hire_coated: 'Hire coated'
+          hire_class: 'Sections'
+          steel_electro: 'Electrical steel'
           blank: 'Blank'
           rod: 'Rod'
           fittings: 'Fittings'
@@ -67,6 +72,11 @@ class Words extends Constant
           map: 'Карта'
         products:
           slabs: 'Слябы'
+          hire_hot: 'Горячекатаный прокат'
+          hire_cold: 'Холоднокатаный прокат'
+          hire_coated: 'Прокат с покрытием'
+          hire_class: 'Сортовой прокат'
+          steel_electro: 'Электротехническая сталь'
           blank: 'Заготовка'
           rod: 'Катанка'
           fittings: 'Арматура'
@@ -84,25 +94,24 @@ class I18n extends Service
 
 
 class Main extends Controller
-  constructor: ($scope, $route, $routeParams, $location, @i18nService) ->
+  constructor: ($scope, $route, $routeParams, $location, @i18nService, @popupService) ->
     $scope.$route = $route
     $scope.$location = $location
     $scope.$routeParams = $routeParams
 
     $scope.controller = 'main'
-    $scope.popup = false
 
   _:(group, key)->
     @i18nService.get group, key
+  closePopup:->
+    @popupService.hide()
   toggleLanguage:->
     @i18nService.setLanguage if @i18nService.currentLanguage is 'en' then 'ru' else 'en'
-
 
 class Info extends Controller
   constructor: ($scope,$sce) ->
     $scope.$parent.controller = 'info'
     $scope.$parent.backgroundImg = $scope.$parent.controller+'/'+$scope.$routeParams.division+'.jpg'
-    $scope.popup = false
     $scope.images = [
       src:'media-block--img-1.jpg'
       title:'Визит Дмитрия Медведева на НЛМК'
@@ -216,19 +225,15 @@ class Info extends Controller
 class History extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'history'
-    $scope.popup = false
 class Products extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'products'
-    $scope.popup = false
 class Highlights extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'highlights'
-    $scope.popup = false
 class Map extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'map'
-    $scope.$parent.popup = false
 
 
 class Slider extends Directive
@@ -348,6 +353,34 @@ class BarChart extends Directive
         }
         Chartist.Bar(el[0].children[1], data,options)
     }
+class Marker extends Directive
+  constructor: (@popupService)->
+    return {
+      restrict: 'AE'
+      replace: true
+      scope:
+        pos: '&'
+        type: '@'
+      template: '''
+                <div class="marker" style="left:{{pos()[0]}}px;top:{{pos()[1]}}px">
+                  <img class="type" ng-src="/images/map/{{type}}.png" />
+                </div>
+                '''
+
+      link: (scope, elem, attrs)->
+        elem.click ->
+          popupService.show()
+          scope.$apply()
+    }
+class Popup extends Service
+  constructor: () ->
+    @isShow= false
+  isShown:->
+    @isShow
+  show:->
+    @isShow = true
+  hide:->
+    @isShow = false
 
 class App extends App
   constructor: ->
