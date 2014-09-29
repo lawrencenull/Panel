@@ -52,6 +52,17 @@ class Words extends Constant
           hire_cold: 'Cold-rolled hire'
           hire_coated: 'Hire coated'
           hire_class: 'Sections'
+          hire_galvanized: 'Galvanized-rolled hire'
+          hire_cold_coated: 'Cold-rolled hire coated'
+          hire_plate: 'Hot rolled plate'
+          hire_electro: 'Cold-rolled hire from electrical steel'
+          hire_flat: 'Hire flat'
+          hire_class_hardware: 'Hire class & hardware'
+          hire_flat: 'Плоский прокат'
+          hire_class_hardware: 'Сортовой прокат и метизы'
+          steel_blank: 'Стальная заготовка'
+          raw: 'Сырье': 'Steel blank'
+          raw: 'Raw'
           steel_electro: 'Electrical steel'
           blank: 'Blank'
           rod: 'Rod'
@@ -76,6 +87,14 @@ class Words extends Constant
           hire_cold: 'Холоднокатаный прокат'
           hire_coated: 'Прокат с покрытием'
           hire_class: 'Сортовой прокат'
+          hire_galvanized: 'Оцинкованный прокат'
+          hire_cold_coated: 'Холоднокатаный прокат с покрытием'
+          hire_plate: 'Толстолистовой прокат'
+          hire_electro: 'Холоднокатаный прокат из электротехнической стали'
+          hire_flat: 'Плоский прокат'
+          hire_class_hardware: 'Сортовой прокат и метизы'
+          steel_blank: 'Стальная заготовка'
+          raw: 'Сырье'
           steel_electro: 'Электротехническая сталь'
           blank: 'Заготовка'
           rod: 'Катанка'
@@ -109,9 +128,8 @@ class Main extends Controller
     @i18nService.setLanguage if @i18nService.currentLanguage is 'en' then 'ru' else 'en'
 
 class Info extends Controller
-  constructor: ($scope,$sce) ->
+  constructor: ($scope) ->
     $scope.$parent.controller = 'info'
-    $scope.$parent.backgroundImg = $scope.$parent.controller+'/'+$scope.$routeParams.division+'.jpg'
     $scope.images = [
       src:'media-block--img-1.jpg'
       title:'Визит Дмитрия Медведева на НЛМК'
@@ -119,108 +137,6 @@ class Info extends Controller
       src:'media-block--img-2.jpg'
       title:'Созданы из стали (посвящается ветеранам НЛМК)'
     ]
-
-    $scope.stretchModes = [
-      {label: "None", value: "none"}
-      {label: "Fit", value: "fit"}
-      {label: "Fill", value: "fill"}
-    ]
-
-    $scope.config = {
-      width: 600,
-      height: 400,
-      autoHide: false,
-      autoPlay: false,
-      responsive: true,
-      stretch: $scope.stretchModes[1],
-      theme: {
-        url: "/css/videoangular.css",
-        playIcon: "&#xe000;",
-        pauseIcon: "&#xe001;",
-        volumeLevel3Icon: "&#xe002;",
-        volumeLevel2Icon: "&#xe003;",
-        volumeLevel1Icon: "&#xe004;",
-        volumeLevel0Icon: "&#xe005;",
-        muteIcon: "&#xe006;",
-        enterFullScreenIcon: "&#xe007;",
-        exitFullScreenIcon: "&#xe008;"
-      },
-      plugins: {
-        poster: {
-          url: "/img/videogular.png"
-        }
-      }
-    }
-
-    $scope.currentTime = 0
-    $scope.totalTime = 0
-    $scope.state = null
-    $scope.volume = 1
-    $scope.isCompleted = false
-    $scope.API = null
-
-    $scope.onPlayerReady = (API)->
-      $scope.API = API
-
-    $scope.onCompleteVideo = ->
-      $scope.isCompleted = true
-
-    $scope.onUpdateState = (state) ->
-      $scope.state = state
-
-    $scope.onUpdateTime = (currentTime, totalTime)->
-      $scope.currentTime = currentTime
-      $scope.totalTime = totalTime
-
-    $scope.onUpdateVolume = (newVol)->
-      $scope.volume = newVol
-
-    $scope.onUpdateSize = (width, height) ->
-      $scope.config.width = width
-      $scope.config.height = height
-
-    $scope.config = {
-      autoHide: false,
-      autoHideTime: 3000,
-      autoPlay: true,
-      stretch: 'fill',
-      sources: [
-        {src: $sce.trustAsResourceUrl("http://localhost:4000//video/1.mp4"), type: "video/mp4"}
-      ],
-      transclude: true,
-      theme: {
-        url: "/css/videoangular.css"
-      },
-      plugins: {
-        poster: {
-          url: "/img/videogular.png"
-        }
-      }
-    }
-
-    $scope.config2 = {
-      autoHide: false,
-      autoHideTime: 3000,
-      autoPlay: true,
-      stretch: 'fill',
-      sources: [
-        {src: $sce.trustAsResourceUrl("http://localhost:4000//video/1.mp4"), type: "video/mp4"}
-      ],
-      transclude: true,
-      theme: {
-        url: "/css/videoangular.css"
-      },
-      plugins: {
-        poster: {
-          url: "/img/videogular.png"
-        }
-      }
-    }
-
-    $scope.changeSource = ->
-      $scope.config.sources = [
-        {src: $sce.trustAsResourceUrl("http://localhost:4000//video/1.mp4"), type: "video/mp4"}
-      ]
 
 class History extends Controller
   constructor: ($scope) ->
@@ -237,7 +153,7 @@ class Map extends Controller
 
 
 class Slider extends Directive
-  constructor: ($timeout)->
+  constructor: ($window)->
     return {
       restrict: 'AE'
       replace: true
@@ -267,17 +183,13 @@ class Slider extends Directive
           image.visible = false for image in scope.images
           scope.images[scope.currentIndex].visible = true
 
-        timer = null
-        sliderFunc = ->
-          $timeout ->
-            scope.next()
-            timer = sliderFunc()
-          , 2500
-
-        timer = sliderFunc()
+        timer = $window.setInterval ->
+          scope.next()
+        , 2500
 
         scope.$on '$destroy', ->
-          $timeout.cancel(timer)
+          $window.clearInterval(timer);
+
     }
 
 
@@ -363,6 +275,7 @@ class Marker extends Directive
         type: '@'
       template: '''
                 <div class="marker" style="left:{{pos()[0]}}px;top:{{pos()[1]}}px">
+                  <img class="shadow" src="/images/map/shadow.png" />
                   <img class="type" ng-src="/images/map/{{type}}.png" />
                 </div>
                 '''
@@ -371,6 +284,88 @@ class Marker extends Directive
         elem.click ->
           popupService.show()
           scope.$apply()
+    }
+
+class Pvideo extends Directive
+  constructor: (@popupService,sce)->
+    return {
+      restrict: 'AE'
+      replace: true
+      scope:
+        file: '@'
+      template: '''
+                <div>
+                  <videogular
+                    vg-player-ready="onPlayerReady"
+                    vg-complete="onCompleteVideo"
+                    vg-update-time="onUpdateTime"
+                    vg-update-volume="onUpdateVolume"
+                    vg-update-state="onUpdateState"
+                    vg-theme="config.theme.url"
+                    vg-autoplay="config.autoPlay">
+                  <vg-video vg-src="config.sources"></vg-video>
+                  <vg-controls vg-autohide="config.autoHide" vg-autohide-time="config.autoHideTime">
+                  <vg-play-pause-button></vg-play-pause-button>
+                  <vg-timedisplay>{{ API.currentTime | date:'mm:ss' }}</vg-timedisplay>
+                  <vg-scrubBar>
+                  <vg-scrubbarcurrenttime></vg-scrubbarcurrenttime>
+                  </vg-scrubBar>
+                  <vg-timedisplay>{{ API.timeLeft | date:'mm:ss' }}</vg-timedisplay>
+                  <vg-volume>
+                  <vg-mutebutton></vg-mutebutton>
+                  <vg-volumebar></vg-volumebar>
+                  </vg-volume>
+                  <vg-fullscreenButton></vg-fullscreenButton>
+                  </vg-controls>
+                  </videogular>
+                </div>
+                '''
+
+      link: (scope, elem, attrs)->
+        scope.currentTime = 0
+        scope.totalTime = 0
+        scope.state = null
+        scope.volume = 1
+        scope.isCompleted = false
+        scope.API = null
+
+        scope.onPlayerReady = (API)->
+          scope.API = API
+
+        scope.onCompleteVideo = ->
+          scope.isCompleted = true
+
+        scope.onUpdateState = (state) ->
+          scope.state = state
+
+        scope.onUpdateTime = (currentTime, totalTime)->
+          scope.currentTime = currentTime
+          scope.totalTime = totalTime
+
+        scope.onUpdateVolume = (newVol)->
+          scope.volume = newVol
+
+        scope.onUpdateSize = (width, height) ->
+          scope.config.width = width
+          scope.config.height = height
+
+        scope.config = {
+          autoHide: false,
+          autoPlay: true,
+          stretch: 'fill',
+          sources: [
+            {src: $sce.trustAsResourceUrl("http://localhost:4000/video/1.mp4"), type: "video/mp4"}
+          ],
+          transclude: true,
+          theme: {
+#            url: "/css/videoangular.css"
+          },
+          plugins: {
+            poster: {
+              url: "/img/videogular.png"
+            }
+          }
+        }
     }
 class Popup extends Service
   constructor: () ->

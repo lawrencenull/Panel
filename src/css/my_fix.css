@@ -157,7 +157,21 @@ footer .nav .selector.map .next {
     position: absolute;
 
 }
+#content .map .marker {
+    width: 64px;
+    height: 94px;
+}
 #content .map .marker .type{
     width: 64px;
-    height: 64px;
+    height: 94px;
+    position: absolute;
+    z-index: 444305;
+}
+#content .map .marker .shadow{
+    width: 64px;
+    height: 94px;
+    position: absolute;
+    top: 30px;
+    left: 22px;
+    z-index: 1;
 }
