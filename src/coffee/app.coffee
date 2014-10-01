@@ -124,20 +124,14 @@ class Main extends Controller
     @i18nService.get group, key
   closePopup:->
     @popupService.hide()
+  popupName:->
+    @popupService.active
   toggleLanguage:->
     @i18nService.setLanguage if @i18nService.currentLanguage is 'en' then 'ru' else 'en'
 
 class Info extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'info'
-    $scope.images = [
-      src:'media-block--img-1.jpg'
-      title:'Визит Дмитрия Медведева на НЛМК'
-    ,
-      src:'media-block--img-2.jpg'
-      title:'Созданы из стали (посвящается ветеранам НЛМК)'
-    ]
-
 class History extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'history'
@@ -158,15 +152,23 @@ class Slider extends Directive
       restrict: 'AE'
       replace: true
       scope:
-        images: '='
+        total: '@'
+        division: '@'
       template: '''
-                <div class="slide" ng-repeat="image in images" ng-show="image.visible">
-                  <div class="img"><img ng-src="/img/{{image.src}}" /></div>
-                  <div class="desc">{{image.title}}</div>
+                <div>
+                  <div class="slide" ng-repeat="image in images" ng-show="image == currentIndex + 1">
+                    <div class="img">
+                      <img ng-src="/images/slider/{{division}}/{{image}}.jpg" />
+                    </div>
+                  </div>
                 </div>
                 '''
 
       link: (scope, elem, attrs)->
+        scope.images = [1..scope.total]
+        scope.division='europe'
+        scope.aaa='europe'
+        console.log scope
         scope.currentIndex = 0
         scope.next = ->
           if scope.currentIndex < scope.images.length-1
@@ -179,13 +181,10 @@ class Slider extends Directive
           else
             scope.currentIndex = scope.images.length-1
 
-        scope.$watch 'currentIndex', ->
-          image.visible = false for image in scope.images
-          scope.images[scope.currentIndex].visible = true
-
         timer = $window.setInterval ->
           scope.next()
-        , 2500
+          scope.$apply()
+        , 3500
 
         scope.$on '$destroy', ->
           $window.clearInterval(timer);
@@ -200,7 +199,7 @@ class LineChart extends Directive
       scope:
         data:'=lineChart'
         name:'@chartTitle'
-      template: '<section class="chart bar-chart"><header>{{name}}</header><section></section></section>'
+      template: 'section class="chart bar-chart"><header>{{name}}</header><section></section></section>'
       link:(scope,el,attr)->
         data =
           labels: []
@@ -273,6 +272,7 @@ class Marker extends Directive
       scope:
         pos: '&'
         type: '@'
+        active: '@'
       template: '''
                 <div class="marker" style="left:{{pos()[0]}}px;top:{{pos()[1]}}px">
                   <img class="shadow" src="/images/map/shadow.png" />
@@ -282,12 +282,13 @@ class Marker extends Directive
 
       link: (scope, elem, attrs)->
         elem.click ->
-          popupService.show()
+          popupService.show(scope.active)
+          console.log popupService
           scope.$apply()
     }
 
 class Pvideo extends Directive
-  constructor: (@popupService,sce)->
+  constructor: (@popupService)->
     return {
       restrict: 'AE'
       replace: true
@@ -354,7 +355,7 @@ class Pvideo extends Directive
           autoPlay: true,
           stretch: 'fill',
           sources: [
-            {src: $sce.trustAsResourceUrl("http://localhost:4000/video/1.mp4"), type: "video/mp4"}
+#            {src: $sce.trustAsResourceUrl("http://localhost:4000/video/1.mp4"), type: "video/mp4"}
           ],
           transclude: true,
           theme: {
@@ -369,11 +370,13 @@ class Pvideo extends Directive
     }
 class Popup extends Service
   constructor: () ->
-    @isShow= false
+    @isShow = false
+    @active = ''
   isShown:->
     @isShow
-  show:->
+  show:(active)->
     @isShow = true
+    @active = active
   hide:->
     @isShow = false
 

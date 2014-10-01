@@ -60,11 +60,18 @@
 </div>
 <div id="layout">
     <div class="popup" ng-show="m.popupService.isShow">
-        <div ng-include="'templates/popup.html'"></div>
+
+        <div ng-show = "m.popupService.active=='01_NLMK_Indiana'" ng-include="'templates/usa/actives/01_NLMK_Indiana.html'"></div>
+        <div ng-show = "m.popupService.active=='02_NLMK_Pennsylvania'" ng-include="'templates/usa/actives/02_NLMK_Pennsylvania.html'"></div>
+        <div ng-show = "m.popupService.active=='03_Sharon_Coating'" ng-include="'templates/usa/actives/03_Sharon_Coating.html'"></div>
+
     </div>
 
     <header>
-        <div class="logo" ng-bind="m._('ui','nlmk')"></div>
+        <div class="logo">
+            <img
+                    style="margin-top:-64px;width:280px;height:200px"ng-src="/images/logo_{{m.i18nService.currentLanguage}}.png"/>
+        </div>
         <div class="nav">
             <a href="#/map/group">
                 <div class="item" ng-class="{'active':$routeParams.division == 'group'}">

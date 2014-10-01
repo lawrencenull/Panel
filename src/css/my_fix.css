@@ -144,7 +144,7 @@ footer .nav .selector.map .next {
     opacity: 0.8 !important;
 }
 
-#layout #content.products .col-1 .list .item, .page--products .col-1.col .list div.item {
+#layout .content.products .col-1 .list .item, .page--products .col-1.col .list div.item {
     font-size: 24px;
     font-weight: 400;
     padding: 26px 0 0 48px;
@@ -174,4 +174,15 @@ footer .nav .selector.map .next {
     top: 30px;
     left: 22px;
     z-index: 1;
+}
+.break{
+    clear: both;
+    height: 20px;
+}
+
+.popup .col.col-4{
+    width:930px;
+}
+.content .products .container .text p{
+    font-size: 18px;
 }
