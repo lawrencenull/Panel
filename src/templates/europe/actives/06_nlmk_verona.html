@@ -1,0 +1,144 @@
+<div ng-init="tab=0;ptab=0">
+
+    <div ng-show="tab==0" class="content info">
+        <div class="title">NLMK Verona</div>
+        <div class="col col-1">
+            <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/main.jpg"/>
+        </div>
+        <div class="col col-4">
+            <p><b>Расположение</b>:
+                Верона, Италия
+            </p>
+
+            <p><b>Производственные мощностие</b>:
+                около 450 тыс. тонн металлопродукции в год
+            </p>
+            <br>
+
+            <p>
+                Предприятие было создано в 2004 году. NLMK Verona специализируется на производстве толстолистового проката, слябов и кузнечных слитков, которые используются в качестве заготовок для изготовления прокатных валков, толстого листа, роторов турбин и др.
+            </p>
+
+            <p>
+                NLMK Verona - современный сталеплавильный завод. Благодаря инвестициям в модернизацию оборудования, в том числе в машину непрерывной разливки стали, предприятие расширило диапазон выпускаемой продукции и стало способно удовлетворить спрос потребителей на высококачественный прокат толщиной до 1000 мм и слябы толщиной до 400 мм.
+            </p>
+
+            <p>Около 2/3 произведенной продукции реализуется в Италии. Кроме европейских стран поставки осуществляются также в Азию и Америку.
+            </p>
+
+            <p>
+                Компания входит в дивизион НЛМК Европа Толстый Лист. Доля продаж толстого листа на рынке Евросоюза составляет 8%. </p>
+        </div>
+    </div>
+
+
+    <div ng-show="tab==1" class="content products">
+        <div class="title">Продукция</div>
+        <div class="col col-1">
+            <div class="list">
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','hire_plate')"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item last"></div>
+            </div>
+        </div>
+        <div class="col col-2">
+            <div class="container">
+                <div ng-show="ptab==0">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','hire_plate')"></h2>
+
+                        <p>NLMK Verona производит толстолистовой прокат толщиной от 20 до 1000 мм. Он используется для судостроения, машиностроения, строительства инфраструктуры. Помимо толстого листа, предприятие выпускает также слябы толщиной до 400 мм и кузнечные слитки весом от 5 до 80 т. NLMK Verona – один из крупнейших в Европе производителей кузнечных слитков.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==2" class="content">
+        <div class="title">NLMK Verona</div>
+        <div ng-init="gimg=1" class="gallery">
+            <div class="full-img">
+                <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/{{gimg}}.jpg"/>
+            </div>
+            <div class="list-img">
+                <div class="item" ng-class="{'active':gimg==1}" ng-click="gimg=1">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/1_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==2}" ng-click="gimg=2">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/2_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==3}" ng-click="gimg=3">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/3_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==4}" ng-click="gimg=4">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/4_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==5}" ng-click="gimg=5">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/5_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==6}" ng-click="gimg=6">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/6_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==7}" ng-click="gimg=7">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/7_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==8}" ng-click="gimg=8">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/8_t.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==3" class="content">
+        <div class="title">NLMK Verona</div>
+        <div class="gallery">
+            <div class="video">
+                <videogular
+                        vg-player-ready="onPlayerReady"
+                        vg-complete="onCompleteVideo"
+                        vg-update-time="onUpdateTime"
+                        vg-update-volume="onUpdateVolume"
+                        vg-update-state="onUpdateState"
+                        vg-theme="config.theme.url"
+                        vg-autoplay="config.autoPlay">
+                    <vg-video vg-src="config.sources"></vg-video>
+                </videogular>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="close" ng-click="m.closePopup()"></div>
+        <div class="tabs">
+            <div ng-class="{'before-active':tab == 0}" class="item item-empty">
+                <div class="ico"></div>
+            </div>
+            <div ng-click="tab=0" ng-class="{'active':tab == 0,'before-active':tab == 1}" class="item item-0">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=1" ng-class="{'active':tab == 1,'before-active':tab == 2}" class="item item-1">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=2" ng-class="{'active':tab == 2,'before-active':tab == 3}" class="item item-2">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
+                <div
+                        class="ico"></div>
+            </div>
+        </div>
+    </div>
+</div>

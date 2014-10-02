@@ -1,0 +1,150 @@
+<div ng-init="tab=0;ptab=0">
+
+    <div ng-show="tab==0" class="content info">
+        <div class="title">Стойленский горно-обогатительный комбинат</div>
+        <div class="col col-1">
+            <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/main.jpg"/>
+        </div>
+        <div class="col col-4">
+            <p><b>Расположение</b>:
+                г. Старый Оскол, Белгородская область
+            </p>
+
+            <p><b>Производственные мощностие</b>:
+                около 16 млн тонн железорудного сырья в год
+            </p>
+            <br>
+
+            <p>
+                Стойленский ГОК входит в тройку ведущих российских предприятий по добыче железной руды. Предприятие создано в 1961 году и занимается разработкой Стойленского месторождения Курской магнитной аномалии. СГОК расположен в 250 км от основной производственной площадки в Липецке.
+            </p>
+
+            <p>
+                Основная продукция комбината – железорудный концентрат и железная агломерационная руда. Промышленные запасы – около 5 млрд тонн. Добыча сырья ведется открытым способом, предприятие имеет современное оборудование, что позволяет обеспечивать сталеплавильное производство низкозатратным железорудным сырьем.
+            </p>
+
+            <p>Доля комбината в общероссийском производстве железорудной продукции превышает 15%.  В ходе реализации «Стратегии 2017» Группы НЛМК лидерские позиции СГОКа продолжат укрепляться.
+            </p>
+
+            <p>
+                Так, «Стратегия 2017» Группы НЛМК предусматривает развитие в Группе ресурсной базы мирового класса за счет повышения самообеспеченности железорудным сырьем с гибкой структурой шихты до 100% (окатыши, агломерат, аглоруда) и снижения потребления дорогостоящих видов ресурсов. </p>
+
+            <p>На Стойленском ГОКе в рамках этой стратегии ведется строительство фабрики окомкования мощностью 6 млн тонн железорудных окатышей в год. Строительство планируется завершить в 2016 году. Общий объем инвестиций в производственные и инфраструктурные объекты составит около 39 млрд рублей. </p>
+            <p>Программа также предусматривает рост производства железорудного концентрата на 0,5-1 млн тонн в год за счет операционных улучшений, строительство новых мощностей по производству концентрата на 5 млн тонн в год, а также увеличение мощностей карьера на 12 млн до 42 млн тонн рудного сырья. </p>
+        </div>
+    </div>
+
+
+    <div ng-show="tab==1" class="content products">
+        <div class="title">Продукция</div>
+        <div class="col col-1">
+            <div class="list">
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','steel_concetrat')"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item last"></div>
+            </div>
+        </div>
+        <div class="col col-2">
+            <div class="container">
+                <div ng-show="ptab==0">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','steel_concetrat')"></h2>
+
+                        <p>ССтойленский ГОК производит железорудный концентрат (среднее содержание железа 66,5%) и агломерационную руду (52%), которые используются в качестве сырья на металлургических предприятиях.  </p>
+                        <p>Продукция СГОКа полностью закрывает потребности Группы НЛМК в железорудном концентрате. Запасы концентрата оцениваются в 5 млрд тонн, что позволит поддерживать текущий объем производства Группы в течение более 180 лет. Себестоимость производства – одна из самых низких по отрасли, в среднем составляет около 20 долларов/тонну концентрата. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==2" class="content">
+        <div class="title">Стойленский горно-обогатительный комбинат</div>
+        <div ng-init="gimg=1" class="gallery">
+            <div class="full-img">
+                <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/{{gimg}}.jpg"/>
+            </div>
+            <div class="list-img">
+                <div class="item" ng-class="{'active':gimg==1}" ng-click="gimg=1">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/1_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==2}" ng-click="gimg=2">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/2_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==3}" ng-click="gimg=3">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/3_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==4}" ng-click="gimg=4">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/4_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==5}" ng-click="gimg=5">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/5_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==6}" ng-click="gimg=6">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/6_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==7}" ng-click="gimg=7">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/7_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==8}" ng-click="gimg=8">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/8_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==9}" ng-click="gimg=9">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/9_t.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==3" class="content">
+        <div class="title">Стойленский горно-обогатительный комбинат</div>
+        <div class="gallery">
+            <div class="video">
+                <videogular
+                        vg-player-ready="onPlayerReady"
+                        vg-complete="onCompleteVideo"
+                        vg-update-time="onUpdateTime"
+                        vg-update-volume="onUpdateVolume"
+                        vg-update-state="onUpdateState"
+                        vg-theme="config.theme.url"
+                        vg-autoplay="config.autoPlay">
+                    <vg-video vg-src="config.sources"></vg-video>
+                </videogular>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="close" ng-click="m.closePopup()"></div>
+        <div class="tabs">
+            <div ng-class="{'before-active':tab == 0}" class="item item-empty">
+                <div class="ico"></div>
+            </div>
+            <div ng-click="tab=0" ng-class="{'active':tab == 0,'before-active':tab == 1}" class="item item-0">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=1" ng-class="{'active':tab == 1,'before-active':tab == 2}" class="item item-1">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=2" ng-class="{'active':tab == 2,'before-active':tab == 3}" class="item item-2">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
+                <div
+                        class="ico"></div>
+            </div>
+        </div>
+    </div>
+</div>

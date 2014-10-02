@@ -1,0 +1,192 @@
+<div ng-init="tab=0;ptab=0">
+
+    <div ng-show="tab==0" class="content info">
+        <div class="title">НЛМК-Калуга</div>
+        <div class="col col-1">
+            <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/main.jpg"/>
+        </div>
+        <div class="col col-4">
+            <p><b>Расположение</b>:
+                индустриальный парк Ворсино, Калужская область
+            </p>
+
+            <p><b>Производственные мощностие</b>:
+                1,5 млн тонн стали в год, 0,9 млн тонн металлопроката в год
+            </p>
+            <br>
+
+            <p>
+                НЛМК-Калуга - электрометаллургический завод нового поколения, крупнейший в Центральном регионе России
+                производитель стального проката строительного назначения, расположенный на границе с Московской
+                областью.
+            </p>
+
+            <p>
+                В основе проекта НЛМК-Калуга заложена концепция мини-завода, предполагающая создание комплекса
+                электросталеплавильного и прокатного производств в непосредственной близости к источникам сырья и
+                потребителям готовой продукции.
+            </p>
+
+            <p>Группа НЛМК приступила к строительству завода на площадке в индустриальном парке Ворсино в 2008 году.
+                Строительство стартовало на площадке greenfield и было завершено, несмотря на экономический кризис. В
+                мае 2013 года на НЛМК-Калуга начались «горячие» испытания оборудования.
+            </p>
+
+            <p>Инвестиции в строительство завода и инфраструктуру составили более 38 млрд. рублей, из которых 7,5
+                направлены на внедрение передовых экологических технологий.</p>
+
+            <p>Инновационные технические решения проекта позволяют добиться высокой надежности оборудования, снижения
+                удельных расходов сырья и энергоресурсов, уменьшения эксплуатационных затрат. Завод превосходит
+                показатели аналогичных российских и европейских предприятий по целому ряду параметров. </p>
+
+            <p>Потребление электроэнергии на тонну готовой продукции на заводе на 10% ниже среднероссийских параметров,
+                расход природного газа - на 18%. Производительность завода более чем в полтора раза выше в сравнении с
+                аналогичными российскими предприятиями.</p>
+
+            <p>На НЛМК-Калуга внедрены наилучшие экологические технологии. Очистные системы завода улавливают более 99%
+                атмосферных выбросов, что в несколько раз больше среднего показателя по России. Замкнутый цикл
+                водоснабжения позволяет не только полностью исключить промышленные стоки, но и существенно снизить
+                потребление воды по сравнению с аналогами. Получаемые в процессе производства отходы направляются для
+                переработки в побочную продукцию, в частности, материалы для дорожного строительства. </p>
+
+            <p>НЛМК-Калуга работает на вторичном сырье - ломе черных металлов, сбор которого осуществляют расположенные
+                в Центральном федеральном округе предприятия ломозаготовительного подразделения Группы НЛМК «Вторчермет
+                НЛМК». Профицит металлолома в регионе составляет около 3 млн тонн. Таким образом, завод выполняет важную
+                экологическую функцию по сбору и утилизации отходов и переработке вторичных ресурсов в регионе.</p>
+
+            <p>Запуск НЛМК-Калуга позволил создать 1250 новых мест на заводе и 600 рабочих мест на предприятиях
+                обслуживания, а также обеспечить работой смежные бизнесы в Калужской области. </p>
+        </div>
+    </div>
+
+
+    <div ng-show="tab==1" class="content products">
+        <div class="title">Продукция</div>
+        <div class="col col-1">
+            <div class="list">
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','fittings')"></div>
+                <div class="item"
+                     ng-click="ptab=1"
+                     ng-class="{'active':ptab == 1,'before-active':ptab == 2}"
+                     ng-bind="m._('products','blank_quadr')"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item last"></div>
+            </div>
+        </div>
+        <div class="col col-2">
+            <div class="container">
+                <div ng-show="ptab==0">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','fittings')"></h2>
+
+                        <p>Продукция НЛМК-Калуга - высококачественная арматура и стальной профиль строительного назначения. В настоящее время предприятие выпускает арматуру класса А500С диаметром 12 мм, 14 мм, 16 мм, 18 мм, 20 мм, 22 мм и 25 мм, а также сортовую заготовку. В 2014 году НЛМК-Калуга планирует освоить производство около 20 новых видов металлопродукции, включая новые типоразмеры сортовой заготовки и арматуры, а также уголок и швеллер. </p>
+                        <p>Ввод в эксплуатацию НЛМК-Калуга позволит сократить существующий сегодня в ЦФО дефицит проката и обеспечить строительную отрасль Москвы, Московской области и центрального региона востребованной качественной металлопродукцией. Центральный федеральный округ один из крупнейших рынков сбыта - на него приходится более 30% потребления проката строительного назначения в России. </p>
+                        <p>Ежегодно продукция завода сможет покрывать потребности строительства 12,5 млн кв. метров жилья в монолитных и кирпично-монолитных домах или 19,5 млн кв. метров жилья в панельных домах. </p>
+                    </div>
+                </div>
+                <div ng-show="ptab==1">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/2.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','blank_quadr')"></h2>
+                        <p>
+                            Длина: <b>6000 — 11700мм</b><br/>
+                            Сечение: <b>125х125мм</b><br/>
+                        </p>
+                        <p>Большую часть произведенных НЛМК заготовок направляется прокатным компаниям, которые специализируются на изготовлении арматуры и иной продукции главным образом для строительного сектора </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==2" class="content">
+        <div class="title">НЛМК-Калуга</div>
+        <div ng-init="gimg=1" class="gallery">
+            <div class="full-img">
+                <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/{{gimg}}.jpg"/>
+            </div>
+            <div class="list-img">
+                <div class="item" ng-class="{'active':gimg==1}" ng-click="gimg=1">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/1_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==2}" ng-click="gimg=2">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/2_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==3}" ng-click="gimg=3">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/3_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==4}" ng-click="gimg=4">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/4_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==5}" ng-click="gimg=5">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/5_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==6}" ng-click="gimg=6">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/6_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==7}" ng-click="gimg=7">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/7_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==8}" ng-click="gimg=8">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/8_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==9}" ng-click="gimg=9">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/9_t.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==3" class="content">
+        <div class="title">НЛМК-Калуга</div>
+        <div class="gallery">
+            <div class="video">
+                <videogular
+                        vg-player-ready="onPlayerReady"
+                        vg-complete="onCompleteVideo"
+                        vg-update-time="onUpdateTime"
+                        vg-update-volume="onUpdateVolume"
+                        vg-update-state="onUpdateState"
+                        vg-theme="config.theme.url"
+                        vg-autoplay="config.autoPlay">
+                    <vg-video vg-src="config.sources"></vg-video>
+                </videogular>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="close" ng-click="m.closePopup()"></div>
+        <div class="tabs">
+            <div ng-class="{'before-active':tab == 0}" class="item item-empty">
+                <div class="ico"></div>
+            </div>
+            <div ng-click="tab=0" ng-class="{'active':tab == 0,'before-active':tab == 1}" class="item item-0">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=1" ng-class="{'active':tab == 1,'before-active':tab == 2}" class="item item-1">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=2" ng-class="{'active':tab == 2,'before-active':tab == 3}" class="item item-2">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
+                <div
+                        class="ico"></div>
+            </div>
+        </div>
+    </div>
+</div>

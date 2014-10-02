@@ -1,0 +1,145 @@
+<div ng-init="tab=0;ptab=0">
+
+    <div ng-show="tab==0" class="content info">
+        <div class="title">Вторчермет НЛМК</div>
+        <div class="col col-1">
+            <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/main.jpg"/>
+        </div>
+        <div class="col col-4">
+            <p><b>Расположение</b>:
+                Екатеринбург, Россия
+            </p>
+
+            <p><b>Производственные мощностие</b>:
+                2,2 млн т в 2013 году
+            </p>
+            <br>
+
+            <p>
+                Вторчермет НЛМК является сырьевым подразделением компании НЛМК-Сорт. Предприятие было создано в 1998 году как холдинг, который занимался заготовкой и переработкой черного металлолома.
+            </p>
+
+            <p>
+                Вторчермет НЛМК представлена более чем в 33 регионах России, приемом и переработкой черного металлолома занимается около 230 производственных площадок.
+            </p>
+
+            <p>Сеть ломозаготовительных площадок Группы примерно на 85% обеспечивает потребности российских сталеплавильных активов Группы в качественном сырье. Для обеспечения увеличивающихся потребностей в металлоломе (с учетом роста потребностей в ломе после ввода НЛМК-Калуга) НЛМК продолжает развивать сеть. Так, в 2013 году на площадке в Подольске была введена в эксплуатацию шредерная установка, которая позволила расширить мощности НЛМК по переработке лома черных металлов и сохранить высокий уровень самообеспеченности даже после ввода НЛМК-Калуга.
+            </p>
+
+            <p>При поставке металла на производственные площадки осуществляется радиационный контроль и контроль взрывоопасности, производится взвешивание на высокоточных весах. Вторчермет НЛМК является лидером отрасли по техническому оснащению процесса переработки вторичных металлов. </p>
+        </div>
+    </div>
+
+
+    <div ng-show="tab==1" class="content products">
+        <div class="title">Продукция</div>
+        <div class="col col-1">
+            <div class="list">
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','black_metal')"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item last"></div>
+            </div>
+        </div>
+        <div class="col col-2">
+            <div class="container">
+                <div ng-show="ptab==0">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','black_metal')"></h2>
+
+                        <p>Лом отгружается предприятиям Группы НЛМК, которые входят в НЛМК-Сорт. Вторчермет обеспечивает 85% потребностей Группы в ломе.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==2" class="content">
+        <div class="title">Вторчермет НЛМК</div>
+        <div ng-init="gimg=1" class="gallery">
+            <div class="full-img">
+                <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/{{gimg}}.jpg"/>
+            </div>
+            <div class="list-img">
+                <div class="item" ng-class="{'active':gimg==1}" ng-click="gimg=1">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/1_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==2}" ng-click="gimg=2">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/2_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==3}" ng-click="gimg=3">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/3_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==4}" ng-click="gimg=4">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/4_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==5}" ng-click="gimg=5">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/5_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==6}" ng-click="gimg=6">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/6_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==7}" ng-click="gimg=7">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/7_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==8}" ng-click="gimg=8">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/8_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==9}" ng-click="gimg=9">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/9_t.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==3" class="content">
+        <div class="title">Вторчермет НЛМК</div>
+        <div class="gallery">
+            <div class="video">
+                <videogular
+                        vg-player-ready="onPlayerReady"
+                        vg-complete="onCompleteVideo"
+                        vg-update-time="onUpdateTime"
+                        vg-update-volume="onUpdateVolume"
+                        vg-update-state="onUpdateState"
+                        vg-theme="config.theme.url"
+                        vg-autoplay="config.autoPlay">
+                    <vg-video vg-src="config.sources"></vg-video>
+                </videogular>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="close" ng-click="m.closePopup()"></div>
+        <div class="tabs">
+            <div ng-class="{'before-active':tab == 0}" class="item item-empty">
+                <div class="ico"></div>
+            </div>
+            <div ng-click="tab=0" ng-class="{'active':tab == 0,'before-active':tab == 1}" class="item item-0">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=1" ng-class="{'active':tab == 1,'before-active':tab == 2}" class="item item-1">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=2" ng-class="{'active':tab == 2,'before-active':tab == 3}" class="item item-2">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
+                <div
+                        class="ico"></div>
+            </div>
+        </div>
+    </div>
+</div>

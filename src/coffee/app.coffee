@@ -60,15 +60,24 @@ class Words extends Constant
           hire_class_hardware: 'Hire class & hardware'
           hire_flat: 'Плоский прокат'
           hire_class_hardware: 'Сортовой прокат и метизы'
+          hire_hot_coated: 'Горячеоцинкованный прокат'
+          hire_polymer: 'Прокат с полимерным покрытием'
           steel_blank: 'Стальная заготовка'
+          steel_concetrat: 'Железорудный концетрат'
           raw: 'Сырье': 'Steel blank'
           raw: 'Raw'
           steel_electro: 'Electrical steel'
           blank: 'Blank'
+          blank_quadr: 'Заготовка непрерывнолитая квадртная'
           rod: 'Rod'
           fittings: 'Fittings'
           steel: 'Steel'
           hire: 'Hire'
+          koks: 'Кокс'
+          black_metal: 'Лом черных металлов'
+          dolomit: 'Доломит'
+          fluse: 'Известняк флюсовый'
+          hardware: 'Метизы'
       ru:
         ui:
           nlmk: 'НЛМК'
@@ -93,14 +102,23 @@ class Words extends Constant
           hire_electro: 'Холоднокатаный прокат из электротехнической стали'
           hire_flat: 'Плоский прокат'
           hire_class_hardware: 'Сортовой прокат и метизы'
+          hire_polymer: 'Прокат с полимерным покрытием'
+          hire_hot_coated: 'Горячеоцинкованный прокат'
           steel_blank: 'Стальная заготовка'
+          steel_concetrat: 'Железорудный концетрат'
           raw: 'Сырье'
           steel_electro: 'Электротехническая сталь'
           blank: 'Заготовка'
+          blank_quadr: 'Заготовка непрерывнолитая квадртная'
           rod: 'Катанка'
           fittings: 'Арматура'
           steel: 'Сталь'
           hire: 'Прокат'
+          koks: 'Кокс'
+          black_metal: 'Лом черных металлов'
+          dolomit: 'Доломит'
+          fluse: 'Известняк флюсовый'
+          hardware: 'Метизы'
     }
 
 class I18n extends Service
@@ -113,13 +131,14 @@ class I18n extends Service
 
 
 class Main extends Controller
-  constructor: ($scope, $route, $routeParams, $location, @i18nService, @popupService) ->
+  constructor: ($scope, $route, @$routeParams, $location, @i18nService, @popupService) ->
     $scope.$route = $route
     $scope.$location = $location
     $scope.$routeParams = $routeParams
 
     $scope.controller = 'main'
-
+  getPopup:->
+    'templates/'+@$routeParams.division+'/actives/'+@popupName()+'.html'
   _:(group, key)->
     @i18nService.get group, key
   closePopup:->
@@ -166,9 +185,6 @@ class Slider extends Directive
 
       link: (scope, elem, attrs)->
         scope.images = [1..scope.total]
-        scope.division='europe'
-        scope.aaa='europe'
-        console.log scope
         scope.currentIndex = 0
         scope.next = ->
           if scope.currentIndex < scope.images.length-1
@@ -199,7 +215,7 @@ class LineChart extends Directive
       scope:
         data:'=lineChart'
         name:'@chartTitle'
-      template: 'section class="chart bar-chart"><header>{{name}}</header><section></section></section>'
+      template: '<section class="chart bar-chart"><header>{{name}}</header><section></section></section>'
       link:(scope,el,attr)->
         data =
           labels: []
@@ -283,7 +299,6 @@ class Marker extends Directive
       link: (scope, elem, attrs)->
         elem.click ->
           popupService.show(scope.active)
-          console.log popupService
           scope.$apply()
     }
 

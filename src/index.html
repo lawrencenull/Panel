@@ -8,7 +8,7 @@
 <body ng-controller="mainController as m">
 
 
-<div id="overlay" ng-class="{'active':m.popupService.isShow}"></div>
+<div id="overlay" ng-click="m.closePopup()" ng-class="{'active':m.popupService.isShow}"></div>
 <div id="bg">
     <img
             ng-show="$routeParams.division =='group' && controller == 'info'"
@@ -60,11 +60,7 @@
 </div>
 <div id="layout">
     <div class="popup" ng-show="m.popupService.isShow">
-
-        <div ng-show = "m.popupService.active=='01_NLMK_Indiana'" ng-include="'templates/usa/actives/01_NLMK_Indiana.html'"></div>
-        <div ng-show = "m.popupService.active=='02_NLMK_Pennsylvania'" ng-include="'templates/usa/actives/02_NLMK_Pennsylvania.html'"></div>
-        <div ng-show = "m.popupService.active=='03_Sharon_Coating'" ng-include="'templates/usa/actives/03_Sharon_Coating.html'"></div>
-
+        <div ng-include="m.getPopup()"></div>
     </div>
 
     <header>
