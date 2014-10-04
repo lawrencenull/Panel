@@ -186,3 +186,18 @@ footer .nav .selector.map .next {
 .content .products .container .text p{
     font-size: 18px;
 }
+.popup .content.info .col.col-4 p{
+    font-size: 22px;
+}
+
+.popup .content.products .col-2 p {
+    font-size: 18px;
+}
+.popup .nav .tabs .active.item.item-1 .ico {
+    background-image: url(/img/1_01.png);
+    background-position: center;
+}
+
+.popup .nav .tabs .item.item-1 .ico {
+    background-image: url(/img/1_02.png);
+}
