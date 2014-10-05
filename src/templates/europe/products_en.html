@@ -1,0 +1,93 @@
+<div id="content" class="page--products">
+    <h1 ng-bind="m._('ui','products')"></h1>
+
+    <div class="col col-1">
+        <div class="list" ng-init="tab=0">
+            <div class="item first"
+                 ng-click="tab=0"
+                 ng-class="{'active':tab == 0,'before-active':tab == 1}"
+                 ng-bind="m._('products','hire_hot')"></div>
+            <div class="item"
+                 ng-click="tab=1"
+                 ng-class="{'active':tab == 1,'before-active':tab == 2}"
+                 ng-bind="m._('products','hire_cold')"></div>
+            <div class="item"
+                 ng-click="tab=2"
+                 ng-class="{'active':tab == 2,'before-active':tab == 3}"
+                 ng-bind="m._('products','hire_cold_coated')"></div>
+            <div class="item"
+                 ng-click="tab=3"
+                 ng-class="{'active':tab == 3,'before-active':tab == 4}"
+                 ng-bind="m._('products','hire_plate')"></div>
+            <div class="item"></div>
+            <div class="item last"></div>
+        </div>
+    </div>
+    <div class="col col-2">
+        <div class="container">
+            <div class="scroll-content"  p-scroll reset="tab">
+
+                <div class="text" ng-show="tab==0">
+                    <div class="img">
+                        <img src="/images/production/europe/1.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','hire_hot')"></h2>
+
+                    <h4>Usage</h4>
+
+                    <p style="font-size: 18px;">
+                        Hot-rolled steel is mainly used in the production of steel structures, guardrails, ship hulls, machine casings, road-building machinery components, pressure vessels, and building structures.
+                    </p>
+                </div>
+                <div class="text" ng-show="tab==1">
+                    <div class="img">
+                        <img src="/images/production/europe/2.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','hire_cold')"></h2>
+                    <h4>Usage</h4>
+
+                    <p style="font-size: 18px;">
+                        Cold-rolled steel is widely used in the production of body parts for machines and equipment, load-bearing structures, pipes, lighting masts, and agricultural equipment.
+                    </p>
+                </div>
+                <div class="text" ng-show="tab==2">
+                    <div class="img">
+                        <img src="/images/production/europe/3.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','hire_cold_coated')"></h2>
+
+                    <h4>Usage</h4>
+
+                    <p style="font-size: 18px;">
+                        Galvanized steel is used in the production of machine body parts, roofing materials, load-bearing structures in hostile environments, and car parts and components. Pre-painted steel with pigmented coatings is used in construction for the production of roofing and finishing materials, and casings for consumer and commercial appliances (white goods). This type of steel boasts high resistance to atmospheric corrosion, has decorative qualities, and combines strength and plasticity.
+                    </p>
+
+                </div>
+                <div class="text" ng-show="tab==3">
+                    <div class="img">
+                        <img src="/images/production/europe/4.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','hire_plate')"></h2>
+                    <h4>Usage</h4>
+
+                    <p style="font-size: 18px;">
+                        NLMK Group’s European plants produce a wide range of thick plates, including quenched and tempered plates. The main consumers are manufacturers of wind turbines, drilling rigs, yellow goods, and shipbuilders and mechanical engineering and infrastructure companies.
+                    </p>
+                    <p style="font-size: 18px;">
+                        Its premium steel products are Quard, a thick, low-alloy, hard-wearing steel plate and Quend, a high-duty construction steel.
+                    </p>
+
+                    <h3>Quard</h3>
+                    <p style="font-size: 18px;">
+                        is used in the production of construction and mining equipment and other types of special equipment and machinery. Using this grade of steel, the weight of a construction element is reduced by 40% with a 5% increase in its volume; fuel consumption is lowered and production costs fall by 45%.
+                    </p>
+                    <h3>Quend</h3>
+                    <p style="font-size: 18px;">
+                        is used in the manufacture of lorry undercarriages, hoisting machinery in the construction industry and other equipment where high durability is vital. Using Quend steel sheets, the weight of structural components is reduced by more than 20%, thus reducing production costs and increasing performance.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

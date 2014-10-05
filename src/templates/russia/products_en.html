@@ -1,0 +1,107 @@
+<div id="content" class="page--products">
+    <h1 ng-bind="m._('ui','products')"></h1>
+
+    <div class="col col-1">
+        <div class="list" ng-init="tab=0">
+            <div class="item first"
+                 ng-click="tab=0"
+                 ng-class="{'active':tab == 0,'before-active':tab == 1}"
+                 ng-bind="m._('products','slabs')"></div>
+            <div class="item"
+                 ng-click="tab=1"
+                 ng-class="{'active':tab == 1,'before-active':tab == 2}"
+                 ng-bind="m._('products','hire_hot')"></div>
+            <div class="item"
+                 ng-click="tab=2"
+                 ng-class="{'active':tab == 2,'before-active':tab == 3}"
+                 ng-bind="m._('products','hire_cold')"></div>
+            <div class="item"
+                 ng-click="tab=3"
+                 ng-class="{'active':tab == 3,'before-active':tab == 4}"
+                 ng-bind="m._('products','hire_cold_coated')"></div>
+            <div class="item"
+                 ng-click="tab=4"
+                 ng-class="{'active':tab == 4,'before-active':tab == 5}"
+                 ng-bind="m._('products','hire_electro')"></div>
+            <div class="item last"
+                 ng-click="tab=5"
+                 ng-class="{'active':tab == 5}"
+                 ng-bind="m._('products','hire_class')"></div>
+        </div>
+    </div>
+    <div class="col col-2">
+        <div class="container">
+            <div class="scroll-content" p-scroll reset="tab">
+
+                <div class="text" ng-show="tab==0">
+                    <div class="img">
+                        <img src="/images/production/russia/1.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','slabs')"></h2>
+
+                    <h4>Usage</h4>
+
+                    <p style="font-size: 18px;">
+                        NLMK manufactures steel slabs with various chemical properties and in various sizes. The company uses slabs mainly in flat steel production at the Lipetsk plant, and also supplies them to the Group’s mills in Europe and the USA, as well as to other consumers in Russia and abroad. ‘Wide’ slabs are further converted into thick plates, including at NLMK’s subsidiaries in Europe – DanSteel and Clabecq.
+                    </p>
+                </div>
+                <div class="text" ng-show="tab==1">
+                    <div class="img">
+                        <img src="/images/production/russia/2.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','hire_hot')"></h2>
+                    <h4>Usage</h4>
+
+                    <p style="font-size: 18px;">
+                        NLMK manufactures hot-rolled steel up to 1,850 mm in width and in thicknesses from 1.5 mm to 16 mm. Hot-rolled steel is mainly used in the production of steel structures, guardrails, ship hulls, machine casings, road-building machinery components, pressure vessels, and building structures.
+
+                    </p>
+                </div>
+                <div class="text" ng-show="tab==2">
+                    <div class="img">
+                        <img src="/images/production/russia/3.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','hire_cold')"></h2>
+
+                    <h4>Usage</h4>
+
+                    <p style="font-size: 18px;">NLMK manufactures cold-rolled steel up to 1,820 mm in width and in thicknesses from 0.35 mm to 2.5 mm. It is widely used in the production of body parts for machines and equipment, load-bearing structures, pipes, lighting masts, and agricultural equipment. </p>
+
+                </div>
+                <div class="text" ng-show="tab==3">
+                    <div class="img">
+                        <img src="/images/production/russia/4.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','hire_cold_coated')"></h2>
+                    <h4>Usage</h4>
+
+                    <p style="font-size: 18px;">
+                        NLMK manufactures hot-dip galvanized steel and pre-painted steel. Galvanized steel in gauges from 0.22 mm to 3.0 mm is used in the production of machine body parts, roofing materials, load-bearing structures in hostile environments, and car parts and components. Steel with pigmented coatings is used in construction for the production of roofing and finishing materials, and casings for consumer and commercial appliances (white goods). This type of steel boasts high resistance to atmospheric corrosion, has decorative qualities, and combines strength and plasticity.
+                    </p>
+                </div>
+                <div class="text" ng-show="tab==4">
+                    <div class="img">
+                        <img src="/images/production/russia/5.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','hire_electro')"></h2>
+                    <h4>Usage</h4>
+
+                    <p style="font-size: 18px;">
+                        NLMK is one of the leading manufacturers of electrical steel. The main plant in Lipetsk and VIZ-Steel in Yekaterinburg have a combined annual processing capacity of around 350,000 tonnes of transformer steel and 380,000 tonnes of dynamo steel. NLMK produces about 7% of the world’s transformer steel. It is used in the electrical industry for the manufacture of transformer cores and fixed components for electrical equipment. Dynamo steel is used to manufacture electrical equipment.
+                    </p>
+                </div>
+                <div class="text" ng-show="tab==5">
+                    <div class="img">
+                        <img src="/images/production/russia/6.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','hire_class')"></h2>
+                    <h4>Usage</h4>
+
+                    <p style="font-size: 18px;">
+                        NLMK manufactures continually cast billets which are delivered to steel companies specializing in the production of rebar and other products mainly for the construction industry. The companies in the Group’s Russian division also produce rebar used for reinforcing concrete structures, and in the manufacture of a wide range of metalware.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

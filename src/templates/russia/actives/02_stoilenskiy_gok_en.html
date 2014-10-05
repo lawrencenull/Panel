@@ -1,0 +1,135 @@
+<div ng-init="tab=0;ptab=0">
+
+    <div ng-show="tab==0" class="content info">
+        <div class="title">Stoilensky</div>
+        <div class="col col-1">
+            <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/main.jpg"/>
+        </div>
+        <div class="col col-4">
+            <p><b>Location</b>:
+                Stary Oskol, Belgorod Region
+            </p>
+
+            <p><b>Processing capacity</b>:
+                around 16 million tonnes of iron ore per year
+            </p>
+            <br>
+
+            <p>
+                Stoilensky is one of the three leading Russian iron ore-mining companies. The enterprise was established in 1961 and operates in the Kursk Magnetic Anomaly iron ore basin. Stoilensky is situated 250 km from the main plant in Lipetsk.
+            </p>
+
+            <p>The company’s share of the total iron ore production in Russia is over 15%. Stoilensky continues to reinforce its leading position in NLMK Group’s Strategy 2017. </p>
+
+            <p>This is aimed at developing a world-class resource base for the Group by increasing self-sufficiency in iron ore with a flexible feed structure of up to 100% (pellets, sinter, sinter ore) and reducing the consumption of expensive resources. </p>
+
+            <p>As part of this strategy, a pelletizing plant is being built at Stoilensky with a capacity of 6 million tonnes of iron ore pellets per year. Construction is slated for completion in 2016. A total of around RUB 39 billion will be invested in production and infrastructure facilities. </p>
+        </div>
+    </div>
+
+
+    <div ng-show="tab==1" class="content products">
+        <div class="title">Output</div>
+        <div class="col col-1">
+            <div class="list">
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','steel_concetrat')"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item last"></div>
+            </div>
+        </div>
+        <div class="col col-2">
+            <div class="container">
+                <div ng-show="ptab==0">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','steel_concetrat')"></h2>
+                        <p>Stoilensky produces iron ore concentrate (with an average iron content of 66.5%) and sinter ore (52%), which is used as a raw material in steelworks. </p>
+                        <p>Stoilensky’s production fully meets NLMK Group’s demand for iron ore concentrate. Concentrate reserves are estimated at 5 billion tonnes, meaning the Group’s current output can be sustained for over 180 years. The concentrate has one of the lowest production costs in the industry, amounting to an average of USD 20 per tonne.</p>
+
+                        <p>The ore is mined in an open pit and the company has its own equipment, allowing it to supply steel mills with low-cost iron ore. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==2" class="content">
+        <div class="title">Stoilensky</div>
+        <div ng-init="gimg=1" class="gallery">
+            <div class="full-img">
+                <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/{{gimg}}.jpg"/>
+            </div>
+            <div class="list-img">
+                <div class="item" ng-class="{'active':gimg==1}" ng-click="gimg=1">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/1_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==2}" ng-click="gimg=2">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/2_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==3}" ng-click="gimg=3">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/3_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==4}" ng-click="gimg=4">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/4_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==5}" ng-click="gimg=5">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/5_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==6}" ng-click="gimg=6">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/6_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==7}" ng-click="gimg=7">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/7_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==8}" ng-click="gimg=8">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/8_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==9}" ng-click="gimg=9">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/9_t.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==3" class="content">
+        <div class="title">Stoilensky</div>
+        <div class="gallery">
+            <div class="video">
+                <pvideo file="/video/1.mp4" auto=false stop="tab" ></pvideo>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="close" ng-click="m.closePopup()"></div>
+        <div class="tabs">
+            <div ng-class="{'before-active':tab == 0}" class="item item-empty">
+                <div class="ico"></div>
+            </div>
+            <div ng-click="tab=0" ng-class="{'active':tab == 0,'before-active':tab == 1}" class="item item-0">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=1" ng-class="{'active':tab == 1,'before-active':tab == 2}" class="item item-1">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=2" ng-class="{'active':tab == 2,'before-active':tab == 3}" class="item item-2">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
+                <div
+                        class="ico"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+<div ng-init="tab=0;ptab=0">
+
+    <div ng-show="tab==0" class="content info">
+        <div class="title">НЛМК-Метиз</div>
+        <div class="col col-1">
+            <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/main.jpg"/>
+        </div>
+        <div class="col col-4">
+            <p><b>Расположение</b>:
+                Свердловская обл., Россия
+            </p>
+
+            <p><b>Производственные мощностие</b>:
+                0,56 млн т в год
+            </p>
+            <br>
+
+            <p>
+                НЛМК-Метиз – предприятие Сортового дивизиона Группы НЛМК. Компания специализируется на производстве метизной продукции.
+            </p>
+
+            <p>
+                История НЛМК-Метиз началась в 1970-е годы. С 2004 года завод полностью переориентирован на производство метизной продукции, и теперь входит в число пяти крупнейших производителей этой продукции в России. Доля компании на рынке низкоуглеродистой метизной продукции превышает 20%.
+            </p>
+
+            <p>Производственную базу составляет современное оборудование ведущих европейских производителей, таких как Koch, MarioFrigerio, TeamMeccanica, FIB, EBNER, WAFIOS и др.
+            </p>
+
+            <p>На сегодняшний день компания освоила производство 885 типоразмеров и видов метизов. Наиболее востребованной продукцией является проволока для армирования железобетонных конструкций, оцинкованная проволока, сварочная проволока, строительный гвоздь, крепежные изделия. Продукция предприятия поставляется в 18 стран мира. </p>
+        </div>
+    </div>
+
+
+    <div ng-show="tab==1" class="content products">
+        <div class="title">Продукция</div>
+        <div class="col col-1">
+            <div class="list">
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','hardware')"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item last"></div>
+            </div>
+        </div>
+        <div class="col col-2">
+            <div class="container">
+                <div ng-show="ptab==0">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','hardware')"></h2>
+
+                        <p>НЛМК-Метиз выпускает широкий сортамент метизной продукции: от строительного гвоздя до проволоки для армирования железобетонных конструкций. Освоено производство 885 типоразмеров и видов метизов. Продукция используется в основном в строительной индустрии.  </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==2" class="content">
+        <div class="title">НЛМК-Метиз</div>
+        <div ng-init="gimg=1" class="gallery">
+            <div class="full-img">
+                <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/{{gimg}}.jpg"/>
+            </div>
+            <div class="list-img">
+                <div class="item" ng-class="{'active':gimg==1}" ng-click="gimg=1">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/1_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==2}" ng-click="gimg=2">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/2_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==3}" ng-click="gimg=3">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/3_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==4}" ng-click="gimg=4">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/4_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==5}" ng-click="gimg=5">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/5_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==6}" ng-click="gimg=6">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/6_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==7}" ng-click="gimg=7">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/7_t.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==3" class="content">
+        <div class="title">НЛМК-Метиз</div>
+        <div class="gallery">
+            <div class="video">
+                <pvideo file="/video/1.mp4" auto=false stop="tab" ></pvideo>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="close" ng-click="m.closePopup()"></div>
+        <div class="tabs">
+            <div ng-class="{'before-active':tab == 0}" class="item item-empty">
+                <div class="ico"></div>
+            </div>
+            <div ng-click="tab=0" ng-class="{'active':tab == 0,'before-active':tab == 1}" class="item item-0">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=1" ng-class="{'active':tab == 1,'before-active':tab == 2}" class="item item-1">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=2" ng-class="{'active':tab == 2,'before-active':tab == 3}" class="item item-2">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
+                <div
+                        class="ico"></div>
+            </div>
+        </div>
+    </div>
+</div>

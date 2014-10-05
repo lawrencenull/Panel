@@ -1,0 +1,132 @@
+<div ng-init="tab=0;ptab=0">
+
+    <div ng-show="tab==0" class="content info">
+        <div class="title">NLMK Verona</div>
+        <div class="col col-1">
+            <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/main.jpg"/>
+        </div>
+        <div class="col col-4">
+            <p><b>Location</b>:
+                Verona, Italy
+            </p>
+
+            <p><b>Processing capacity</b>:
+                around 450,000 tonnes of steel products per year
+            </p>
+            <br>
+
+            <p>
+                The company was founded in 2004. NLMK Verona specializes in the production of thick plates, slabs and forging ingots used as blanks for the manufacture of mill rollers, thick plate, turbine rotors, etc.
+            </p>
+
+            <p>
+                NLMK Verona is a modern steelworks. Thanks to investment and overhauls, including to its continuous casting machine, the company has widened its product range and is able to meet consumer demand for high-quality flat steel up to 1,000 mm thick and slabs up to 400 mm thick.
+            </p>
+
+            <p>Around two thirds of goods produced are sold in Italy. Apart from European countries, the company also supplies Asia and the American continent. </p>
+
+            <p>The company is part of NLMK Europe Plate. It has an 8% share of the EU market for thick plate. </p>
+        </div>
+    </div>
+
+
+    <div ng-show="tab==1" class="content products">
+        <div class="title">Output</div>
+        <div class="col col-1">
+            <div class="list">
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','hire_plate')"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item last"></div>
+            </div>
+        </div>
+        <div class="col col-2">
+            <div class="container">
+                <div ng-show="ptab==0">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','hire_plate')"></h2>
+
+                        <p>NLMK Verona produces high-quality steel plate with a thickness of 20 mm to 1,000 mm. It is used in shipbuilding, mechanical engineering and infrastructure construction. Apart from thick plate, the company also produces slabs of up to 400 mm in thickness and forging ingots weighing from 5 to 80 tonnes. NLMK Verona is one of the largest manufacturers of forging ingots in Europe. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==2" class="content">
+        <div class="title">NLMK Verona</div>
+        <div ng-init="gimg=1" class="gallery">
+            <div class="full-img">
+                <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/{{gimg}}.jpg"/>
+            </div>
+            <div class="list-img">
+                <div class="item" ng-class="{'active':gimg==1}" ng-click="gimg=1">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/1_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==2}" ng-click="gimg=2">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/2_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==3}" ng-click="gimg=3">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/3_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==4}" ng-click="gimg=4">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/4_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==5}" ng-click="gimg=5">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/5_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==6}" ng-click="gimg=6">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/6_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==7}" ng-click="gimg=7">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/7_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==8}" ng-click="gimg=8">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/8_t.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==3" class="content">
+        <div class="title">NLMK Verona</div>
+        <div class="gallery">
+            <div class="video">
+                <pvideo file="/video/1.mp4" auto=false stop="tab" ></pvideo>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="close" ng-click="m.closePopup()"></div>
+        <div class="tabs">
+            <div ng-class="{'before-active':tab == 0}" class="item item-empty">
+                <div class="ico"></div>
+            </div>
+            <div ng-click="tab=0" ng-class="{'active':tab == 0,'before-active':tab == 1}" class="item item-0">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=1" ng-class="{'active':tab == 1,'before-active':tab == 2}" class="item item-1">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=2" ng-class="{'active':tab == 2,'before-active':tab == 3}" class="item item-2">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
+                <div
+                        class="ico"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,188 @@
+<div ng-init="tab=0;ptab=0">
+
+    <div ng-show="tab==0" class="content info">
+        <div class="title">Novolipetsk</div>
+        <div class="col col-1">
+            <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/main.jpg"/>
+        </div>
+        <div class="col col-4">
+            <p><b>Location</b>:
+                Lipetsk, Lipetsk Region
+            </p>
+
+            <p><b>Processing capacity</b>:
+                12.4 million tonnes of steel per year
+            </p>
+            <br>
+
+            <p>Novolipetsk is the main production site of NLMK Group. It is the nucleus of the unified international
+                NLMK Group. Today, around 18% of all Russian steel and around 80% of the Group’s entire steel
+                production are manufactured at the Lipetsk plant.
+            </p>
+
+            <p>Novolipetsk’s state-of-the-art production process comprises all the technological stages, from
+                processing raw materials to manufacturing high value added steel products. Since 2000, over RUB 21 billion has been invested in environmental protection. As a result, the plant has put a complete stop to the disposal of waste water in rivers and lakes, halved its atmospheric emissions, and begun removing the build-up of past industrial waste (95.7% recycling level). </p>
+
+            <p>Novolipetsk is Lipetsk’s main employer, providing highly-paid employment for over 29,000 people from the city and the region.</p>
+
+        </div>
+    </div>
+
+
+    <div ng-show="tab==1" class="content products">
+        <div class="title">Output</div>
+        <div class="col col-1">
+            <div class="list">
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','slabs')"></div>
+                <div class="item"
+                     ng-click="ptab=1"
+                     ng-class="{'active':ptab == 1,'before-active':ptab == 2}"
+                     ng-bind="m._('products','hire_cold')"></div>
+                <div class="item"
+                     ng-click="ptab=2"
+                     ng-class="{'active':ptab == 2,'before-active':ptab == 3}"
+                     ng-bind="m._('products','steel_electro')"></div>
+                <div class="item"
+                     ng-click="ptab=3"
+                     ng-class="{'active':ptab == 3,'before-active':ptab == 4}"
+                     ng-bind="m._('products','hot_dip')"></div>
+                <div class="item"
+                     ng-click="ptab=4"
+                     ng-class="{'active':ptab == 4,'before-active':ptab == 5}"
+                     ng-bind="m._('products','hire_polymer')"></div>
+                <div class="item last"></div>
+            </div>
+        </div>
+        <div class="col col-2">
+            <div class="container">
+                <div ng-show="ptab==0">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','slabs')"></h2>
+
+                        <p>Today, Novolipetsk offers Russian consumers unique metal goods which previously had to be imported into the country. For example, as part of its strategic partnership with OMK Group, Novolipetsk manufactures slabs for the production of large-diameter pipes. In a record space of time, specialists at the plant managed to set up production of steel slabs with more rigorous demands on the chemical content and macrostructure of the metal, in standard sizes that were new to Russia. </p>
+
+                        <p>As a result, a completely Russian high-tech production chain was created as a substitute for imports, dealing with everything from mining and smelting to the manufacture of products important to the country. In less than two years of collaboration, Novolipetsk supplied OMK with over one million tonnes of steel slabs for the manufacture of large diameter pipes used in projects such as South Stream, Nord Stream, and Power of Siberia.</p>
+                    </div>
+                </div>
+                <div ng-show="ptab==1">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/2.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','hire_cold')"></h2>
+
+                        <p>Novolipetsk occupies leading positions in the production of cold-rolled steel, with a 24% share of the Russian market. Its cold-rolled steel is used to produce pre-painted steel and electrical steel at the Lipetsk plant, and is also sold to other companies in Russia and abroad. It is widely used in the production of body parts for machines and equipment, load-bearing structures, pipes, lighting masts, and agricultural equipment.</p>
+                    </div>
+                </div>
+                <div ng-show="ptab==2">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/3.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','steel_electro')"></h2>
+
+                        <p>Novolipetsk is one of the leading manufacturers of electrical steel, occupying around 85% of the Russian market for this high-tech product. Novolipetsk occupies around 77% of the Russian market for dynamo steel and 99% of the market for transformer steel. Transformer (anisotropic) steel is used in the electrical industry for the manufacture of transformer cores and fixed components for electrical equipment. Dynamo (isotropic) steel is used in the production of electrical equipment, such as components for electric motors and generators. </p>
+                    </div>
+                </div>
+                <div ng-show="ptab==3">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/4.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','hot_dip')"></h2>
+
+                        <p>Novolipetsk is one of the largest manufacturers of galvanized steel in Russia, with a 17% share of the market. Galvanized steel is used in the production of machine body parts, roofing materials, load-bearing structures in hostile environments, car parts, and components of household electrical devices. Novolipetsk also manufactures titanium-alloy steel with an ultra-low carbon content for extra deep drawing (IF steel), with increased ductility.</p>
+                    </div>
+                </div>
+                <div ng-show="ptab==4">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/5.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','hire_polymer')"></h2>
+
+                        <p>Novolipetsk is one of the largest manufacturers of pre-painted steel, with a 21% share of the Russian market. Modern equipment and advanced technology guarantee high-quality pre-painted steel with pigmented coatings. It is used in construction for the production of roofing and finishing materials, and casings for consumer and commercial appliances (white goods). This type of steel boasts high resistance to atmospheric corrosion, has decorative qualities, and combines strength and plasticity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==2" class="content">
+        <div class="title">Novolipetsk</div>
+        <div ng-init="gimg=1" class="gallery">
+            <div class="full-img">
+                <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/{{gimg}}.jpg"/>
+            </div>
+            <div class="list-img">
+                <div class="item" ng-class="{'active':gimg==1}" ng-click="gimg=1">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/1_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==2}" ng-click="gimg=2">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/2_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==3}" ng-click="gimg=3">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/3_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==4}" ng-click="gimg=4">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/4_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==5}" ng-click="gimg=5">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/5_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==6}" ng-click="gimg=6">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/6_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==7}" ng-click="gimg=7">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/7_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==8}" ng-click="gimg=8">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/8_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==9}" ng-click="gimg=9">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/9_t.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==3" class="content">
+        <div class="title">Novolipetsk</div>
+        <div class="gallery">
+            <div class="video">
+                <pvideo file="/video/1.mp4" auto=false stop="tab" ></pvideo>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="close" ng-click="m.closePopup()"></div>
+        <div class="tabs">
+            <div ng-class="{'before-active':tab == 0}" class="item item-empty">
+                <div class="ico"></div>
+            </div>
+            <div ng-click="tab=0" ng-class="{'active':tab == 0,'before-active':tab == 1}" class="item item-0">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=1" ng-class="{'active':tab == 1,'before-active':tab == 2}" class="item item-1">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=2" ng-class="{'active':tab == 2,'before-active':tab == 3}" class="item item-2">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
+                <div
+                        class="ico"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,161 @@
+<div ng-init="tab=0;ptab=0">
+
+    <div ng-show="tab==0" class="content info">
+        <div class="title">NSMMZ</div>
+        <div class="col col-1">
+            <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/main.jpg"/>
+        </div>
+        <div class="col col-4">
+            <p><b>Location</b>:
+                Revda, Sverdlovsk Region
+            </p>
+
+            <p><b>Processing results</b>:
+                2.2 million tonnes in 2013
+            </p>
+            <br>
+
+            <p>NSMMZ is the backbone of Group NLMK’s Long Products Division in the Urals. Thanks to its state-of-the-art equipment and the latest technology, the company’s products meet the highest quality standards and are highly competitive.</p>
+
+            <p>NSMMZ’s production facilities are located in three cities in Sverdlovsk Region: Revda, Berezovsky and Nizhniye Sergi. Revda is home to the company’s modern EAF steelmaking, with a capacity of two million tonnes a year. Here, scrap metal is melted down and recycled into square billets. </p>
+
+            <p>In 2007, NSMMZ in Revda converted from OHF to EAF production. This allows alloy steel to be smelted, a
+                metal with a lower content of non-metal oxides and sulphur to be produced, and the temperature of the steel to be regulated smoothly and accurately.</p>
+
+            <p>Billets from NSMMZ are sent for further processing to the Berezovsky and Nizhniye Sergi sites. At Nizhniye Sergi, long rebars are manufactured on a 250 rolling mill. Berezovsky has a 150 wire rod-rolling mill, where coil and wire-rod rebar are produced. </p>
+        </div>
+    </div>
+
+
+    <div ng-show="tab==1" class="content products">
+        <div class="title">Output</div>
+        <div class="col col-1">
+            <div class="list">
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','blank_quadr')"></div>
+                <div class="item"
+                     ng-click="ptab=1"
+                     ng-class="{'active':ptab == 1,'before-active':ptab == 2}"
+                     ng-bind="m._('products','fittings')"></div>
+                <div class="item"
+                     ng-click="ptab=2"
+                     ng-class="{'active':ptab == 2,'before-active':ptab == 3}"
+                     ng-bind="m._('products','rod')"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item last"></div>
+            </div>
+        </div>
+        <div class="col col-2">
+            <div class="container">
+                <div ng-show="ptab==0">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','blank_quadr')"></h2>
+
+                        <p>Cross-section: 125x125 mm, length: from 8,000 to 12,000 mm from carbon and low-alloy steel.
+                            The billets are sent to rolling mills specializing in the production of rebar and other products mainly for the construction industry.</p>
+                    </div>
+                </div>
+                <div ng-show="ptab==1">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/2.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','fittings')"></h2>
+
+                        <p>Grades A400, A500C and AT800, sizes 10–40, coil rebar Nos. 6–16
+                            Rebar is used primarily for reinforcing concrete structures. </p>
+                    </div>
+                </div>
+                <div ng-show="ptab==2">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/3.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','rod')"></h2>
+
+                        <p>Diameter from 5.5 to 22 mm from low-carbon, high-carbon and alloy steel.
+                            Main consumers – manufacturers of metalware (screws and nails). Wire rod is used primarily in the construction industry.  </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==2" class="content">
+        <div class="title">NSMMZ</div>
+        <div ng-init="gimg=1" class="gallery">
+            <div class="full-img">
+                <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/{{gimg}}.jpg"/>
+            </div>
+            <div class="list-img">
+                <div class="item" ng-class="{'active':gimg==1}" ng-click="gimg=1">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/1_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==2}" ng-click="gimg=2">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/2_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==3}" ng-click="gimg=3">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/3_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==4}" ng-click="gimg=4">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/4_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==5}" ng-click="gimg=5">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/5_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==6}" ng-click="gimg=6">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/6_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==7}" ng-click="gimg=7">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/7_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==8}" ng-click="gimg=8">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/8_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==9}" ng-click="gimg=9">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/9_t.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==3" class="content">
+        <div class="title">NSMMZ</div>
+        <div class="gallery">
+            <div class="video">
+                <pvideo file="/video/1.mp4" auto=false stop="tab" ></pvideo>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="close" ng-click="m.closePopup()"></div>
+        <div class="tabs">
+            <div ng-class="{'before-active':tab == 0}" class="item item-empty">
+                <div class="ico"></div>
+            </div>
+            <div ng-click="tab=0" ng-class="{'active':tab == 0,'before-active':tab == 1}" class="item item-0">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=1" ng-class="{'active':tab == 1,'before-active':tab == 2}" class="item item-1">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=2" ng-class="{'active':tab == 2,'before-active':tab == 3}" class="item item-2">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
+                <div
+                        class="ico"></div>
+            </div>
+        </div>
+    </div>
+</div>

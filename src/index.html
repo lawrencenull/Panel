@@ -69,25 +69,25 @@
                     style="margin-top:-64px;width:280px;height:200px"ng-src="/images/logo_{{m.i18nService.currentLanguage}}.png"/>
         </div>
         <div class="nav">
-            <a href="#/map/group">
+            <a href="#/map/group/{{m.i18nService.currentLanguage}}">
                 <div class="item" ng-class="{'active':$routeParams.division == 'group'}">
                     <div class="name" ng-bind="m._('ui','group')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
-            <a href="#/map/russia">
+            <a href="#/map/russia/{{m.i18nService.currentLanguage}}">
                 <div class="item" ng-class="{'active':$routeParams.division == 'russia'}">
                     <div class="name" ng-bind="m._('ui','russia')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
-            <a href="#/map/europe">
+            <a href="#/map/europe/{{m.i18nService.currentLanguage}}">
                 <div class="item" ng-class="{'active':$routeParams.division == 'europe'}">
                     <div class="name" ng-bind="m._('ui','europe')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
-            <a href="#/map/usa">
+            <a href="#/map/usa/{{m.i18nService.currentLanguage}}">
                 <div class="item" ng-class="{'active':$routeParams.division == 'usa'}">
                     <div class="name" ng-bind="m._('ui','usa')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
@@ -117,29 +117,29 @@
                 <div class="border--top"></div>
                 <div class="border--bottom"></div>
             </div>
-            <a ng-href="#/info/{{$routeParams.division}}">
+            <a ng-href="#/info/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
                 <div class="item"
                      ng-class="{'active':controller == 'info'}"
                      ng-bind="m._('ui','info')"></div>
             </a>
-            <a ng-href="#/history/{{$routeParams.division}}">
+            <a ng-href="#/history/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
                 <div class="item"
                      ng-show="$routeParams.division == 'group'"
                      ng-class="{'active':controller == 'history'}"
                      ng-bind="m._('ui','history')"></div>
             </a>
-            <a ng-href="#/highlights/{{$routeParams.division}}">
+            <a ng-href="#/highlights/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
                 <div class="item"
                      ng-show="$routeParams.division == 'group'"
                      ng-class="{'active':controller == 'highlights'}"
                      ng-bind="m._('ui','highlights')"></div>
             </a>
-            <a ng-href="#/products/{{$routeParams.division}}">
+            <a ng-href="#/products/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
                 <div class="item"
                      ng-class="{'active':controller == 'products'}"
                      ng-bind="m._('ui','products')"></div>
             </a>
-            <a ng-href="#/map/{{$routeParams.division}}">
+            <a ng-href="#/map/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
                 <div class="item"
                      ng-class="{'active':controller == 'map'}"
                      ng-bind="m._('ui','map')"></div>

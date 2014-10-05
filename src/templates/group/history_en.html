@@ -1,0 +1,277 @@
+<div id="content" class="history">
+<style>
+    .scroll-pane {
+        overflow: auto;
+        width: 99%;
+        float: left;
+    }
+
+    .scroll-content {
+        float: left;
+    }
+
+    .scroll-content-item {
+        width: 100px;
+        height: 100px;
+        float: left;
+        margin: 10px;
+        font-size: 3em;
+        line-height: 96px;
+        text-align: center;
+    }
+
+    .scroll-bar-wrap {
+        clear: left;
+        padding: 0 4px 0 2px;
+        margin: 0 -1px -1px -1px;
+    }
+
+    .scroll-bar-wrap .ui-slider {
+        background: none;
+        border: 0;
+        height: 2em;
+        margin: 0 auto;
+    }
+
+    .scroll-bar-wrap .ui-handle-helper-parent {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    .scroll-bar-wrap .ui-slider-handle {
+        top: .2em;
+        height: 1.5em;
+    }
+
+    .scroll-bar-wrap .ui-slider-handle .ui-icon {
+        margin: -8px auto 0;
+        position: relative;
+        top: 50%;
+    }
+
+    .scroll-bar-wrap .ui-handle-helper-parent {
+        position: absolute;
+        top: 0px;
+    }
+</style>
+<script>
+    $(function () {
+        //scrollpane parts
+        var scrollPane = $(".scroll-pane"),
+                scrollContent = $(".scroll-content");
+
+        //build slider
+        var scrollbar = $(".scroll-bar").slider({
+            slide: function (event, ui) {
+                if (scrollContent.width() > scrollPane.width()) {
+                    scrollContent.css("margin-left", Math.round(
+                            ui.value / 100 * ( scrollPane.width() - scrollContent.width() )
+                    ) + "px");
+                } else {
+                    scrollContent.css("margin-left", 0);
+                }
+            }
+        });
+
+        //append icon to handle
+        var handleHelper = scrollbar.find(".ui-slider-handle")
+                .mousedown(function () {
+                    scrollbar.width(handleHelper.width());
+                })
+                .mouseup(function () {
+                    scrollbar.width("100%");
+                })
+                .append("<span class='ui-icon ui-icon-grip-dotted-vertical'></span>")
+                .wrap("<div class='ui-handle-helper-parent'></div>").parent();
+
+        //change overflow to hidden now that slider handles the scrolling
+        scrollPane.css("overflow", "hidden");
+
+        //size scrollbar and handle proportionally to scroll distance
+        function sizeScrollbar() {
+            var remainder = scrollContent.width() - scrollPane.width();
+            var proportion = remainder / scrollContent.width();
+            var handleSize = scrollPane.width() - ( proportion * scrollPane.width() );
+            scrollbar.find(".ui-slider-handle").css({
+                width: handleSize
+            });
+            handleHelper.width("").width(scrollbar.width());
+        }
+
+        //reset slider value based on scroll content position
+        function resetValue() {
+            var remainder = scrollPane.width() - scrollContent.width();
+            var leftVal = scrollContent.css("margin-left") === "auto" ? 0 :
+                    parseInt(scrollContent.css("margin-left"));
+            var percentage = Math.round(leftVal / remainder * 100);
+            scrollbar.slider("value", percentage);
+        }
+
+        //if the slider is 100% and window gets larger, reveal content
+        function reflowContent() {
+            var showing = scrollContent.width() + parseInt(scrollContent.css("margin-left"), 10);
+            var gap = scrollPane.width() - showing;
+            if (gap > 0) {
+                scrollContent.css("margin-left", parseInt(scrollContent.css("margin-left"), 10) + gap);
+            }
+        }
+
+        //change handle position on window resize
+        $(window).resize(function () {
+            resetValue();
+            sizeScrollbar();
+            reflowContent();
+        });
+        //init scrollbar size
+        setTimeout(sizeScrollbar, 1);//safari wants a timeout
+    });
+</script>
+
+<h1>История</h1>
+
+<div class="bar-wrap scroll-bar-wrap ui-widget-content ui-corner-bottom">
+    <div class="years">
+        <div class="item">1931</div>
+        <div class="item">1973</div>
+        <div class="item">1991</div>
+        <div class="item">2000</div>
+        <div class="item">2005</div>
+        <div class="item">2009</div>
+        <div class="item">2011</div>
+        <div class="item">2013</div>
+        <div class="item">2016</div>
+    </div>
+    <div class="bar scroll-bar"></div>
+</div>
+<div class="chain scroll-pane ui-widget ui-widget-header ui-corner-all" style="width: 1845px;">
+    <div class="chain--container scroll-content">
+        <div class="item">
+            <div class="col">
+            <div class="date">1931</div>
+                <p><img src="/images/history/1931.jpg"/></p>
+                <p>Construction of a steel plant begins at the site of Lipetsk’s iron ore mines. The work, planned to take months, is completed within weeks. Workers do not leave the construction site for two or three shifts at a time, and people work weekends in order to build the country’s most state-of-the-art steel plant.</p>
+            </div>
+            <div class="col">
+            <div class="date">7 November 1934</div>
+                <p>The company’s founding date. On this day at Novolipetsk Steelworks (NLMZ), the first pig iron is produced.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col">
+            <div class="date">1941</div>
+                <p>As Russia joins World War II, the blast furnace shop and power plant are dismantled and the equipment sent to Chelyabinsk. The equipment that remains in Lipetsk is used to furnish orders for the frontline. It is not until 1947 that work begins to rebuild the plant on its previous site. It is essentially built from scratch, and in the shortest time possible. By 1951, two blast furnaces have been restored. </p>
+                <p><img src="/images/history/1941.jpg"/></p>
+            </div>
+            <div class="col">
+            <div class="date">1959</div>
+                <p>The electric smelting shop with continuous casting machines is put into operation; this is the first time anywhere in the world that a plant achieves 100% continuous casting. Just one year later, the plant is the first in the USSR to begin production of anisotropic electrical steel using its own, unique technology. Then, in 1966, the plant becomes the first in the world to combine steel smelting in high-performance BOF shops with 100% continuous slab casting.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col">
+            <div class="date">1973</div>
+                <p><img src="/images/history/1973.jpg"/></p>
+                <p>NLMK commissions blast furnace No. 5, the largest in the USSR, with a volume of 3,200 m3. Five years later, it commissions blast furnace No. 6, integrating a whole range of technological solutions that are unique for the time, automating and mechanizing key operations.</p>
+            </div>
+            <div class="col">
+            <div class="date">1980</div>
+                <p>
+                    The country’s first continuous carbon steel mill is put into operation. 
+                </p>
+                <p><img src="/images/history/1980.jpg"/></p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col">
+                <div class="date">1991</div>
+                <p>Russia’s first high-speed machine for producing pre-painted steel, with a projected capacity of 140,000 tonnes, goes into service. NLMK is the first ferrous metal enterprise to start producing high value added goods.
+                </p>
+            </div>
+            <div class="col">
+                <div class="date">31 December 1992</div>
+                <p>
+                    NLMK is reorganized from a state company to an open joint-stock company. In 1993, privatization of the company begins. Shares are distributed among the company’s employees. In the mid-1990s, a significant stake in NLMK is consolidated by financial investors.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col">
+                <div class="date">2000</div>
+                <p><img src="/images/history/2000.jpg"/></p>
+                <p>Work begins on a large-scale technical upgrade programme aimed at increasing steel production volumes, improving the quality of steel products, and raising levels of productivity. By 2012, over RUB 220 billion has been invested in modernization, with over 190 projects completed.</p>
+            </div>
+            <div class="col">
+                <div class="date">2001</div>
+                <p>A new type of coke battery unlike any other in Russia or the CIS goes into service. Through the use of innovative technologies, emissions of coke gas into the atmosphere are stopped and harmful dust emissions fall by 80%.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col">
+                <div class="date">2003</div>
+                <p>New technology is applied at the transformer steel production facilities in order to increase production of high-quality steel with a thickness of 0.27–0.30 mm, and commence production of 0.23 mm steel. </p>
+                <p><img src="/images/history/2003.jpg"/></p>
+            </div>
+            <div class="col">
+                <div class="date">2005</div>
+                <p>The first hot-dip galvanizing machine in Russia goes into service. Hot-dip galvanized sheets with a thickness of 4 mm, widely used in the construction industry, can be produced.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col">
+                <div class="date">15 December 2005</div>
+                <p>IPO at the London Stock Exchange The company floats 420 million ordinary shares, equivalent to 7% of its authorized capital. NLMK’s resulting capitalization is around USD 8.7 billion. </p>
+            </div>
+            <div class="col">
+                <div class="date">2006</div>
+                <p><img src="/images/history/2006.jpg"/></p>
+                <p>NLMK acquires DanSteel A/S, a Danish thick plate manufacturer. NLMK meets 100% of DanSteel’s demand for steel slabs. </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col">
+                <div class="date">2009</div>
+                <p>NLMK puts a complete stop to the disposal of waste water in Voronezh River. The environmental impact is reduced thanks to a major overhaul of the water-supply facilities and the implementation of a new technological system.</p>
+            </div>
+            <div class="col">
+                <div class="date">2011</div>
+                <p>The first post-Soviet Blast Furnace No. 7 is commissioned. The launch of the blast furnace and new BOF means that steel production in Lipetsk increases by 36% to 12.4 million tonnes per year.</p>
+                <p><img src="/images/history/2011.jpg"/></p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="col">
+                <div class="date">2011</div>
+                <p>A new recovery power plant goes into service with a capacity of 150 MW. It is powered by gas from furnace No. 7. The project raises the level of self-sufficiency in electricity to 53%.</p>
+            </div>
+            <div class="col">
+                <div class="date">2012</div>
+                <p>NLMK DanSteel completes modernization of its rolling mill, giving the company the capacity to produce a wider range of thick steel plates. </p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="col">
+                <div class="date">2013</div>
+                <p><img src="/images/history/2013.jpg"/></p>
+                <p>NLMK Group launches a next-generation EAF mill in Kaluga Region. NLMK Kaluga is the largest producer of rolled steel for the construction industry in central Russia. The mill has no equal in the EAF business in terms of productivity, energy efficiency, and low environmental impact. </p>
+            </div>
+            <div class="col">
+                <div class="date">2013</div>
+                <p>NLMK Group announces a new stage of development with Strategy 2017, which is focused on unlocking the significant internal potential of the Group’s businesses by boosting operational efficiency across the entire production chain, enhancing vertical integration in key raw materials, increasing sales of high value added (HVA) products, and pursuing environmental, safety, and human capital development programmes.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col">
+                <div class="date">2016</div>
+                <p>
+                    A pelletizing plant is to be commissioned at Stoilensky with a capacity of 6 million tonnes of iron ore pellets per year.
+                </p>
+                <p><img src="/images/history/2016.jpg"/></p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

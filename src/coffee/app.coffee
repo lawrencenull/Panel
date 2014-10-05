@@ -1,33 +1,33 @@
 class Routes extends Config
   constructor: ($routeProvider,$locationProvider) ->
     $routeProvider
-      .when '/info/:division',
+      .when '/info/:division/:lang',
         controller: 'infoController'
         controllerAs: 'info'
         templateUrl: (params)->
-          "/templates/#{params.division}/info.html"
-      .when '/history/:division',
+          "/templates/#{params.division}/info_#{params.lang}.html"
+      .when '/history/:division/:lang',
         controller: 'historyController'
         controllerAs: 'history'
         templateUrl:  (params)->
-          "/templates/#{params.division}/history.html"
-      .when '/products/:division',
+          "/templates/#{params.division}/history_#{params.lang}.html"
+      .when '/products/:division/:lang',
         controller: 'productsController'
         controllerAs: 'products'
         templateUrl:  (params)->
-          "/templates/#{params.division}/products.html"
-      .when '/highlights/:division',
+          "/templates/#{params.division}/products_#{params.lang}.html"
+      .when '/highlights/:division/:lang',
         controller: 'highlightsController'
         controllerAs: 'highlights'
         templateUrl:  (params)->
-          "/templates/#{params.division}/highlights.html"
-      .when '/map/:division/:factory?',
+          "/templates/#{params.division}/highlights_#{params.lang}.html"
+      .when '/map/:division/:lang',
         controller: 'mapController'
         controllerAs: 'map'
         templateUrl:  (params)->
-          "/templates/#{params.division}/map.html"
+          "/templates/#{params.division}/map_#{params.lang}.html"
       .otherwise
-        redirectTo: '/map/group'
+        redirectTo: '/map/group/ru'
 
     $locationProvider.html5Mode(false)
 
@@ -47,37 +47,38 @@ class Words extends Constant
           products: 'Products'
           map: 'Map'
         products:
-          slabs: 'Slab'
-          hire_hot: 'Hot-rolled hire'
-          hire_cold: 'Cold-rolled hire'
-          hire_coated: 'Hire coated'
-          hire_class: 'Sections'
-          hire_galvanized: 'Galvanized-rolled hire'
-          hire_cold_coated: 'Cold-rolled hire coated'
-          hire_plate: 'Hot rolled plate'
-          hire_electro: 'Cold-rolled hire from electrical steel'
+          slabs: 'Slabs'
+          hire_hot: 'Hot-rolled flat steel'
+          hire_cold: 'Cold-rolled flat steel'
+          hire_coated: 'Coated steel'
+          hire_class: 'Long products'
+          hire_galvanized: 'Galvanized steel'
+          hire_cold_coated: 'Gold-rolled galvanized steel'
+          hire_plate: 'Thick plate'
+          hire_electro: 'Cold-rolled electrical steel'
+          hot_dip: 'Hot-dip galvanized steel'
           hire_flat: 'Hire flat'
           hire_class_hardware: 'Hire class & hardware'
-          hire_flat: 'Плоский прокат'
-          hire_class_hardware: 'Сортовой прокат и метизы'
+          hire_flat: 'Flat-rolled products'
+          hire_class_hardware: 'Long products and metalware'
           hire_hot_coated: 'Горячеоцинкованный прокат'
-          hire_polymer: 'Прокат с полимерным покрытием'
-          steel_blank: 'Стальная заготовка'
-          steel_concetrat: 'Железорудный концетрат'
+          hire_polymer: 'Pre-painted steel'
+          steel_blank: 'Billets'
+          steel_concetrat: 'Iron ore conentrate'
           raw: 'Сырье': 'Steel blank'
-          raw: 'Raw'
+          raw: 'Raw materials'
           steel_electro: 'Electrical steel'
           blank: 'Blank'
-          blank_quadr: 'Заготовка непрерывнолитая квадртная'
-          rod: 'Rod'
-          fittings: 'Fittings'
+          blank_quadr: 'Continuously cast square billets'
+          rod: 'Wire rod'
+          fittings: 'Rebar'
           steel: 'Steel'
           hire: 'Hire'
-          koks: 'Кокс'
-          black_metal: 'Лом черных металлов'
-          dolomit: 'Доломит'
-          fluse: 'Известняк флюсовый'
-          hardware: 'Метизы'
+          koks: 'Coke'
+          black_metal: 'Ferrous scrap metal '
+          dolomit: 'Dolomit'
+          fluse: 'Fluxing limestone'
+          hardware: 'Metalware'
       ru:
         ui:
           nlmk: 'НЛМК'
@@ -137,8 +138,16 @@ class Main extends Controller
     $scope.$routeParams = $routeParams
 
     $scope.controller = 'main'
+    $scope.$watch =>
+      @i18nService.currentLanguage
+    ,(prev,cur) =>
+      controller = if $scope.controller == 'main' or !$scope.controller then 'group' else $scope.controller
+      division = $scope.$routeParams.division ? 'map'
+      if prev != cur and @i18nService.currentLanguage != $scope.$routeParams.lang
+        $location.path("/#{controller}/#{division}/#{@i18nService.currentLanguage}")
+
   getPopup:->
-    'templates/'+@$routeParams.division+'/actives/'+@popupName()+'.html'
+    'templates/'+@$routeParams.division+'/actives/'+@popupName()+'_'+@i18nService.currentLanguage+'.html'
   _:(group, key)->
     @i18nService.get group, key
   closePopup:->
@@ -150,31 +159,7 @@ class Main extends Controller
 
 class Info extends Controller
   constructor: ($scope,$sce) ->
-
-    $scope.volume = 1
-    $scope.isCompleted = false
-    $scope.API = null
-
-    $scope.onPlayerReady = (API)->
-      $scope.API = API
-
-    $scope.onCompleteVideo = ->
-      $scope.isCompleted = true
-
-    $scope.onUpdateSize = (width, height) ->
-      $scope.config.width = width
-      $scope.config.height = height
-
-    $scope.config = {
-      autoHide: false,
-      autoPlay: true,
-      stretch: 'fill',
-      sources: [
-        {src: $sce.trustAsResourceUrl("http://localhost:4000//video/1.mp4"), type: "video/mp4"}
-      ],
-      transclude: true,
-    }
-
+    $scope.$parent.controller = 'info'
 class History extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'history'
@@ -327,13 +312,15 @@ class Marker extends Directive
     }
 
 class Pvideo extends Directive
-  constructor: (@popupService,$sce)->
+  constructor: (popupService,$sce)->
     return {
       restrict: 'AE'
       replace: true
       scope:
-        auto: '@'
+        auto: '&'
         file: '@'
+        repeat: '&'
+        stop: '='
       template: '''
                 <div>
                   <videogular
@@ -356,18 +343,27 @@ class Pvideo extends Directive
           scope.API = API
 
         scope.onCompleteVideo = ->
-          setTimeout(->
-            scope.API.play()
-          ,1000)
+          if scope.repeat()
+            setTimeout(->
+              scope.API.play()
+            ,1000)
 
+        scope.$watch(->
+          popupService.isShow
+        ,->
+          scope.API?.stop()
+        )
+
+        scope.$watch('stop',->
+          scope.API?.stop()
+        )
 
         scope.onUpdateSize = (width, height) ->
           scope.config.width = width
           scope.config.height = height
 
         scope.config = {
-          autoHide: false,
-          autoPlay: scope.auto,
+          autoPlay: scope.auto(),
           stretch: 'fill',
           sources: [
             {src: $sce.trustAsResourceUrl(scope.file), type: "video/mp4"}

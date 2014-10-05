@@ -1,0 +1,143 @@
+<div ng-init="tab=0;ptab=0">
+
+    <div ng-show="tab==0" class="content info">
+        <div class="title">NLMK Clabecq</div>
+        <div class="col col-1">
+            <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/main.jpg"/>
+        </div>
+        <div class="col col-4">
+            <p><b>Location</b>:
+                Ittre, Belgium
+            </p>
+
+            <p><b>Processing capacity</b>:
+                0.75 million tonnes per year
+            </p>
+            <br>
+
+            <p>NLMK Clabecq specializes in the production of medium and light thick plate for companies in the power, mechanical-engineering, shipbuilding, and other industries. The plant is conveniently situated at the intersection of major Belgian rail lines and highways, not far from the Port of Antwerp. This means the company can deliver thick plate to many countries around the world. </p>
+
+            <p>In 2011, the plant started up a new quenching and tempering line. Total investments in the project exceeded EUR 100 million. Modern quenching and tempering technology makes it possible to manufacture superior-quality, low alloy Quard and Quend plates. </p>
+
+            <p>Hard-wearing Quard and high-duty Quend plates are produced from slabs supplied by NLMK Group’s Lipetsk production site. This means the company can guarantee a stable supply of the highest-quality steel.</p>
+        </div>
+    </div>
+
+
+    <div ng-show="tab==1" class="content products">
+        <div class="title">Output</div>
+        <div class="col col-1">
+            <div class="list">
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','hire_plate')"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item last"></div>
+            </div>
+        </div>
+        <div class="col col-2">
+            <div class="container">
+                <div ng-show="ptab==0">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
+                    </div>
+                    <div class="text scroll-content" p-scroll>
+                        <h2 ng-bind="m._('products','hire_plate')"></h2>
+
+                        <h3>Light and medium thick plate</h3>
+                        <p>
+                            Thickness: <b>3 — 120mm</b><br/>
+                        </p>
+                        <p>The company produces a wide range of thick plates, including special types and grades. NLMK’s premium steel products are Quard, a thick, low-alloy, hard-wearing steel plate and Quend, a high-duty construction steel. </p>
+
+                        <h3>Abrasion-resistant Quard steel</h3>
+
+                        <p>is used in the production of construction and mining equipment and other types of special equipment and machinery. Using this grade of steel, the weight of a construction element is reduced by 40% with a 5% increase in its volume; fuel consumption is lowered and production costs fall by 45%. </p>
+
+                        <h3>High-strength Quend</h3>
+
+                        <p>steel is used in the manufacture of lorry undercarriages, hoisting machinery in the construction industry and other equipment where high durability is vital. Using Quend steel sheets, the weight of structural components is reduced by more than 20%, thus reducing production costs and increasing performance.</p>
+
+                        <p>The main consumers are power and mechanical-engineering companies, including those in the heavy engineering, shipbuilding and pipe manufacturing sectors, in European and global markets.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==2" class="content">
+        <div class="title">NLMK Clabecq</div>
+        <div ng-init="gimg=1" class="gallery">
+            <div class="full-img">
+                <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/{{gimg}}.jpg"/>
+            </div>
+            <div class="list-img">
+                <div class="item" ng-class="{'active':gimg==1}" ng-click="gimg=1">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/1_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==2}" ng-click="gimg=2">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/2_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==3}" ng-click="gimg=3">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/3_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==4}" ng-click="gimg=4">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/4_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==5}" ng-click="gimg=5">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/5_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==6}" ng-click="gimg=6">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/6_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==7}" ng-click="gimg=7">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/7_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==8}" ng-click="gimg=8">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/8_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==9}" ng-click="gimg=9">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/9_t.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==3" class="content">
+        <div class="title">NLMK Clabecq</div>
+        <div class="gallery">
+            <div class="video">
+                <pvideo file="/video/1.mp4" auto=false stop="tab" ></pvideo>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="close" ng-click="m.closePopup()"></div>
+        <div class="tabs">
+            <div ng-class="{'before-active':tab == 0}" class="item item-empty">
+                <div class="ico"></div>
+            </div>
+            <div ng-click="tab=0" ng-class="{'active':tab == 0,'before-active':tab == 1}" class="item item-0">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=1" ng-class="{'active':tab == 1,'before-active':tab == 2}" class="item item-1">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=2" ng-class="{'active':tab == 2,'before-active':tab == 3}" class="item item-2">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
+                <div
+                        class="ico"></div>
+            </div>
+        </div>
+    </div>
+</div>

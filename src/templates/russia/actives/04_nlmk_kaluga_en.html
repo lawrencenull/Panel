@@ -1,0 +1,165 @@
+<div ng-init="tab=0;ptab=0">
+
+    <div ng-show="tab==0" class="content info">
+        <div class="title">NLMK Kaluga</div>
+        <div class="col col-1">
+            <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/main.jpg"/>
+        </div>
+        <div class="col col-4">
+            <p><b>Location</b>:
+                Vorsino Industrial Park, Kaluga Region
+            </p>
+
+            <p><b>Processing capacity</b>:
+                1.5 million tonnes of rolled steel per year
+            </p>
+            <br>
+
+            <p>
+                NLMK Kaluga is a next-generation EAF mill.
+            </p>
+
+            <p>At the heart of the NLMK Kaluga project lies the concept of the mini-mill, based on establishing a range of EAF and rolling production facilities near to both sources of raw materials and consumers of the finished product. </p>
+
+
+
+            <p>More than RUB 38 billion was invested in the plant and infrastructure. RUB 7.5 billion of this was spent on advanced environmental protection technology.</p>
+
+
+
+            <p>NLMK Kaluga uses the most innovative environmental technologies. The plant’s cleaning system neutralizes over 99% of air emissions, which is several times above the Russian average. The closed-loop water cycle completely eliminates any waste water discharge and significantly reduces water consumption when compared to similar systems. Production waste is recycled into by-products, for instance, into road construction materials. </p>
+
+
+            <p>The launch of NLMK Kaluga created 1,250 new jobs at the mill and 600 jobs in the service sector, and also provides work for related businesses in Kaluga Region. </p>
+        </div>
+    </div>
+
+
+    <div ng-show="tab==1" class="content products">
+        <div class="title">Output</div>
+        <div class="col col-1">
+            <div class="list">
+                <div class="item first"
+                     ng-click="ptab=0"
+                     ng-class="{'active':ptab == 0,'before-active':ptab == 1}"
+                     ng-bind="m._('products','fittings')"></div>
+                <div class="item"
+                     ng-click="ptab=1"
+                     ng-class="{'active':ptab == 1,'before-active':ptab == 2}"
+                     ng-bind="m._('products','blank_quadr')"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item last"></div>
+            </div>
+        </div>
+        <div class="col col-2">
+            <div class="container">
+                <div ng-show="ptab==0">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','fittings')"></h2>
+
+                        <p>NLMK Kaluga produces high-quality rebar and steel sections for the construction industry. The company currently produces grade A500C rebar with diameters of 12 mm, 14 mm, 16 mm, 18 mm, 20 mm, 22 mm and 25 mm, as well as steel billets. In 2014, NLMK Kaluga plans to start production of 20 new types of steel products, including billets and rebar in new sizes, as well as angles and channels. </p>
+
+                        <p>The launch of NLMK Kaluga will help to tackle the current shortage of steel facing the Central Federal District, and will provide high-quality and in-demand steel products to the construction sector in Moscow, Moscow Region, and the Central Federal District. The Central Federal District is one of the largest sales markets, generating more than 30% of the demand for steel for the construction industry in Russia. </p>
+
+                        <!--<p>Ежегодно продукция завода сможет покрывать потребности строительства 12,5 млн кв. метров-->
+                            <!--жилья в монолитных и кирпично-монолитных домах или 19,5 млн кв. метров жилья в панельных-->
+                            <!--домах. </p>-->
+                    </div>
+                </div>
+                <div ng-show="ptab==1">
+                    <div class="img">
+                        <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/2.jpg"/>
+                    </div>
+                    <div class="text">
+                        <h2 ng-bind="m._('products','blank_quadr')"></h2>
+
+                        <p>
+                            Length: <b>6000 — 11700mm</b><br/>
+                            Cross-section: <b>125х125mm</b><br/>
+                        </p>
+
+                        <p>The bulk of NLMK’s billets are delivered to steel companies specializing in the production of rebar and other products mainly for the construction industry.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==2" class="content">
+        <div class="title">NLMK Kaluga</div>
+        <div ng-init="gimg=1" class="gallery">
+            <div class="full-img">
+                <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/{{gimg}}.jpg"/>
+            </div>
+            <div class="list-img">
+                <div class="item" ng-class="{'active':gimg==1}" ng-click="gimg=1">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/1_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==2}" ng-click="gimg=2">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/2_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==3}" ng-click="gimg=3">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/3_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==4}" ng-click="gimg=4">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/4_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==5}" ng-click="gimg=5">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/5_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==6}" ng-click="gimg=6">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/6_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==7}" ng-click="gimg=7">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/7_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==8}" ng-click="gimg=8">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/8_t.jpg"/>
+                </div>
+                <div class="item" ng-class="{'active':gimg==9}" ng-click="gimg=9">
+                    <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/gallery/9_t.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="tab==3" class="content">
+        <div class="title">NLMK Kaluga</div>
+        <div class="gallery">
+            <div class="video">
+                <pvideo file="/video/1.mp4" auto=false stop="tab" ></pvideo>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="close" ng-click="m.closePopup()"></div>
+        <div class="tabs">
+            <div ng-class="{'before-active':tab == 0}" class="item item-empty">
+                <div class="ico"></div>
+            </div>
+            <div ng-click="tab=0" ng-class="{'active':tab == 0,'before-active':tab == 1}" class="item item-0">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=1" ng-class="{'active':tab == 1,'before-active':tab == 2}" class="item item-1">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=2" ng-class="{'active':tab == 2,'before-active':tab == 3}" class="item item-2">
+                <div
+                        class="ico"></div>
+            </div>
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
+                <div
+                        class="ico"></div>
+            </div>
+        </div>
+    </div>
+</div>
