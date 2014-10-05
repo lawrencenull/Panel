@@ -52,7 +52,7 @@ gulp.task 'vendor', ->
     'bower_components/videogular/videogular.js'
     'bower_components/videogular-controls/controls.js'
     'bower_components/videogular-overlay-play/overlay-play.js'
-    'bower_components/videogular-poster/poster.js'
+#    'bower_components/videogular-poster/poster.js'
   ])
     .pipe concat('vendor.min.js')
     .pipe gulp.dest('build/js')

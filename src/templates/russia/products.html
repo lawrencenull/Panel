@@ -1,9 +1,4 @@
 <div id="content" class="page--products">
-    <script>
-        $(function () {
-            $('#content .scroll-content').perfectScrollbar();
-        });
-    </script>
     <h1 ng-bind="m._('ui','products')"></h1>
 
     <div class="col col-1">
@@ -33,7 +28,7 @@
     </div>
     <div class="col col-2">
         <div class="container">
-            <div class="scroll-content">
+            <div class="scroll-content" p-scroll reset="tab">
 
                 <div class="text" ng-show="tab==0">
                     <div class="img">

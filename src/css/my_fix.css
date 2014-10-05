@@ -201,3 +201,15 @@ footer .nav .selector.map .next {
 .popup .nav .tabs .item.item-1 .ico {
     background-image: url(/img/1_02.png);
 }
+.gallery .video{
+    /*margin-left: 300px;*/
+    width: 1550px;
+    height: 600px;
+}
+.container .text.scroll{
+    height: 510px;
+    overflow: hidden;
+}
+#layout .popup .content.products .col-2 .container{
+    padding-right: 0;
+}

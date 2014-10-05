@@ -149,8 +149,32 @@ class Main extends Controller
     @i18nService.setLanguage if @i18nService.currentLanguage is 'en' then 'ru' else 'en'
 
 class Info extends Controller
-  constructor: ($scope) ->
-    $scope.$parent.controller = 'info'
+  constructor: ($scope,$sce) ->
+
+    $scope.volume = 1
+    $scope.isCompleted = false
+    $scope.API = null
+
+    $scope.onPlayerReady = (API)->
+      $scope.API = API
+
+    $scope.onCompleteVideo = ->
+      $scope.isCompleted = true
+
+    $scope.onUpdateSize = (width, height) ->
+      $scope.config.width = width
+      $scope.config.height = height
+
+    $scope.config = {
+      autoHide: false,
+      autoPlay: true,
+      stretch: 'fill',
+      sources: [
+        {src: $sce.trustAsResourceUrl("http://localhost:4000//video/1.mp4"), type: "video/mp4"}
+      ],
+      transclude: true,
+    }
+
 class History extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'history'
@@ -303,44 +327,27 @@ class Marker extends Directive
     }
 
 class Pvideo extends Directive
-  constructor: (@popupService)->
+  constructor: (@popupService,$sce)->
     return {
       restrict: 'AE'
       replace: true
       scope:
+        auto: '@'
         file: '@'
       template: '''
                 <div>
                   <videogular
                     vg-player-ready="onPlayerReady"
                     vg-complete="onCompleteVideo"
-                    vg-update-time="onUpdateTime"
-                    vg-update-volume="onUpdateVolume"
                     vg-update-state="onUpdateState"
-                    vg-theme="config.theme.url"
                     vg-autoplay="config.autoPlay">
-                  <vg-video vg-src="config.sources"></vg-video>
-                  <vg-controls vg-autohide="config.autoHide" vg-autohide-time="config.autoHideTime">
-                  <vg-play-pause-button></vg-play-pause-button>
-                  <vg-timedisplay>{{ API.currentTime | date:'mm:ss' }}</vg-timedisplay>
-                  <vg-scrubBar>
-                  <vg-scrubbarcurrenttime></vg-scrubbarcurrenttime>
-                  </vg-scrubBar>
-                  <vg-timedisplay>{{ API.timeLeft | date:'mm:ss' }}</vg-timedisplay>
-                  <vg-volume>
-                  <vg-mutebutton></vg-mutebutton>
-                  <vg-volumebar></vg-volumebar>
-                  </vg-volume>
-                  <vg-fullscreenButton></vg-fullscreenButton>
-                  </vg-controls>
+                    <vg-video vg-src="config.sources"></vg-video>
+                    <vg-overlay-play></vg-overlay-play>
                   </videogular>
                 </div>
                 '''
 
       link: (scope, elem, attrs)->
-        scope.currentTime = 0
-        scope.totalTime = 0
-        scope.state = null
         scope.volume = 1
         scope.isCompleted = false
         scope.API = null
@@ -349,17 +356,10 @@ class Pvideo extends Directive
           scope.API = API
 
         scope.onCompleteVideo = ->
-          scope.isCompleted = true
+          setTimeout(->
+            scope.API.play()
+          ,1000)
 
-        scope.onUpdateState = (state) ->
-          scope.state = state
-
-        scope.onUpdateTime = (currentTime, totalTime)->
-          scope.currentTime = currentTime
-          scope.totalTime = totalTime
-
-        scope.onUpdateVolume = (newVol)->
-          scope.volume = newVol
 
         scope.onUpdateSize = (width, height) ->
           scope.config.width = width
@@ -367,21 +367,25 @@ class Pvideo extends Directive
 
         scope.config = {
           autoHide: false,
-          autoPlay: true,
+          autoPlay: scope.auto,
           stretch: 'fill',
           sources: [
-#            {src: $sce.trustAsResourceUrl("http://localhost:4000/video/1.mp4"), type: "video/mp4"}
+            {src: $sce.trustAsResourceUrl(scope.file), type: "video/mp4"}
           ],
           transclude: true,
-          theme: {
-#            url: "/css/videoangular.css"
-          },
-          plugins: {
-            poster: {
-              url: "/img/videogular.png"
-            }
-          }
         }
+      }
+class PScroll extends Directive
+  constructor: ()->
+    return {
+      restrict: 'AE'
+      scope:
+        reset: '='
+      link: (scope, elem, attrs)->
+        elem.perfectScrollbar()
+        scope.$watch('reset',->
+          elem.scrollTop(0);
+        )
     }
 class Popup extends Service
   constructor: () ->
@@ -404,7 +408,6 @@ class App extends App
       "com.2fdevs.videogular"
       "com.2fdevs.videogular.plugins.controls"
       "com.2fdevs.videogular.plugins.overlayplay"
-      "com.2fdevs.videogular.plugins.poster"
     ]
 
 

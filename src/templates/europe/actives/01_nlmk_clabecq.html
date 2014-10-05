@@ -57,7 +57,7 @@
                     <div class="img">
                         <img ng-src="/images/actives/{{$routeParams.division}}/{{m.popupName()}}/production/1.jpg"/>
                     </div>
-                    <div class="text">
+                    <div class="text scroll-content" p-scroll>
                         <h2 ng-bind="m._('products','hire_plate')"></h2>
 
                         <h3>Тонкий и средний толстолистовой прокат</h3>
@@ -136,16 +136,7 @@
         <div class="title">NLMK Clabecq</div>
         <div class="gallery">
             <div class="video">
-                <videogular
-                        vg-player-ready="onPlayerReady"
-                        vg-complete="onCompleteVideo"
-                        vg-update-time="onUpdateTime"
-                        vg-update-volume="onUpdateVolume"
-                        vg-update-state="onUpdateState"
-                        vg-theme="config.theme.url"
-                        vg-autoplay="config.autoPlay">
-                    <vg-video vg-src="config.sources"></vg-video>
-                </videogular>
+                <pvideo file="/video/1.mp4" auto=true ></pvideo>
             </div>
         </div>
     </div>
