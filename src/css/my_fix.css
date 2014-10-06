@@ -213,3 +213,36 @@ footer .nav .selector.map .next {
 #layout .popup .content.products .col-2 .container{
     padding-right: 0;
 }
+.info-graph {
+    display: block;
+    position: relative;
+}
+.info-graph img{
+    margin:0;
+    padding:0;
+    width: 500px;
+    display: block;
+    float: left;
+ }
+.info-graph img.ve{
+    margin-top:-30px;
+    width: 600px;
+}
+.info-graph img.bi{
+    margin-top:14px;
+    margin-left: 70px;
+    width: 600px;
+}
+.info-graph img.do{
+    margin-top: -120px;
+    margin-left: 60px;
+    width: 500px;
+}
+.info-graph img.pr{
+    margin-top: -70px;
+    margin-left: 140px;
+    width: 500px;
+}
+#content p {
+    font-size: 22px !important;
+}
