@@ -377,11 +377,21 @@ class PScroll extends Directive
       restrict: 'AE'
       scope:
         reset: '='
+        suppressY: '='
       link: (scope, elem, attrs)->
-        elem.perfectScrollbar()
+        opt={
+          useBothWheelAxes: true
+          minScrollbarLength: 200
+        }
+        if scope.suppressY
+          opt.suppressScrollY = true
+
+        elem.perfectScrollbar(opt)
         scope.$watch('reset',->
           elem.scrollTop(0);
         )
+        scope.$on '$destroy', ->
+          elem.perfectScrollbar('destroy')
     }
 class Popup extends Service
   constructor: () ->
