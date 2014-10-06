@@ -397,6 +397,7 @@ class Popup extends Service
 
 class App extends App
   constructor: ->
+#    document.oncontextmenu = document.body.oncontextmenu = -> return false
     return [
       'ngRoute'
       'ngAnimate'
