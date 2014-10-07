@@ -409,6 +409,7 @@ class Nvideo extends Directive
           vv=@
           vv.src([
 #            { type: "video/mp4", src:  '/video/1.mp4' }
+
             { type: "video/mp4", src:  scope.file }
           ]);
           isPlay = false
@@ -470,7 +471,7 @@ class Popup extends Service
 
 class App extends App
   constructor: ->
-#    document.oncontextmenu = document.body.oncontextmenu = -> return false
+    document.oncontextmenu = document.body.oncontextmenu = -> return false
     return [
       'ngRoute'
       'ngAnimate'
