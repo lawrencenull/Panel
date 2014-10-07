@@ -398,22 +398,37 @@ class Nvideo extends Directive
                 '''
 
       link: (scope, elem, attrs)->
-        videojs(elem.children().children().children()[0], { "controls": false, "autoplay": scope.auto(), "preload": "auto", loop:scope.repeat() }).ready(->
+        auto = scope.auto()
+        loop2 = scope.repeat()
+        if auto != true
+          auto=false
+        if loop2 != true
+          loop2=false
+
+        videojs(elem.children().children().children()[0], { "controls": false, "autoplay": auto, "preload": "auto", loop: loop2}).ready(->
           vv=@
           vv.src([
-            { type: "video/mp4", src:  scope.file }
+            { type: "video/mp4", src:  '/video/1.mp4' }
+#            { type: "video/mp4", src:  scope.file }
           ]);
+          isPlay = false
+          vv.bigPlayButton.show()
           vv.on("pause", ->
             vv.bigPlayButton.show()
+            isPlay = false
           )
           vv.on("play", ->
             vv.bigPlayButton.hide()
+            isPlay=true
           )
           scope.$on '$destroy', ->
             vv.dispose()
 
           elem.on('click',->
-            vv.pause()
+            if isPlay
+              vv.pause()
+            else
+              vv.play()
           )
         )
 
