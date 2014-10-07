@@ -160,6 +160,8 @@ class Main extends Controller
     @popupService.active
   toggleLanguage:->
     @i18nService.setLanguage if @i18nService.currentLanguage is 'en' then 'ru' else 'en'
+  reload:->
+    window.location.reload()
 
 class Info extends Controller
   constructor: ($scope,$sce) ->
@@ -488,7 +490,7 @@ class Popup extends Service
 
 class App extends App
   constructor: ->
-    document.oncontextmenu = document.body.oncontextmenu = -> return false
+#    document.oncontextmenu = document.body.oncontextmenu = -> return false
     return [
       'ngRoute'
       'ngAnimate'
