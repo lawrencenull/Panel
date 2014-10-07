@@ -410,8 +410,8 @@ class Nvideo extends Directive
         videojs(elem.children().children().children()[0], { "controls": false, "autoplay": auto, "preload": "auto", loop: loop2}).ready(->
           vv=@
           vv.src([
-            { type: "video/mp4", src:  '/video/1.mp4' }
-#            { type: "video/mp4", src:  scope.file }
+#            { type: "video/mp4", src:  '/video/1.mp4' }
+            { type: "video/mp4", src:  scope.file }
           ]);
           isPlay = false
           vv.bigPlayButton.show()
@@ -490,7 +490,7 @@ class Popup extends Service
 
 class App extends App
   constructor: ->
-#    document.oncontextmenu = document.body.oncontextmenu = -> return false
+    document.oncontextmenu = document.body.oncontextmenu = -> return false
     return [
       'ngRoute'
       'ngAnimate'
