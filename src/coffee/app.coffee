@@ -408,9 +408,8 @@ class Nvideo extends Directive
         videojs(elem.children().children().children()[0], { "controls": false, "autoplay": auto, "preload": "auto", loop: loop2}).ready(->
           vv=@
           vv.src([
-#            { type: "video/mp4", src:  '/video/1.mp4' }
-
-            { type: "video/mp4", src:  scope.file }
+            { type: "video/mp4", src:  '/video/1.mp4' }
+#            { type: "video/mp4", src:  scope.file }
           ]);
           isPlay = false
           vv.bigPlayButton.show()
@@ -423,7 +422,21 @@ class Nvideo extends Directive
             isPlay=true
           )
           scope.$on '$destroy', ->
-            vv.dispose()
+            vv.pause()
+            setTimeout(->
+              vv.dispose()
+              elem.remove()
+            ,0)
+
+          scope.$watch(->
+            popupService.isShow
+          ,->
+            vv.pause()
+          )
+
+          scope.$watch('stop',->
+            vv.pause()
+          )
 
           elem.on('click',->
             if isPlay
