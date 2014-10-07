@@ -138,6 +138,10 @@ class Main extends Controller
     $scope.$routeParams = $routeParams
 
     $scope.controller = 'main'
+
+    $scope.$watch '$routeParams.division',
+      =>
+        @closePopup()
     $scope.$watch =>
       @i18nService.currentLanguage
     ,(prev,cur) =>
@@ -371,6 +375,50 @@ class Pvideo extends Directive
           transclude: true,
         }
       }
+class Nvideo extends Directive
+  constructor: (popupService,$sce)->
+    return {
+      restrict: 'AE'
+      replace: true
+      scope:
+        auto: '&'
+        file: '@'
+        repeat: '&'
+        stop: '='
+      template: '''
+                <div>
+                  <div class="video-wrapper">
+                    <div class="video-container">
+                      <video
+                        class="video-js vjs-default-skin vjs-big-play-centered" width="100%" height="100%">
+                      </video>
+                    </div>
+                  </div>
+                </div>
+                '''
+
+      link: (scope, elem, attrs)->
+        videojs(elem.children().children().children()[0], { "controls": false, "autoplay": scope.auto(), "preload": "auto", loop:scope.repeat() }).ready(->
+          vv=@
+          vv.src([
+            { type: "video/mp4", src:  scope.file }
+          ]);
+          vv.on("pause", ->
+            vv.bigPlayButton.show()
+          )
+          vv.on("play", ->
+            vv.bigPlayButton.hide()
+          )
+          scope.$on '$destroy', ->
+            vv.dispose()
+
+          elem.on('click',->
+            vv.pause()
+          )
+        )
+
+    }
+
 class PScroll extends Directive
   constructor: ()->
     return {

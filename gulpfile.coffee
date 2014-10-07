@@ -52,7 +52,8 @@ gulp.task 'vendor', ->
     'bower_components/videogular/videogular.js'
     'bower_components/videogular-controls/controls.js'
     'bower_components/videogular-overlay-play/overlay-play.js'
-    'bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.js'
+    'bower_components/videojs/dist/video-js/video.js'
+
 #    'bower_components/videogular-poster/poster.js'
   ])
     .pipe concat('vendor.min.js')
