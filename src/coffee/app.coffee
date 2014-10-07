@@ -430,12 +430,16 @@ class Nvideo extends Directive
 
           scope.$watch(->
             popupService.isShow
-          ,->
-            vv.pause()
+          ,(v1,v2)->
+            if v1 != v2
+              console.log('pop')
+              vv.pause()
           )
 
-          scope.$watch('stop',->
-            vv.pause()
+          scope.$watch('stop',(v1,v2)->
+            if v1 != v2
+              console.log('stop')
+              vv.pause()
           )
 
           elem.on('click',->
