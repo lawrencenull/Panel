@@ -129,6 +129,14 @@
         </div>
     </div>
 
+    <div ng-show="tab==3" class="content">
+        <div class="title">НЛМК-Калуга</div>
+        <div class="gallery">
+            <div class="video">
+                <nvideo file="/videos/russia_04_en_ru.mp4" stop="tab"></nvideo>
+            </div>
+        </div>
+    </div>
 
     <div class="nav">
         <div class="close" ng-click="m.closePopup()"></div>
@@ -148,7 +156,7 @@
                 <div
                         class="ico"></div>
             </div>
-            <div ng-class="{'active':tab == 3}" class="item">
+            <div ng-click="tab=3" ng-class="{'active':tab == 3}" class="item item-3">
                 <div
                         class="ico"></div>
             </div>
