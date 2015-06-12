@@ -135,7 +135,7 @@ class Main extends Controller
   constructor: ($scope, $route, @$routeParams, $location, @i18nService, @popupService) ->
     $scope.$route = $route
     $scope.$location = $location
-    $scope.$routeParams = $routeParams
+    $scope.$routeParams = @$routeParams
 
     $scope.controller = 'main'
 

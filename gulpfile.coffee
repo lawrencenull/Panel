@@ -43,7 +43,7 @@ gulp.task 'vendor', ->
   gulp.src([
     'bower_components/jquery/dist/jquery.js'
     'bower_components/jquery-ui/jquery-ui.min.js'
-    'bower_components/perfect-scrollbar/min/perfect-scrollbar.min.js'
+    'bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.js'
     'bower_components/chartist/libdist/chartist.js'
     'bower_components/angular/angular.js'
     'bower_components/angular-route/angular-route.js'
