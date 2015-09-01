@@ -74,6 +74,10 @@ gulp.task 'fonts', ->
   gulp.src('src/css/fonts/**/*.*')
     .pipe(gulp.dest('build/css/fonts'));
 
+gulp.task 'font', ->
+  gulp.src('src/css/font/**/*.*')
+    .pipe(gulp.dest('build/css/font'));
+
 gulp.task 'html', ->
   gulp.src('src/**/*html')
     .pipe(gulp.dest('build'));
@@ -112,4 +116,4 @@ gulp.task 'watch',->
 gulp.task 'livereload', ->
   tinylr.listen 4002
 
-gulp.task('default', ['vendor','scripts','css','fonts','video','html','img','images','express','livereload','watch'])
+gulp.task('default', ['vendor','scripts','css','fonts','font','video','html','img','images','express','livereload','watch'])
