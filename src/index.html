@@ -67,30 +67,37 @@
         <div id="reloader" ng-click="m.reload()"></div>
         <div class="logo">
             <img
-                    style="margin-top:-64px;width:280px;height:200px"ng-src="/images/logo_{{m.i18nService.currentLanguage}}.png"/>
+                    style="margin-top:-64px;width:280px;height:200px"
+                    ng-src="/images/logo_{{m.i18nService.currentLanguage}}.png"/>
         </div>
         <div class="nav">
-            <a href="#/map/group/{{m.i18nService.currentLanguage}}">
+            <a href="#/info/group/{{m.i18nService.currentLanguage}}">
                 <div class="item" ng-class="{'active':$routeParams.division == 'group'}">
                     <div class="name" ng-bind="m._('ui','group')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
-            <a href="#/map/russia/{{m.i18nService.currentLanguage}}">
+            <a href="#/info/russia/{{m.i18nService.currentLanguage}}">
                 <div class="item" ng-class="{'active':$routeParams.division == 'russia'}">
                     <div class="name" ng-bind="m._('ui','russia')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
-            <a href="#/map/europe/{{m.i18nService.currentLanguage}}">
+            <a href="#/info/europe/{{m.i18nService.currentLanguage}}">
                 <div class="item" ng-class="{'active':$routeParams.division == 'europe'}">
                     <div class="name" ng-bind="m._('ui','europe')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
-            <a href="#/map/usa/{{m.i18nService.currentLanguage}}">
+            <a href="#/info/usa/{{m.i18nService.currentLanguage}}">
                 <div class="item" ng-class="{'active':$routeParams.division == 'usa'}">
                     <div class="name" ng-bind="m._('ui','usa')"></div>
+                    <div class="desc" ng-bind="m._('ui','nlmk')"></div>
+                </div>
+            </a>
+            <a href="#/info/eco/{{m.i18nService.currentLanguage}}">
+                <div class="item" ng-class="{'active':$routeParams.division == 'eco'}">
+                    <div class="name" ng-bind="m._('ui','ecology')"></div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
             </a>
@@ -102,13 +109,11 @@
         </div>
     </header>
 
-
     <div>
         <div class="view-animate-container">
             <div ng-view class="view-animate"></div>
         </div>
     </div>
-
 
     <footer>
         <div class="nav">
@@ -123,6 +128,12 @@
                      ng-class="{'active':controller == 'info'}"
                      ng-bind="m._('ui','info')"></div>
             </a>
+            <a ng-href="#/map/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
+                <div class="item"
+                     ng-show="$routeParams.division == 'group'"
+                     ng-class="{'active':controller == 'map'}"
+                     ng-bind="m._('ui','map')"></div>
+            </a>
             <a ng-href="#/history/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
                 <div class="item"
                      ng-show="$routeParams.division == 'group'"
@@ -131,7 +142,7 @@
             </a>
             <a ng-href="#/highlights/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
                 <div class="item"
-                     ng-show="$routeParams.division == 'group'"
+                     ng-show="$routeParams.division == 'group' "
                      ng-class="{'active':controller == 'highlights'}"
                      ng-bind="m._('ui','highlights')"></div>
             </a>
@@ -143,7 +154,7 @@
             <a ng-href="#/map/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
                 <div class="item"
                      ng-class="{'active':controller == 'map'}"
-                     ng-bind="m._('ui','map')"></div>
+                     ng-bind="m._('ui',$routeParams.division != 'group'?'map':'market')"></div>
             </a>
         </div>
     </footer>

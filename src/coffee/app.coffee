@@ -27,7 +27,7 @@ class Routes extends Config
         templateUrl:  (params)->
           "/templates/#{params.division}/map_#{params.lang}.html"
       .otherwise
-        redirectTo: '/map/group/ru'
+        redirectTo: '/info/group/ru'
 
     $locationProvider.html5Mode(false)
 
@@ -46,6 +46,8 @@ class Words extends Constant
           highlights: 'Highlights'
           products: 'Products'
           map: 'Map'
+          market: 'Market'
+          ecology: 'Eco'
         products:
           slabs: 'Slabs'
           hire_hot: 'Hot-rolled flat steel'
@@ -65,7 +67,6 @@ class Words extends Constant
           hire_polymer: 'Pre-painted steel'
           steel_blank: 'Billets'
           steel_concetrat: 'Iron ore conentrate'
-          raw: 'Сырье': 'Steel blank'
           raw: 'Raw materials'
           steel_electro: 'Electrical steel'
           blank: 'Blank'
@@ -91,6 +92,8 @@ class Words extends Constant
           highlights: 'Результаты'
           products: 'Продукция'
           map: 'Карта'
+          market: 'Рынок'
+          ecology: 'Эко'
         products:
           slabs: 'Слябы'
           hire_hot: 'Горячекатаный прокат'
@@ -139,9 +142,15 @@ class Main extends Controller
 
     $scope.controller = 'main'
 
+    @pagePath = $scope.$location.path().toString()
+    $scope.$on '$routeChangeSuccess',
+      =>
+        @pagePath = $location.path().toString()
+
     $scope.$watch '$routeParams.division',
       =>
         @closePopup()
+
     $scope.$watch =>
       @i18nService.currentLanguage
     ,(prev,cur) =>
@@ -150,8 +159,12 @@ class Main extends Controller
       if prev != cur and @i18nService.currentLanguage != $scope.$routeParams.lang
         $location.path("/#{controller}/#{division}/#{@i18nService.currentLanguage}")
 
-  getPopup:->
-    'templates/'+@$routeParams.division+'/actives/'+@popupName()+'_'+@i18nService.currentLanguage+'.html'
+  getPopup: ->
+    if @popupService.isActive
+      'templates/' + @$routeParams.division + '/actives/' + @popupName() + '_' + @i18nService.currentLanguage + '.html'
+    else
+      @popupName() + '_' + @i18nService.currentLanguage + '.html'
+
   _:(group, key)->
     @i18nService.get group, key
   closePopup:->
@@ -223,111 +236,39 @@ class Slider extends Directive
     }
 
 
-class LineChart extends Directive
-  constructor: ->
-    return {
-      replace: true
-      scope:
-        data:'=lineChart'
-        name:'@chartTitle'
-      template: '<section class="chart bar-chart"><header>{{name}}</header><section></section></section>'
-      link:(scope,el,attr)->
-        data =
-          labels: []
-          series: [[]]
-        for [x,y] in scope.data
-          data.labels.push x
-          data.series[0].push y
-
-        options = {
-          axisX: {
-            offset: 10,
-            showLabel: true,
-            showGrid: false,
-          },
-          axisY: {
-            offset: 10,
-            showLabel: true,
-            showGrid: false,
-            labelAlign: 'left',
-          },
-          width: '600',
-          height: '300',
-          showLine: true,
-          showPoint: true,
-          lineSmooth: true,
-        }
-        Chartist.Line(el[0].children[1], data,options)
-    }
-class BarChart extends Directive
-  constructor: ->
-    return {
-      replace: true
-      scope:
-        data:'=barChart'
-        name:'@chartTitle'
-      template: '<section class="chart bar-chart"><header>{{name}}</header><section></section></section>'
-      link:(scope,el,attr)->
-        data =
-          labels: []
-          series: [[]]
-        for [x,y] in scope.data
-          data.labels.push x
-          data.series[0].push y
-
-        options = {
-          axisX: {
-            offset: 10,
-            showLabel: true,
-            showGrid: false,
-          },
-          axisY: {
-            offset: 10,
-            showLabel: true,
-            showGrid: false,
-            labelAlign: 'left',
-          },
-          width: '400',
-          height: '300',
-          showLine: false,
-          showPoint: false,
-          lineSmooth: false,
-        }
-        Chartist.Bar(el[0].children[1], data,options)
-    }
 class Marker extends Directive
   constructor: (@popupService)->
     return {
-      restrict: 'AE'
-      replace: true
-      scope:
-        pos: '&'
-        type: '@'
-        active: '@'
-      template: '''
+    restrict: 'AE'
+    replace: true
+    scope:
+      pos: '&'
+      type: '@'
+      active: '@'
+    template: '''
                 <div class="marker" style="left:{{pos()[0]}}px;top:{{pos()[1]}}px">
                   <img class="shadow" src="/images/map/shadow.png" />
                   <img class="type" ng-src="/images/map/{{type}}.png" />
                 </div>
                 '''
 
-      link: (scope, elem, attrs)->
-        elem.click ->
-          popupService.show(scope.active)
-          scope.$apply()
+    link: (scope, elem, attrs)->
+      elem.click ->
+        popupService.show(scope.active, true)
+        scope.$apply()
     }
 
 class Pvideo extends Directive
-  constructor: (popupService,$sce)->
+  constructor: (popupService, $sce)->
     return {
-      restrict: 'AE'
-      replace: true
-      scope:
-        auto: '&'
-        file: '@'
-        repeat: '&'
-        stop: '='
-      template: '''
+    restrict: 'AE'
+    replace: true
+    scope:
+      auto: '&'
+      file: '@'
+      repeat: '&'
+      stop: '='
+    template: '''
                 <div>
                   <videogular
                     vg-player-ready="onPlayerReady"
@@ -340,153 +281,224 @@ class Pvideo extends Directive
                 </div>
                 '''
 
-      link: (scope, elem, attrs)->
-        scope.volume = 1
-        scope.isCompleted = false
-        scope.API = null
+    link: (scope, elem, attrs)->
+      scope.volume = 1
+      scope.isCompleted = false
+      scope.API = null
 
-        scope.onPlayerReady = (API)->
-          scope.API = API
+      scope.onPlayerReady = (API)->
+        scope.API = API
+      scope.onCompleteVideo = ->
+        if scope.repeat()
+          setTimeout(->
+            scope.API.play()
+          , 1000)
 
-        scope.onCompleteVideo = ->
-          if scope.repeat()
-            setTimeout(->
-              scope.API.play()
-            ,1000)
+      scope.$watch(->
+        popupService.isShow
+      , ->
+        scope.API?.stop()
+      )
+
+      scope.$watch('stop', ->
+        scope.API?.stop()
+      )
+
+      scope.onUpdateSize = (width, height) ->
+        scope.config.width = width
+        scope.config.height = height
+
+      scope.config = {
+        autoPlay: scope.auto(),
+        stretch: 'fill',
+        sources: [
+          {src: $sce.trustAsResourceUrl(scope.file), type: "video/mp4"}
+        ],
+        transclude: true,
+      }
+    }
+
+class Nvideo extends Directive
+  constructor: (popupService, $sce)->
+    return {
+    restrict: 'AE'
+    replace: true
+    scope:
+      auto: '&'
+      file: '@'
+      repeat: '&'
+      stop: '='
+      popupvideo: '@'
+    template: '''
+                <video class="video-js vjs-default-skin vjs-big-play-centered" width="100%" height="100%"/>
+              '''
+    link: (scope, elem, attrs)->
+      auto = scope.auto()
+      loop2 = scope.repeat()
+      auto = false if auto != true
+      loop2 = false if loop2 != true
+
+      videojs(elem[0],
+        {"controls": false, "autoplay": auto, "preload": "auto", loop: loop2}).ready(->
+        vv = @
+        vv.src([
+#            { type: "video/mp4", src:  '/video/1.mp4' }
+          {type: "video/mp4", src: scope.file}
+        ]);
+        isPlay = false
+        vv.bigPlayButton.show()
+        vv.on("pause", ->
+          vv.bigPlayButton.show()
+          isPlay = false
+        )
+        vv.on("play", ->
+          vv.bigPlayButton.hide()
+          if  scope.popupvideo?
+            vv.pause()
+            popupService.show("/templates/group/popup_videos/"+scope.popupvideo, false)
+
+          isPlay = true
+        )
+        scope.$on '$destroy', ->
+          vv.pause()
+          setTimeout(->
+            vv.dispose()
+            elem.remove()
+          , 0)
 
         scope.$watch(->
           popupService.isShow
-        ,->
-          scope.API?.stop()
-        )
-
-        scope.$watch('stop',->
-          scope.API?.stop()
-        )
-
-        scope.onUpdateSize = (width, height) ->
-          scope.config.width = width
-          scope.config.height = height
-
-        scope.config = {
-          autoPlay: scope.auto(),
-          stretch: 'fill',
-          sources: [
-            {src: $sce.trustAsResourceUrl(scope.file), type: "video/mp4"}
-          ],
-          transclude: true,
-        }
-      }
-class Nvideo extends Directive
-  constructor: (popupService,$sce)->
-    return {
-      restrict: 'AE'
-      replace: true
-      scope:
-        auto: '&'
-        file: '@'
-        repeat: '&'
-        stop: '='
-      template: '''
-                <div>
-                  <div class="video-wrapper">
-                    <div class="video-container">
-                      <video
-                        class="video-js vjs-default-skin vjs-big-play-centered" width="100%" height="100%">
-                      </video>
-                    </div>
-                  </div>
-                </div>
-                '''
-
-      link: (scope, elem, attrs)->
-        auto = scope.auto()
-        loop2 = scope.repeat()
-        if auto != true
-          auto=false
-        if loop2 != true
-          loop2=false
-
-        videojs(elem.children().children().children()[0], { "controls": false, "autoplay": auto, "preload": "auto", loop: loop2}).ready(->
-          vv=@
-          vv.src([
-#            { type: "video/mp4", src:  '/video/1.mp4' }
-            { type: "video/mp4", src:  scope.file }
-          ]);
-          isPlay = false
-          vv.bigPlayButton.show()
-          vv.on("pause", ->
-            vv.bigPlayButton.show()
-            isPlay = false
-          )
-          vv.on("play", ->
-            vv.bigPlayButton.hide()
-            isPlay=true
-          )
-          scope.$on '$destroy', ->
+        , (v1, v2)->
+          if v1 != v2
+            console.log('pop')
             vv.pause()
-            setTimeout(->
-              vv.dispose()
-              elem.remove()
-            ,0)
-
-          scope.$watch(->
-            popupService.isShow
-          ,(v1,v2)->
-            if v1 != v2
-              console.log('pop')
-              vv.pause()
-          )
-
-          scope.$watch('stop',(v1,v2)->
-            if v1 != v2
-              console.log('stop')
-              vv.pause()
-          )
-
-          elem.on('click',->
-            if isPlay
-              vv.pause()
-            else
-              vv.play()
-          )
         )
+
+        scope.$watch('stop', (v1, v2)->
+          if v1 != v2
+            console.log('stop')
+            vv.pause()
+        )
+
+        elem.on('click', ->
+          if isPlay
+            vv.pause()
+          else
+            vv.play()
+        )
+      )
 
     }
 
 class PScroll extends Directive
   constructor: ()->
     return {
-      restrict: 'AE'
-      scope:
-        reset: '='
-        suppressY: '='
-      link: (scope, elem, attrs)->
-        opt={
-          useBothWheelAxes: true
-          minScrollbarLength: 200
-        }
-        if scope.suppressY
-          opt.suppressScrollY = true
+    restrict: 'AE'
+    scope:
+      reset: '='
+      suppressY: '='
+    link: (scope, elem, attrs)->
+      opt = {
+        useBothWheelAxes: true
+        minScrollbarLength: 200
+      }
+      if scope.suppressY
+        opt.suppressScrollY = true
 
-        elem.perfectScrollbar(opt)
-        scope.$watch('reset',->
-          elem.scrollTop(0);
-        )
-        scope.$on '$destroy', ->
-          elem.perfectScrollbar('destroy')
+      elem.perfectScrollbar(opt)
+      scope.$watch('reset', ->
+        elem.scrollTop(0);
+      )
+      scope.$on '$destroy', ->
+        elem.perfectScrollbar('destroy')
     }
 class Popup extends Service
   constructor: () ->
+    @isActive = false
     @isShow = false
     @active = ''
-  isShown:->
+  isShown: ->
     @isShow
-  show:(active)->
+  show: (active, isActive = false)->
+    console.log("popup show")
     @isShow = true
+    @isActive = isActive
     @active = active
-  hide:->
+  hide: ->
     @isShow = false
+
+class LineChart extends Directive
+  constructor: ->
+    return {
+    replace: true
+    scope:
+      data: '=lineChart'
+      name: '@chartTitle'
+    template: '<section class="chart bar-chart"><header>{{name}}</header><section></section></section>'
+    link: (scope, el, attr)->
+      data =
+        labels: []
+        series: [[]]
+      for [x, y] in scope.data
+        data.labels.push x
+        data.series[0].push y
+
+      options = {
+        axisX: {
+          offset: 10,
+          showLabel: true,
+          showGrid: false,
+        },
+        axisY: {
+          offset: 10,
+          showLabel: true,
+          showGrid: false,
+          labelAlign: 'left',
+        },
+        width: '600',
+        height: '300',
+        showLine: true,
+        showPoint: true,
+        lineSmooth: true,
+      }
+      Chartist.Line(el[0].children[1], data, options)
+    }
+class BarChart extends Directive
+  constructor: ->
+    return {
+    replace: true
+    scope:
+      data: '=barChart'
+      name: '@chartTitle'
+    template: '<section class="chart bar-chart"><header>{{name}}</header><section></section></section>'
+    link: (scope, el, attr)->
+      data =
+        labels: []
+        series: [[]]
+      for [x, y] in scope.data
+        data.labels.push x
+        data.series[0].push y
+
+      options = {
+        axisX: {
+          offset: 10,
+          showLabel: true,
+          showGrid: false,
+        },
+        axisY: {
+          offset: 10,
+          showLabel: true,
+          showGrid: false,
+          labelAlign: 'left',
+        },
+        width: '400',
+        height: '300',
+        showLine: false,
+        showPoint: false,
+        lineSmooth: false,
+      }
+      Chartist.Bar(el[0].children[1], data, options)
+    }
 
 class App extends App
   constructor: ->

@@ -351,3 +351,8 @@ footer .nav .selector.map .next {
     top:0;
     left: 0;
 }
+
+.media-block > .img,
+.media-block > .img > div{
+    height: 100%;
+}
