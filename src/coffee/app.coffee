@@ -26,6 +26,11 @@ class Routes extends Config
         controllerAs: 'map'
         templateUrl:  (params)->
           "/templates/#{params.division}/map_#{params.lang}.html"
+      .when '/market/:division/:lang',
+        controller: 'marketController'
+        controllerAs: 'market'
+        templateUrl:  (params)->
+          "/templates/#{params.division}/market_#{params.lang}.html"
       .otherwise
         redirectTo: '/info/group/ru'
 
@@ -46,7 +51,7 @@ class Words extends Constant
           highlights: 'Highlights'
           products: 'Products'
           map: 'Map'
-          market: 'Market'
+          market: 'Markets'
           ecology: 'Eco'
         products:
           slabs: 'Slabs'
@@ -92,7 +97,7 @@ class Words extends Constant
           highlights: 'Результаты'
           products: 'Продукция'
           map: 'Карта'
-          market: 'Рынок'
+          market: 'Рынки'
           ecology: 'Эко'
         products:
           slabs: 'Слябы'
@@ -191,7 +196,9 @@ class Highlights extends Controller
 class Map extends Controller
   constructor: ($scope) ->
     $scope.$parent.controller = 'map'
-
+class Market extends Controller
+  constructor: ($scope) ->
+    $scope.$parent.controller = 'market'
 
 class Slider extends Directive
   constructor: ($window)->
@@ -391,6 +398,62 @@ class Nvideo extends Directive
         )
       )
 
+    }
+
+class Navselector extends Directive
+  constructor:($routeParams)->
+    return {
+      restrict:'E'
+      replace: true
+      scope:
+        controller:'='
+      template: '''
+            <div class="selector">
+                <a class="prev"></a>
+                <a class="next"></a>
+                <div class="border--top"></div>
+                <div class="border--left"></div>
+                <div class="border--middle"></div>
+                <div class="border--right"></div>
+                <div class="border--bottom"></div>
+            </div>
+'''
+      link: (scope,elem,attrs)->
+        slideToNavItem = ->
+          return if scope.controller is "main"
+          links = elem
+          .parent()
+          .children('a')
+          .map((i,a)->$(a))
+
+          i = 0
+          a = links[i]
+          pos =
+            left: 0
+            width: 0
+
+          loop
+            if not a.children().hasClass('ng-hide')
+              console.log a.attr('ng-href'), a.width(), scope.controller,a.attr('ng-href').indexOf(scope.controller) isnt -1
+              pos.left += pos.width
+              pos.width = a.width()
+              console.log pos
+              break if a.attr('ng-href').indexOf(scope.controller) isnt -1
+            a = links[++i]
+
+          console.log pos
+          elem.css width:pos.width+6+"px",left:pos.left-2+"px"
+
+        scope.$watch ->
+          scope.controller
+        , slideToNavItem
+
+        scope.$watch ->
+          $routeParams.division
+        , ->
+          setTimeout slideToNavItem, 100
+
+        setTimeout slideToNavItem, 500
     }
 
 class PScroll extends Directive

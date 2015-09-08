@@ -117,12 +117,7 @@
 
     <footer>
         <div class="nav">
-            <div class="selector {{controller}} {{$routeParams.division}} {{m.i18nService.currentLanguage}}">
-                <a class="prev"></a>
-                <a class="next"></a>
-                <div class="border--top"></div>
-                <div class="border--bottom"></div>
-            </div>
+            <navselector controller="controller"></navselector>
             <a ng-href="#/info/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
                 <div class="item"
                      ng-class="{'active':controller == 'info'}"
@@ -153,8 +148,15 @@
             </a>
             <a ng-href="#/map/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
                 <div class="item"
+                     ng-hide="$routeParams.division == 'group'"
                      ng-class="{'active':controller == 'map'}"
-                     ng-bind="m._('ui',$routeParams.division != 'group'?'map':'market')"></div>
+                     ng-bind="m._('ui', 'map')"></div>
+            </a>
+            <a ng-href="#/market/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
+                <div class="item"
+                     ng-show="$routeParams.division == 'group'"
+                     ng-class="{'active':controller == 'market'}"
+                     ng-bind="m._('ui','market')"></div>
             </a>
         </div>
     </footer>
