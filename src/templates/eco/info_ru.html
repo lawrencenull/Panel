@@ -1,0 +1,40 @@
+<div id="content" class="page--products">
+    <h1 ng-bind="m._('ui','products')"></h1>
+
+    <div class="col col-1">
+        <div class="list" ng-init="tab=0">
+            <div class="item first"
+                 ng-click="tab=0"
+                 ng-class="{'active':tab == 0,'before-active':tab == 1}"
+                 ng-bind="m._('products','steel_blank')"></div>
+            <div class="item"
+                 ng-click="tab=1"
+                 ng-class="{'active':tab == 1}"
+                 ng-bind="m._('products','hire_flat')"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item last"></div>
+        </div>
+    </div>
+    <div class="col col-2">
+        <div class="container">
+            <div class="scroll-content" p-scroll reset="tab">
+                <div class="text" ng-show="tab==0">
+                    <h2>Экология</h2>
+                    <p style="font-size: 18px;">
+                        Экология текст 1
+                    </p>
+                </div>
+
+                <div class="text" ng-show="tab==1">
+                    <h2>Экология</h2>
+                    <p style="font-size: 18px;">
+                        Экология текст 2
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

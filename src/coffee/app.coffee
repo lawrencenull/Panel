@@ -297,7 +297,10 @@ class Pvideo extends Directive
       scope.$watch(->
         popupService.isShow
       , ->
-        scope.API?.stop()
+        if !popupService.isShow
+            scope.API?.stop()
+        else if scope.auto
+           scope.API?.play()
       )
 
       scope.$watch('stop', ->
