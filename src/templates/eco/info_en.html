@@ -5,12 +5,10 @@
         <div class="list" ng-init="tab=0">
             <div class="item first"
                  ng-click="tab=0"
-                 ng-class="{'active':tab == 0,'before-active':tab == 1}"
-                 ng-bind="m._('products','steel_blank')"></div>
+                 ng-class="{'active':tab == 0,'before-active':tab == 1}">Ecology 1</div>
             <div class="item"
                  ng-click="tab=1"
-                 ng-class="{'active':tab == 1,'before-active':tab == 2}"
-                 ng-bind="m._('products','hire_flat')"></div>
+                 ng-class="{'active':tab == 1}">Ecology 2</div>
             <div class="item"></div>
             <div class="item"></div>
             <div class="item"></div>
@@ -21,16 +19,16 @@
         <div class="container">
             <div class="scroll-content" p-scroll reset="tab">
                 <div class="text" ng-show="tab==0">
-                    <h2>Ecology</h2>
+                    <h2>Eco</h2>
                     <p style="font-size: 18px;">
-                        Ecology text 1
+                        Eco text1
                     </p>
                 </div>
 
                 <div class="text" ng-show="tab==1">
-                    <h2>Ecology</h2>
+                    <h2>Eco!</h2>
                     <p style="font-size: 18px;">
-                       Ecology text 2
+                        Eco text 2
                     </p>
                 </div>
 
