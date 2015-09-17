@@ -98,8 +98,8 @@
             <a href="#/info/eco/{{m.i18nService.currentLanguage}}">
                 <div class="item" ng-class="{'active':$routeParams.division == 'eco'}">
                     <div class="name">
-                        <img ng-hide="$routeParams.division == 'eco'" style="height: 49px"src="/img/ecology3.png" alt=""/>
-                        <img ng-show="$routeParams.division == 'eco'" style="height: 49px"src="/img/ecology4.png" alt=""/>
+                        <img ng-hide="$routeParams.division == 'eco'" style="height: 49px"src="/images/icons/ecology3.png" alt=""/>
+                        <img ng-show="$routeParams.division == 'eco'" style="height: 49px"src="/images/icons/ecology4.png" alt=""/>
                     </div>
                     <div class="desc" ng-bind="m._('ui','nlmk')"></div>
                 </div>
@@ -109,6 +109,9 @@
             <div class="label ru">Русский</div>
             <div class="toggle" ng-class="m.i18nService.currentLanguage"></div>
             <div class="label en">English</div>
+        </div>
+        <div class="phone">
+            <img src="/images/icons/tel2.png" alt=""/>
         </div>
     </header>
 

@@ -47,16 +47,24 @@ header {
 header .logo {
     position: absolute;
     top: 53px;
-    left: 52px;
+    left: 8px;
     color: white;
     font-size: 99px;
     font-weight: bold; }
+header .phone img{
+    height: 79px;
+}
+header .phone {
+    position: absolute;
+    right: 10px;
+    top: 52px;
+}
 header .lang {
     width: 116px;
     position: absolute;
     text-align: center;
     top: 20px;
-    right: 49px; }
+    right: 100px; }
 header .lang .label {
     font-size: 18px;
     color: white;
@@ -73,7 +81,7 @@ header .lang .toggle.en {
     background-position: 0 -79px; }
 header .nav {
     position: absolute;
-    left: 350px;
+    left: 300px;
     top: 14px; }
 header .nav .item {
     color: white;
