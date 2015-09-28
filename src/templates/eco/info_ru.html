@@ -5,32 +5,43 @@
         <div class="list" ng-init="tab=0">
             <div class="item first"
                  ng-click="tab=0"
-                 ng-class="{'active':tab == 0,'before-active':tab == 1}">Экология 1</div>
+                 ng-class="{'active':tab == 0,'before-active':tab == 1}">Экологическая эффективность</div>
             <div class="item"
                  ng-click="tab=1"
-                 ng-class="{'active':tab == 1}">Экология 2</div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item last"></div>
+                 ng-class="{'active':tab == 1,'before-active':tab == 2}">Охрана атмосферного воздуха </div>
+            <div class="item"
+                 ng-click="tab=2"
+                 ng-class="{'active':tab == 2,'before-active':tab == 3}">Охрана водного бассейна </div>
+            <div class="item"
+                 ng-click="tab=3"
+                 ng-class="{'active':tab == 3,'before-active':tab == 4}">Обращение с отходами </div>
+            <div class="item"
+                 ng-click="tab=4"
+                 ng-class="{'active':tab == 4,'before-active':tab == 5}">Энергетическая эффективность  </div>
+            <div class="item last"
+                 ng-click="tab=5"
+                 ng-class="{'active':tab == 5,'before-active':tab == 6}">Экологическая программа 2020 </div>
         </div>
     </div>
     <div class="col col-2">
         <div class="container">
             <div class="scroll-content" p-scroll reset="tab">
                 <div class="text" ng-show="tab==0">
-                    <h2>Экология</h2>
+                    <h2>Eco</h2>
+
                     <p style="font-size: 18px;">
-                        Экология текст 1
+                        Eco text1
                     </p>
                 </div>
 
                 <div class="text" ng-show="tab==1">
-                    <h2>Экология</h2>
+                    <h2>Eco!</h2>
+
                     <p style="font-size: 18px;">
-                        Экология текст 2
+                        Eco text 2
                     </p>
                 </div>
+
             </div>
         </div>
     </div>

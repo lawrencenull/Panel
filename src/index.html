@@ -59,7 +59,7 @@
 
 </div>
 <div id="layout">
-    <div class="popup" ng-show="m.popupService.isShow">
+    <div class="popup" ng-show="m.popupService.isShow" ng-class="m.popupService.tclass">
         <div ng-include="m.getPopup()"></div>
     </div>
 
@@ -111,7 +111,7 @@
             <div class="label en">English</div>
         </div>
         <div class="phone">
-            <img src="/images/icons/tel2.png" alt=""/>
+            <img ng-click="m.popupService.show('/templates/contacts',false,'small')" src="/images/icons/tel2.png" alt=""/>
         </div>
     </header>
 
@@ -122,7 +122,7 @@
     </div>
 
     <footer>
-        <div class="nav">
+        <div class="nav" ng-hide="$routeParams.division == 'eco' ">
             <navselector controller="controller"></navselector>
             <a ng-href="#/info/{{$routeParams.division}}/{{m.i18nService.currentLanguage}}">
                 <div class="item"

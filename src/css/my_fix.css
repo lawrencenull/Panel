@@ -79,7 +79,7 @@ footer .nav .selector.map .next {
 #layout .content.products .col-1 .list .item, .page--products .col-1.col .list div.item {
     font-size: 22px;
     font-weight: 400;
-    padding: 25px 0 0 48px;
+    padding: 25px 0 0 37px;
 }
 
 #content .map {
@@ -273,4 +273,35 @@ footer .nav .selector.map .next {
 .media-block > .img,
 .media-block > .img > div{
     height: 100%;
+}
+
+.map .popuper{
+    /*border: 1px solid red;*/
+    width: 293px;
+    height: 280px;
+    top: 480px;
+    position: absolute;
+}
+.popup.small {
+    width: 890px;
+    height: 345px;
+    position: absolute;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    left: 516px;
+    top: 440px;
+    z-index: 100;
+}
+.popup.small p{
+    font-size: 24px;
+    padding: inherit;
+    padding-right: 20px;
+    text-align: justify;
+}
+.popup.small .nav{
+    width: 70px;
+}
+.popup.small .nav .close{
+    margin: 19px 0 0 13px;;
 }

@@ -1,37 +1,37 @@
 class Routes extends Config
-  constructor: ($routeProvider,$locationProvider) ->
+  constructor: ($routeProvider, $locationProvider) ->
     $routeProvider
-      .when '/info/:division/:lang',
-        controller: 'infoController'
-        controllerAs: 'info'
-        templateUrl: (params)->
-          "/templates/#{params.division}/info_#{params.lang}.html"
-      .when '/history/:division/:lang',
-        controller: 'historyController'
-        controllerAs: 'history'
-        templateUrl:  (params)->
-          "/templates/#{params.division}/history_#{params.lang}.html"
-      .when '/products/:division/:lang',
-        controller: 'productsController'
-        controllerAs: 'products'
-        templateUrl:  (params)->
-          "/templates/#{params.division}/products_#{params.lang}.html"
-      .when '/highlights/:division/:lang',
-        controller: 'highlightsController'
-        controllerAs: 'highlights'
-        templateUrl:  (params)->
-          "/templates/#{params.division}/highlights_#{params.lang}.html"
-      .when '/map/:division/:lang',
-        controller: 'mapController'
-        controllerAs: 'map'
-        templateUrl:  (params)->
-          "/templates/#{params.division}/map_#{params.lang}.html"
-      .when '/market/:division/:lang',
-        controller: 'marketController'
-        controllerAs: 'market'
-        templateUrl:  (params)->
-          "/templates/#{params.division}/market_#{params.lang}.html"
-      .otherwise
+    .when '/info/:division/:lang',
+      controller: 'infoController'
+      controllerAs: 'info'
+      templateUrl: (params)->
+        "/templates/#{params.division}/info_#{params.lang}.html"
+    .when '/history/:division/:lang',
+      controller: 'historyController'
+      controllerAs: 'history'
+      templateUrl: (params)->
+        "/templates/#{params.division}/history_#{params.lang}.html"
+    .when '/products/:division/:lang',
+      controller: 'productsController'
+      controllerAs: 'products'
+      templateUrl: (params)->
+        "/templates/#{params.division}/products_#{params.lang}.html"
+    .when '/highlights/:division/:lang',
+      controller: 'highlightsController'
+      controllerAs: 'highlights'
+      templateUrl: (params)->
+        "/templates/#{params.division}/highlights_#{params.lang}.html"
+    .when '/map/:division/:lang',
+      controller: 'mapController'
+      controllerAs: 'map'
+      templateUrl: (params)->
+        "/templates/#{params.division}/map_#{params.lang}.html"
+    .when '/market/:division/:lang',
+      controller: 'marketController'
+      controllerAs: 'market'
+      templateUrl: (params)->
+        "/templates/#{params.division}/market_#{params.lang}.html"
+    .otherwise
         redirectTo: '/info/group/ru'
 
     $locationProvider.html5Mode(false)
@@ -39,95 +39,95 @@ class Routes extends Config
 class Words extends Constant
   constructor: ->
     return {
-      en:
-        ui:
-          nlmk: 'NLMK'
-          group: 'Group'
-          russia: 'Russia'
-          europe: 'Europe'
-          usa: 'USA'
-          info: 'Information'
-          history: 'History'
-          highlights: 'Highlights'
-          products: 'Products'
-          map: 'Map'
-          market: 'Markets'
-          ecology: 'Eco'
-        products:
-          slabs: 'Slabs'
-          hire_hot: 'Hot-rolled flat steel'
-          hire_cold: 'Cold-rolled flat steel'
-          hire_coated: 'Coated steel'
-          hire_class: 'Long products'
-          hire_galvanized: 'Galvanized steel'
-          hire_cold_coated: 'Gold-rolled galvanized steel'
-          hire_plate: 'Thick plate'
-          hire_electro: 'Cold-rolled electrical steel'
-          hot_dip: 'Hot-dip galvanized steel'
-          hire_flat: 'Hire flat'
-          hire_class_hardware: 'Hire class & hardware'
-          hire_flat: 'Flat-rolled products'
-          hire_class_hardware: 'Long products and metalware'
-          hire_hot_coated: 'Горячеоцинкованный прокат'
-          hire_polymer: 'Pre-painted steel'
-          steel_blank: 'Billets'
-          steel_concetrat: 'Iron ore conentrate'
-          raw: 'Raw materials'
-          steel_electro: 'Electrical steel'
-          blank: 'Blank'
-          blank_quadr: 'Continuously cast square billets'
-          rod: 'Wire rod'
-          fittings: 'Rebar'
-          steel: 'Steel'
-          hire: 'Hire'
-          koks: 'Coke'
-          black_metal: 'Ferrous scrap metal '
-          dolomit: 'Dolomit'
-          fluse: 'Fluxing limestone'
-          hardware: 'Metalware'
-      ru:
-        ui:
-          nlmk: 'НЛМК'
-          group: 'Группа'
-          russia: 'Россия'
-          europe: 'Европа'
-          usa: 'США'
-          info: 'Общая информация'
-          history: 'История'
-          highlights: 'Результаты'
-          products: 'Продукция'
-          map: 'Карта'
-          market: 'Рынки'
-          ecology: 'Эко'
-        products:
-          slabs: 'Слябы'
-          hire_hot: 'Горячекатаный прокат'
-          hire_cold: 'Холоднокатаный прокат'
-          hire_coated: 'Прокат с покрытием'
-          hire_class: 'Сортовой прокат'
-          hire_galvanized: 'Оцинкованный прокат'
-          hire_cold_coated: 'Холоднокатаный прокат с покрытием'
-          hire_plate: 'Толстолистовой прокат'
-          hire_electro: 'Холоднокатаный прокат из электротехнической стали'
-          hire_flat: 'Плоский прокат'
-          hire_class_hardware: 'Сортовой прокат и метизы'
-          hire_polymer: 'Прокат с полимерным покрытием'
-          hire_hot_coated: 'Горячеоцинкованный прокат'
-          steel_blank: 'Стальная заготовка'
-          steel_concetrat: 'Железорудный концетрат'
-          raw: 'Сырье'
-          steel_electro: 'Электротехническая сталь'
-          blank: 'Заготовка'
-          blank_quadr: 'Заготовка непрерывнолитая квадртная'
-          rod: 'Катанка'
-          fittings: 'Арматура'
-          steel: 'Сталь'
-          hire: 'Прокат'
-          koks: 'Кокс'
-          black_metal: 'Лом черных металлов'
-          dolomit: 'Доломит'
-          fluse: 'Известняк флюсовый'
-          hardware: 'Метизы'
+    en:
+      ui:
+        nlmk: 'NLMK'
+        group: 'Group'
+        russia: 'Russia'
+        europe: 'Europe'
+        usa: 'USA'
+        info: 'Information'
+        history: 'History'
+        highlights: 'Highlights'
+        products: 'Products'
+        map: 'Map'
+        market: 'Markets'
+        ecology: 'Eco'
+      products:
+        slabs: 'Slabs'
+        hire_hot: 'Hot-rolled flat steel'
+        hire_cold: 'Cold-rolled flat steel'
+        hire_coated: 'Coated steel'
+        hire_class: 'Long products'
+        hire_galvanized: 'Galvanized steel'
+        hire_cold_coated: 'Gold-rolled galvanized steel'
+        hire_plate: 'Thick plate'
+        hire_electro: 'Cold-rolled electrical steel'
+        hot_dip: 'Hot-dip galvanized steel'
+        hire_flat: 'Hire flat'
+        hire_class_hardware: 'Hire class & hardware'
+        hire_flat: 'Flat-rolled products'
+        hire_class_hardware: 'Long products and metalware'
+        hire_hot_coated: 'Горячеоцинкованный прокат'
+        hire_polymer: 'Pre-painted steel'
+        steel_blank: 'Billets'
+        steel_concetrat: 'Iron ore conentrate'
+        raw: 'Raw materials'
+        steel_electro: 'Electrical steel'
+        blank: 'Blank'
+        blank_quadr: 'Continuously cast square billets'
+        rod: 'Wire rod'
+        fittings: 'Rebar'
+        steel: 'Steel'
+        hire: 'Hire'
+        koks: 'Coke'
+        black_metal: 'Ferrous scrap metal '
+        dolomit: 'Dolomit'
+        fluse: 'Fluxing limestone'
+        hardware: 'Metalware'
+    ru:
+      ui:
+        nlmk: 'НЛМК'
+        group: 'Группа'
+        russia: 'Россия'
+        europe: 'Европа'
+        usa: 'США'
+        info: 'Общая информация'
+        history: 'История'
+        highlights: 'Результаты'
+        products: 'Продукция'
+        map: 'Карта'
+        market: 'Рынки'
+        ecology: 'Эко'
+      products:
+        slabs: 'Слябы'
+        hire_hot: 'Горячекатаный прокат'
+        hire_cold: 'Холоднокатаный прокат'
+        hire_coated: 'Прокат с покрытием'
+        hire_class: 'Сортовой прокат'
+        hire_galvanized: 'Оцинкованный прокат'
+        hire_cold_coated: 'Холоднокатаный прокат с покрытием'
+        hire_plate: 'Толстолистовой прокат'
+        hire_electro: 'Холоднокатаный прокат из электротехнической стали'
+        hire_flat: 'Плоский прокат'
+        hire_class_hardware: 'Сортовой прокат и метизы'
+        hire_polymer: 'Прокат с полимерным покрытием'
+        hire_hot_coated: 'Горячеоцинкованный прокат'
+        steel_blank: 'Стальная заготовка'
+        steel_concetrat: 'Железорудный концетрат'
+        raw: 'Сырье'
+        steel_electro: 'Электротехническая сталь'
+        blank: 'Заготовка'
+        blank_quadr: 'Заготовка непрерывнолитая квадртная'
+        rod: 'Катанка'
+        fittings: 'Арматура'
+        steel: 'Сталь'
+        hire: 'Прокат'
+        koks: 'Кокс'
+        black_metal: 'Лом черных металлов'
+        dolomit: 'Доломит'
+        fluse: 'Известняк флюсовый'
+        hardware: 'Метизы'
     }
 
 class I18n extends Service
@@ -135,7 +135,7 @@ class I18n extends Service
   constructor: (@WORDS) ->
   setLanguage: (language)->
     @currentLanguage = language
-  get:(group, key)->
+  get: (group, key)->
     @WORDS?[@currentLanguage][group][key]
 
 
@@ -158,31 +158,25 @@ class Main extends Controller
 
     $scope.$watch =>
       @i18nService.currentLanguage
-    ,(prev,cur) =>
+    , (prev, cur) =>
       controller = if $scope.controller == 'main' or !$scope.controller then 'group' else $scope.controller
       division = $scope.$routeParams.division ? 'map'
       if prev != cur and @i18nService.currentLanguage != $scope.$routeParams.lang
         $location.path("/#{controller}/#{division}/#{@i18nService.currentLanguage}")
 
   getPopup: ->
-    if @popupService.isActive
-      'templates/' + @$routeParams.division + '/actives/' + @popupName() + '_' + @i18nService.currentLanguage + '.html'
-    else
-      @popupName() + '_' + @i18nService.currentLanguage + '.html'
-
-  _:(group, key)->
+    @popupService.getPopupTemplate()
+  _: (group, key)->
     @i18nService.get group, key
-  closePopup:->
+  closePopup: ->
     @popupService.hide()
-  popupName:->
-    @popupService.active
-  toggleLanguage:->
+  toggleLanguage: ->
     @i18nService.setLanguage if @i18nService.currentLanguage is 'en' then 'ru' else 'en'
-  reload:->
+  reload: ->
     window.location.reload()
 
 class Info extends Controller
-  constructor: ($scope,$sce) ->
+  constructor: ($scope, $sce) ->
     $scope.$parent.controller = 'info'
 class History extends Controller
   constructor: ($scope) ->
@@ -203,12 +197,12 @@ class Market extends Controller
 class Slider extends Directive
   constructor: ($window)->
     return {
-      restrict: 'AE'
-      replace: true
-      scope:
-        total: '@'
-        division: '@'
-      template: '''
+    restrict: 'AE'
+    replace: true
+    scope:
+      total: '@'
+      division: '@'
+    template: '''
                 <div>
                   <div class="slide" ng-repeat="image in images" ng-show="image == currentIndex + 1">
                     <div class="img">
@@ -218,27 +212,27 @@ class Slider extends Directive
                 </div>
                 '''
 
-      link: (scope, elem, attrs)->
-        scope.images = [1..scope.total]
-        scope.currentIndex = 0
-        scope.next = ->
-          if scope.currentIndex < scope.images.length-1
-            scope.currentIndex=scope.currentIndex+1
-          else
-            scope.currentIndex = 0
-        scope.prev = ->
-          if scope.currentIndex > 0
-            scope.currentIndex = scope.currentIndex-1
-          else
-            scope.currentIndex = scope.images.length-1
+    link: (scope, elem, attrs)->
+      scope.images = [1..scope.total]
+      scope.currentIndex = 0
+      scope.next = ->
+        if scope.currentIndex < scope.images.length - 1
+          scope.currentIndex = scope.currentIndex + 1
+        else
+          scope.currentIndex = 0
+      scope.prev = ->
+        if scope.currentIndex > 0
+          scope.currentIndex = scope.currentIndex - 1
+        else
+          scope.currentIndex = scope.images.length - 1
 
-        timer = $window.setInterval ->
-          scope.next()
-          scope.$apply()
-        , 3500
+      timer = $window.setInterval ->
+        scope.next()
+        scope.$apply()
+      , 3500
 
-        scope.$on '$destroy', ->
-          $window.clearInterval(timer);
+      scope.$on '$destroy', ->
+        $window.clearInterval(timer);
 
     }
 
@@ -305,9 +299,9 @@ class Pvideo extends Directive
         popupService.isShow
       , ->
         if !popupService.isShow
-            scope.API?.stop()
+          scope.API?.stop()
         else if scope.auto
-           scope.API?.play()
+          scope.API?.play()
       )
 
       scope.$watch('stop', ->
@@ -365,7 +359,7 @@ class Nvideo extends Directive
           vv.bigPlayButton.hide()
           if  scope.popupvideo?
             vv.pause()
-            popupService.show("/templates/group/popup_videos/"+scope.popupvideo, false)
+            popupService.show("/templates/group/popup_videos/" + scope.popupvideo, false)
 
           isPlay = true
         )
@@ -401,13 +395,13 @@ class Nvideo extends Directive
     }
 
 class Navselector extends Directive
-  constructor:($routeParams)->
+  constructor: ($routeParams)->
     return {
-      restrict:'E'
-      replace: true
-      scope:
-        controller:'='
-      template: '''
+    restrict: 'E'
+    replace: true
+    scope:
+      controller: '='
+    template: '''
             <div class="selector">
                 <a class="prev"></a>
                 <a class="next"></a>
@@ -418,42 +412,42 @@ class Navselector extends Directive
                 <div class="border--bottom"></div>
             </div>
 '''
-      link: (scope,elem,attrs)->
-        slideToNavItem = ->
-          return if scope.controller is "main"
-          links = elem
-          .parent()
-          .children('a')
-          .map((i,a)->$(a))
+    link: (scope, elem, attrs)->
+      slideToNavItem = ->
+        return if scope.controller is "main"
+        links = elem
+        .parent()
+        .children('a')
+        .map((i, a)-> $(a))
 
-          i = 0
-          a = links[i]
-          pos =
-            left: 0
-            width: 0
+        i = 0
+        a = links[i]
+        pos =
+          left: 0
+          width: 0
 
-          loop
-            if not a.children().hasClass('ng-hide')
-              console.log a.attr('ng-href'), a.width(), scope.controller,a.attr('ng-href').indexOf(scope.controller) isnt -1
-              pos.left += pos.width
-              pos.width = a.width()
-              console.log pos
-              break if a.attr('ng-href').indexOf(scope.controller) isnt -1
-            a = links[++i]
+        loop
+          if not a.children().hasClass('ng-hide')
+            console.log a.attr('ng-href'), a.width(), scope.controller, a.attr('ng-href').indexOf(scope.controller) isnt -1
+            pos.left += pos.width
+            pos.width = a.width()
+            console.log pos
+            break if a.attr('ng-href').indexOf(scope.controller) isnt -1
+          a = links[++i]
 
-          console.log pos
-          elem.css width:pos.width+6+"px",left:pos.left-2+"px"
+        console.log pos
+        elem.css width: pos.width + 6 + "px", left: pos.left - 2 + "px"
 
-        scope.$watch ->
-          scope.controller
-        , slideToNavItem
+      scope.$watch ->
+        scope.controller
+      , slideToNavItem
 
-        scope.$watch ->
-          $routeParams.division
-        , ->
-          setTimeout slideToNavItem, 100
+      scope.$watch ->
+        $routeParams.division
+      , ->
+        setTimeout slideToNavItem, 100
 
-        setTimeout slideToNavItem, 500
+      setTimeout slideToNavItem, 500
     }
 
 class PScroll extends Directive
@@ -479,19 +473,24 @@ class PScroll extends Directive
         elem.perfectScrollbar('destroy')
     }
 class Popup extends Service
-  constructor: () ->
+  constructor: (@$routeParams, @i18nService) ->
     @isActive = false
     @isShow = false
-    @active = ''
+    @url = ''
+    @tclass = ''
   isShown: ->
     @isShow
-  show: (active, isActive = false)->
+  show: (url, isActive = false,tclass='')->
     console.log("popup show")
     @isShow = true
     @isActive = isActive
-    @active = active
+    @url = url
+    @tclass= tclass
   hide: ->
     @isShow = false
+  getPopupTemplate: ->
+    url = if @isActive then 'templates/' + @$routeParams.division + '/actives/' + @url else @url
+    url + '_' + @i18nService.currentLanguage + '.html'
 
 class LineChart extends Directive
   constructor: ->
