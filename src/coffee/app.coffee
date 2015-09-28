@@ -246,14 +246,46 @@ class Marker extends Directive
       pos: '&'
       type: '@'
       active: '@'
+      name: '@'
+      angle: '@'
     template: '''
                 <div class="marker" style="left:{{pos()[0]}}px;top:{{pos()[1]}}px">
                   <img class="shadow" src="/images/map/shadow.png" />
                   <img class="type" ng-src="/images/map/{{type}}.png" />
+                  <div style="
+    border: 1px solid white;
+    width: {{length}}px;
+    top: {{top}}px;
+    position: absolute;
+    left: {{left}}px;
+    transform: rotate({{angle}}deg);
+"></div>
+<div style="top: {{top_n}}px;
+    position: absolute;
+    left: {{left_n}}px;
+    z-index: 1">
+{{name}}
+</div>
                 </div>
                 '''
 
     link: (scope, elem, attrs)->
+      scope.angle = scope.angle ? 0
+      scope.length = 30
+      scope.left = -scope.length / 2
+      scope.top = 0
+
+      scope.top += 46 * Math.sin(scope.angle / 180 * Math.PI)
+      scope.left += 46 * Math.cos(scope.angle / 180 * Math.PI)
+
+      scope.top += 30
+      scope.left += 32
+
+      scope.top_n = 12
+      scope.left_n = 0
+
+      scope.top_n += 96 * Math.sin(scope.angle / 180 * Math.PI)
+      scope.left_n += 96 * Math.cos(scope.angle / 180 * Math.PI)
       elem.click ->
         popupService.show(scope.active, true)
         scope.$apply()
@@ -480,12 +512,12 @@ class Popup extends Service
     @tclass = ''
   isShown: ->
     @isShow
-  show: (url, isActive = false,tclass='')->
+  show: (url, isActive = false, tclass = '')->
     console.log("popup show")
     @isShow = true
     @isActive = isActive
     @url = url
-    @tclass= tclass
+    @tclass = tclass
   hide: ->
     @isShow = false
   getPopupTemplate: ->
