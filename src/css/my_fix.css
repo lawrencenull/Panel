@@ -305,3 +305,6 @@ footer .nav .selector.map .next {
 .popup.small .nav .close{
     margin: 19px 0 0 13px;;
 }
+.scroll-content.ps-container .ps-scrollbar-y {
+    width:30px;
+}
