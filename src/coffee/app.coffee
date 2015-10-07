@@ -168,6 +168,8 @@ class Main extends Controller
     @popupService.getPopupTemplate()
   _: (group, key)->
     @i18nService.get group, key
+  popupName:->
+    @popupService.url
   closePopup: ->
     @popupService.hide()
   toggleLanguage: ->
