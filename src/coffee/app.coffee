@@ -321,6 +321,7 @@ class Pvideo extends Directive
 
       scope.onPlayerReady = (API)->
         scope.API = API
+
       scope.onCompleteVideo = ->
         if scope.repeat()
           setTimeout(->
@@ -330,6 +331,9 @@ class Pvideo extends Directive
       scope.$watch(->
         popupService.isShow
       , ->
+        scope.config.sources = [
+          {src: $sce.trustAsResourceUrl(popupService.filedata), type: "video/mp4"}]
+
         if !popupService.isShow
           scope.API?.stop()
         else if scope.auto
@@ -350,7 +354,7 @@ class Pvideo extends Directive
         sources: [
           {src: $sce.trustAsResourceUrl(scope.file), type: "video/mp4"}
         ],
-        transclude: true,
+        transclude: true
       }
     }
 
@@ -364,7 +368,6 @@ class Nvideo extends Directive
       file: '@'
       repeat: '&'
       stop: '='
-      popupvideo: '@'
     template: '''
                 <video class="video-js vjs-default-skin vjs-big-play-centered" width="100%" height="100%"/>
               '''
@@ -388,12 +391,12 @@ class Nvideo extends Directive
           isPlay = false
         )
         vv.on("play", ->
-          vv.bigPlayButton.hide()
-          if  scope.popupvideo?
-            vv.pause()
-            popupService.show("/templates/group/popup_videos/" + scope.popupvideo, false)
-
-          isPlay = true
+          if  scope.file?
+            vv.bigPlayButton.hide()
+            console.log "-> stop scope ="+scope.stop
+            vv.pause() if !scope.stop? || !scope.stop == 3
+            popupService.show("/templates/popup_videos/popup_video_tmpl", false, 'popup-video', scope.file)
+            isPlay = true
         )
         scope.$on '$destroy', ->
           vv.pause()
@@ -504,25 +507,36 @@ class PScroll extends Directive
       scope.$on '$destroy', ->
         elem.perfectScrollbar('destroy')
     }
+
 class Popup extends Service
   constructor: (@$routeParams, @i18nService) ->
     @isActive = false
     @isShow = false
     @url = ''
     @tclass = ''
+    @filedata = null
   isShown: ->
     @isShow
-  show: (url, isActive = false, tclass = '')->
+  show: (url, isActive = false, tclass = '',  filedata = null)->
     console.log("popup show")
+    @filedata = filedata
+    console.log "date set to: ["+@filedata+"]"
     @isShow = true
     @isActive = isActive
     @url = url
     @tclass = tclass
+
   hide: ->
+    console.log("popup hide")
+    @filedata = null if @filedata?
     @isShow = false
-  getPopupTemplate: ->
-    url = if @isActive then 'templates/' + @$routeParams.division + '/actives/' + @url else @url
-    url + '_' + @i18nService.currentLanguage + '.html'
+
+  getPopupTemplate:  ->
+      url = if @isActive then 'templates/' + @$routeParams.division + '/actives/' + @url else @url
+      url += '_' + @i18nService.currentLanguage + '.html'
+      console.log "getPopupTemplate = " + url
+      url
+
 
 class LineChart extends Directive
   constructor: ->

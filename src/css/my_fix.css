@@ -308,3 +308,7 @@ footer .nav .selector.map .next {
 .scroll-content.ps-container .ps-scrollbar-y {
     width:30px;
 }
+
+.popup-video .content {
+    padding: 0 !important;
+}
