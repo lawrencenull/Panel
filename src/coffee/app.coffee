@@ -613,6 +613,29 @@ class BarChart extends Directive
       Chartist.Bar(el[0].children[1], data, options)
     }
 
+class Sphere extends Directive
+  constructor:->
+    imgs =
+      auto: 'auto2.png'
+      buil: 'building.png'
+      byto: 'bytovaia_tehnica.png'
+      ener: 'energooborudovanie.png'
+      infr: 'infrastruktura.png'
+      mach: 'machine2.png'
+      obor: 'oborudovanie.png'
+      offs: 'offshore2.png'
+      pere: 'pererabotka.png'
+      sudo: 'sudostroenie.png'
+    return {
+      scope:
+        sphere: '@'
+      template: """
+<div><img style="width:80px;margin-right:5px;" ng-src='/img/sphere/{{imgs[sf]}}' ng-repeat='sf in sphere.split(",")'/></div>
+"""
+      link:(scope)->
+        scope.imgs = imgs
+
+    }
 class App extends App
   constructor: ->
     document.oncontextmenu = document.body.oncontextmenu = -> return false
