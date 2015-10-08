@@ -307,6 +307,18 @@ footer .nav .item.active .border--bottom {
     position: absolute;
     top: 135px;
     background: url(/img/popup--video-layer.png) no-repeat; }
+.popup .gallery .list-img.gal .item {
+    height: 109px;
+    width: 109px;
+    float: none;
+}
+.popup .gallery .list-img.gal.left{
+    width: 300px;
+    padding-left: 30px;
+}
+.popup .gallery .list-img.gal.left .item {
+    float: left;
+}
 .popup .gallery .list-img .item {
     float: left;
     line-height: 0;
