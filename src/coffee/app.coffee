@@ -396,7 +396,6 @@ class Nvideo extends Directive
         vv.on("play", ->
           if  scope.file?
             vv.bigPlayButton.hide()
-            console.log "-> stop scope ="+scope.stop
             vv.pause() if !scope.stop? || !scope.stop == 3
             popupService.show("/templates/popup_videos/popup_video_tmpl", false, 'popup-video', scope.file)
             isPlay = true
@@ -433,7 +432,7 @@ class Nvideo extends Directive
     }
 
 class Navselector extends Directive
-  constructor: ($routeParams)->
+  constructor: ($routeParams,i18nService)->
     return {
     restrict: 'E'
     replace: true
@@ -466,18 +465,18 @@ class Navselector extends Directive
 
         loop
           if not a.children().hasClass('ng-hide')
-            console.log a.attr('ng-href'), a.width(), scope.controller, a.attr('ng-href').indexOf(scope.controller) isnt -1
+#            console.log a.attr('ng-href'), a.width(), scope.controller, a.attr('ng-href').indexOf(scope.controller) isnt -1
             pos.left += pos.width
             pos.width = a.width()
-            console.log pos
+#            console.log pos
             break if a.attr('ng-href').indexOf(scope.controller) isnt -1
           a = links[++i]
 
-        console.log pos
+#        console.log pos
         elem.css width: pos.width + 6 + "px", left: pos.left - 2 + "px"
 
       scope.$watch ->
-        scope.controller
+        scope.controller + i18nService.currentLanguage
       , slideToNavItem
 
       scope.$watch ->
@@ -521,23 +520,19 @@ class Popup extends Service
   isShown: ->
     @isShow
   show: (url, isActive = false, tclass = '',  filedata = null)->
-    console.log("popup show")
     @filedata = filedata
-    console.log "date set to: ["+@filedata+"]"
     @isShow = true
     @isActive = isActive
     @url = url
     @tclass = tclass
 
   hide: ->
-    console.log("popup hide")
     @filedata = null if @filedata?
     @isShow = false
 
   getPopupTemplate:  ->
       url = if @isActive then 'templates/' + @$routeParams.division + '/actives/' + @url else @url
       url += '_' + @i18nService.currentLanguage + '.html'
-      console.log "getPopupTemplate = " + url
       url
 
 
@@ -614,6 +609,29 @@ class BarChart extends Directive
       Chartist.Bar(el[0].children[1], data, options)
     }
 
+class Sphere extends Directive
+  constructor:->
+    imgs =
+      auto: 'auto2.png'
+      buil: 'building.png'
+      byto: 'bytovaia_tehnica.png'
+      ener: 'energooborudovanie.png'
+      infr: 'infrastruktura.png'
+      mach: 'machine2.png'
+      obor: 'oborudovanie.png'
+      offs: 'offshore2.png'
+      pere: 'pererabotka.png'
+      sudo: 'sudostroenie.png'
+    return {
+      scope:
+        sphere: '@'
+      template: """
+<div><img style="width:80px;margin-right:5px;" ng-src='/img/sphere/{{imgs[sf]}}' ng-repeat='sf in sphere.split(",")'/></div>
+"""
+      link:(scope)->
+        scope.imgs = imgs
+
+    }
 class App extends App
   constructor: ->
     document.oncontextmenu = document.body.oncontextmenu = -> return false
