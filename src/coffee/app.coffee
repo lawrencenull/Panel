@@ -432,7 +432,7 @@ class Nvideo extends Directive
     }
 
 class Navselector extends Directive
-  constructor: ($routeParams)->
+  constructor: ($routeParams,i18nService)->
     return {
     restrict: 'E'
     replace: true
@@ -476,7 +476,7 @@ class Navselector extends Directive
         elem.css width: pos.width + 6 + "px", left: pos.left - 2 + "px"
 
       scope.$watch ->
-        scope.controller
+        scope.controller + i18nService.currentLanguage
       , slideToNavItem
 
       scope.$watch ->
