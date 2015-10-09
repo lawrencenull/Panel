@@ -314,6 +314,16 @@ footer .nav .selector.map .next {
     width:30px;
 }
 
-.popup-video .content {
+
+.popup.popup-video {
+  width: auto;
+  top:150px;
+  overflow: initial;
+}
+.popup.popup-video div.content {
+    width: auto;
     padding: 0 !important;
+}
+.popup-video videogular{
+    height: 745px;
 }

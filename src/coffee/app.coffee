@@ -311,7 +311,7 @@ class Pvideo extends Directive
                     vg-update-state="onUpdateState"
                     vg-autoplay="config.autoPlay">
                     <vg-video vg-src="config.sources"></vg-video>
-                    <vg-overlay-play></vg-overlay-play>
+                    <vg-overlay-play vg-native-controls="true" style="height: 90%"></vg-overlay-play>
                   </videogular>
                 </div>
                 '''
@@ -334,7 +334,8 @@ class Pvideo extends Directive
         popupService.isShow
       , ->
         scope.config.sources = [
-          {src: $sce.trustAsResourceUrl(popupService.filedata), type: "video/mp4"}]
+          {src: $sce.trustAsResourceUrl(popupService.filedata), type: "video/mp4"}
+        ] if popupService.filedata?
 
         if !popupService.isShow
           scope.API?.stop()
