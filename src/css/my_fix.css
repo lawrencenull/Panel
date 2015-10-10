@@ -345,3 +345,7 @@ footer .nav .selector.map .next {
 h2[ng-click]:before {
     content: "•";
 }
+
+.scroll-paragraph p {
+    font-size:18px;
+}

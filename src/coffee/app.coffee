@@ -613,7 +613,7 @@ class Sphere extends Directive
   constructor:->
     imgs =
       auto: 'auto2.png'
-      buil: 'building.png'
+      build: 'building.png'
       byto: 'bytovaia_tehnica.png'
       ener: 'energooborudovanie.png'
       infr: 'infrastruktura.png'
