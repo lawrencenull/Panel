@@ -626,7 +626,7 @@ class Sphere extends Directive
       scope:
         sphere: '@'
       template: """
-<div><img style="width:80px;margin-right:5px;" ng-src='/img/sphere/{{imgs[sf]}}' ng-repeat='sf in sphere.split(",")'/></div>
+<div><img style="width:80px;margin-right:5px;vertical-align: top;" ng-src='/img/sphere/{{imgs[sf]}}' ng-repeat='sf in sphere.split(",")'/></div>
 """
       link:(scope)->
         scope.imgs = imgs
