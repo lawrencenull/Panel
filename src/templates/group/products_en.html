@@ -10,8 +10,7 @@
             <div class="item"
                  ng-click="tab=1"
                  ng-class="{'active':tab == 1,'before-active':tab == 2}"
-                 ng-bind="m._('products','hire_flat')"></div>
-            <div class="item"
+                 hire_flat_rolled            <div class="item"
                  ng-click="tab=2"
                  ng-class="{'active':tab == 2,'before-active':tab == 3}"
                  ng-bind="m._('products','hire_coated')"></div>
@@ -40,8 +39,12 @@
 
                     <p>
                         Thickness: <b>180 — 355mm</b><br/>
-                        Width: <b>0.75 — 2.25m</b><br/>
+                        Width: <b>0.75 — 225m</b><br/>
                         Length: <b>6 — 12m</b>
+                    </p>
+
+                    <p>
+                        Production site: Novolipetsk (Lipetsk Region), NLMK Indiana (Portage, Indiana, USA)
                     </p>
                     <h4>Usage</h4>
 
@@ -60,14 +63,15 @@
                             Novolipetsk manufactures slabs for the production of large-diameter pipes. In a record space
                             of time, specialists at the plant managed to set up production of steel slabs with more
                             rigorous demands on the chemical content and macrostructure of the metal, in standard sizes
-                            that were new to Russia.</p>
+                            that were new to Russia.
+                        </p>
 
                         <p>
                             As a result, a completely Russian high-tech production chain was created as a substitute for
                             imports, dealing with everything from mining and smelting to the manufacture of products
                             important to the country. In less than two years of collaboration, Novolipetsk supplied OMK
                             with over one million tonnes of steel slabs for the manufacture of large diameter pipes used
-                            in projects such as South Stream, Nord Stream, and Power of Siberia.
+                            in projects such as <p class="italic"> South Stream, Nord Stream</p>, and <p class="italic"> Power of Siberia</p>.
                         </p>
                     </div>
 
@@ -78,8 +82,12 @@
                     <h2>Continuously cast square billets</h2>
 
                     <p>
-                        Length: <b>6000 — 11700mm</b><br/>
+                        Length: <b>6,000 — 11,700mm</b><br/>
                         Cross-section: <b>125 х 125mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: NLMK Kaluga (Kaluga Region), NSMMZ (Urals Region)
                     </p>
                     <h4>Usage</h4>
 
@@ -96,8 +104,13 @@
                     <h2>Hot-rolled flat steel</h2>
 
                     <p>
-                        Width: <b>up to 1850mm</b><br/>
-                        Thickness: <b>1.5 — 16mm</b><br/>
+                        Width: <b>up to 1,850mm</b><br/>
+                        Thickness: <b>from 1.5 to 16mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: Novolipetsk (Lipetsk Region), NLMK La Louviere (Belgium), NLMK Indiana
+                        (Portage, Indiana, USA), NLMK Pennsylvania (Farrell, Pennsylvania, USA)
                     </p>
                     <h4>Usage</h4>
 
@@ -116,8 +129,13 @@
                     <h2>Cold-rolled flat steel</h2>
 
                     <p>
-                        Width: <b>up to 1820mm</b><br/>
-                        Thickness: <b>0.35 — 2.5mm</b><br/>
+                        Width: <b>up to 1,820mm</b><br/>
+                        Thickness: <b>from 0.35 to 2.50mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: Novolipetsk (Lipetsk Region), NLMK La Louviere (Belgium), NLMK Pennsylvania
+                        (Farrell, Pennsylvania, USA)
                     </p>
                     <h4>Usage</h4>
 
@@ -135,8 +153,12 @@
                     <h2>Thick plate</h2>
 
                     <p>
-                        Width: <b>up to 3100mm</b><br/>
+                        Width: <b>up to 3,100mm</b><br/>
                         Thickness: <b>up to 50mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: NLMK DanSteel A/S (Denmark), NLMK Clabecq (Belgium), NLMK Verona (Italy)
                     </p>
                     <h4>Usage</h4>
 
@@ -175,11 +197,16 @@
                     <div class="img">
                         <img src="/images/production/group/otsinkovanniy_prokat.jpg"/>
                     </div>
-                    <h2>Galvanized steel</h2>
+                    <h2 ng-bind="m._('products','hire_galvanized')"></h2>
 
                     <p>
-                        Width: <b>up to 1800mm</b><br/>
+                        Width: <b>up to 1,800mm</b><br/>
                         Thickness: <b>0.22 — 3.0mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: Novolipetsk (Lipetsk Region), NLMK Strasbourg (France), NLMK Sharon Coating
+                        (USA)
                     </p>
                     <h4>Usage</h4>
 
@@ -195,15 +222,19 @@
                     <div class="img">
                         <img src="/images/production/group/prokat_s_polimerniim_pokritiami.jpg"/>
                     </div>
-                    <h2>Pre-painted steel</h2>
+                    <h2 ng-bind="m._('products','hire_polymer')"></h2>
 
                     <p>
                         Thickness of steel: <b>0.3 — 2.0mm</b><br/>
-                        Width of steel: <b>900 — 1800mm</b><br/>
+                        Width of steel: <b>900 — 1,800mm</b><br/>
                         Width after slitting: <b>100 — 850mm</b><br/>
                         Coil mass: <b>5 — 15tonnes</b><br/>
                         Mass of plate batch: <b>up to 10tonnes</b><br/>
-                        Length of plates: <b>1500 — 3500mm</b><br/>
+                        Length of plates: <b>1,500 — 3,500mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: Novolipetsk (Lipetsk Region), NLMK Strasbourg (France)
                     </p>
                     <h4>Usage</h4>
 
@@ -223,8 +254,12 @@
                     <h2 ng-bind="m._('products','steel_electro')"></h2>
 
                     <p>
-                        Width: <b>up to 1000mm</b><br/>
+                        Width: <b>up to 1,000mm</b><br/>
                         Thickness: <b>0.23 — 0.5mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: Novolipetsk (Lipetsk Region), VIZ-Steel (Urals Region)
                     </p>
                     <h4>Usage</h4>
 
@@ -248,7 +283,11 @@
 
                     <p>
                         Diameter: <b>5.5 — 22mm</b><br/>
-                        Mass of coil: <b>1200 — 1450kg</b><br/>
+                        Mass of coil: <b>1,200 — 1,450kg</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: NSMMZ (Urals Region)
                     </p>
                     <h4>Usage</h4>
 
@@ -267,6 +306,10 @@
                         Grade: <b>А500С</b><br/>
                         Diameter: <b>12 — 25mm</b><br/>
                     </p>
+
+                    <p>
+                        Production site: NLMK Kaluga (Kaluga Region), NSMMZ (Urals Region)
+                    </p>
                     <h4>Usage</h4>
 
                     <div sphere="build"></div>
@@ -276,12 +319,41 @@
 
                     <div class="break"></div>
                     <div class="img">
+                        <img src="/images/production/group/11_2.jpg"/>
+                    </div>
+                    <h2>Angle bar</h2>
+
+                    <p>
+                        Angle bar sizes: <b>63, 75, 90 and 100 mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: NLMK Kaluga (Kaluga Region)
+                    </p>
+                    <h4>Usage</h4>
+
+                    <div sphere="build"></div>
+                    <p style="font-size: 18px;">
+                        Steel angle bar is produced at NLMK Kaluga which is located in close vicinity of Moscow, the
+                        largest construction market in Russia. Angle bar is a long steel product primarily sold on the
+                        domestic market and is most commonly used in construction rather than industrial environments.
+                        Thanks to its working characteristics, good weldability, strength and resistance to various
+                        types of stress, angle bar is widely used to support steel plates, wooden panels and
+                        plasterboard, and to create square corners. Angle bar is also used to strengthen structures.
+                    </p>
+
+                    <div class="break"></div>
+                    <div class="img">
                         <img src="/images/production/group/metizy.jpg"/>
                     </div>
                     <h2>Metalware</h2>
 
                     <p>
                         <b>885 different types and sizes of metalware</b><br/>
+                    </p>
+                        Production site: NLMK-Metalware (Urals Region)
+                    <p>
+
                     </p>
                     <h4>Usage</h4>
 
@@ -297,6 +369,7 @@
                         18 countries worldwide.
                     </p>
                 </div>
+
                 <div class="text" ng-show="tab==5">
                     <div class="img">
                         <img src="/images/production/group/zheleznorudniy_kontsentrat.jpg"/>
@@ -306,22 +379,23 @@
                     <p>
                         Iron content: <b>66.5%</b><br/>
                     </p>
+
+                    <p>
+                        Production site: Stoilensky (Belgorod Region)
+                    </p>
                     <h4>Usage</h4>
 
                     <div sphere="pere"></div>
                     <div class="scroll-paragraph">
                         <p>
                             Stoilensky produces iron ore concentrate (with an average iron content of 66.5%) and sinter
-                            ore
-                            (52%), which is used as a raw material in steelworks.
+                            ore (52%), which is used as a raw material in steelworks.
                         </p>
 
                         <p>
                             Stoilensky’s production fully meets NLMK Group’s demand for iron ore concentrate.
-                            Concentrate
-                            reserves are estimated at 5 billion tonnes, meaning the Group’s current output can be
-                            sustained
-                            for over 180 years. The concentrate has one of the lowest production costs in the industry,
+                            Concentrate reserves are estimated at 5 billion tonnes, meaning the Group’s current output can be
+                            sustained for over 180 years. The concentrate has one of the lowest production costs in the industry,
                             amounting to an average of USD 20 per tonne.
                         </p>
                     </div>
@@ -331,6 +405,10 @@
                         <img src="/images/production/group/flusoviy_izvestniak.jpg"/>
                     </div>
                     <h2>Fluxing limestone</h2>
+
+                    <p>
+                        Production site: Stagdok (Lipetsk Region)
+                    </p>
                     <h4>Usage</h4>
 
                     <div sphere="pere"></div>
@@ -341,16 +419,13 @@
 
                         <p>
                             Carbonates are used in the production of both limestone used to manufacture construction
-                            lime
-                            and limestone used as a fluxing material in steelmaking. The stone is mined in an open pit
-                            and
-                            includes the use of explosives.
+                            lime and limestone used as a fluxing material in steelmaking. The stone is mined in an open pit
+                            and includes the use of explosives.
                         </p>
 
                         <p>
                             Supplies from Stagdok and Dolomit fully cover NLMK Group’s requirements for the main types
-                            of
-                            flux.
+                            of flux.
                         </p>
                     </div>
 
@@ -360,6 +435,9 @@
                     </div>
                     <h2>Coke</h2>
 
+                    <p>
+                        Production site: Altai-Koks (Altai Region, Siberian Federal District)
+                    </p>
                     <h4>Usage</h4>
 
                     <div sphere="pere"></div>

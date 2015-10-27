@@ -6,27 +6,27 @@
             <div class="item first"
                  ng-click="tab=0"
                  ng-class="{'active':tab == 0,'before-active':tab == 1}"
-                 ng-bind="m._('products','slabs')"></div>
+                 ng-bind="m._('products','steel_blank')"></div>
             <div class="item"
                  ng-click="tab=1"
                  ng-class="{'active':tab == 1,'before-active':tab == 2}"
-                 ng-bind="m._('products','hire_hot')"></div>
+                 ng-bind="m._('products','hire_flat_rolled')"></div>
             <div class="item"
                  ng-click="tab=2"
                  ng-class="{'active':tab == 2,'before-active':tab == 3}"
-                 ng-bind="m._('products','hire_cold')"></div>
+                 ng-bind="m._('products','hire_coated')"></div>
             <div class="item"
                  ng-click="tab=3"
                  ng-class="{'active':tab == 3,'before-active':tab == 4}"
-                 ng-bind="m._('products','hire_cold_coated')"></div>
+                 ng-bind="m._('products','steel_electro')"></div>
             <div class="item"
                  ng-click="tab=4"
                  ng-class="{'active':tab == 4,'before-active':tab == 5}"
-                 ng-bind="m._('products','hire_electro')"></div>
+                 ng-bind="m._('products','hire_class_hardware_long')"></div>
             <div class="item last"
                  ng-click="tab=5"
                  ng-class="{'active':tab == 5}"
-                 ng-bind="m._('products','hire_class')"></div>
+                 ng-bind="m._('products','raw')"></div>
         </div>
     </div>
     <div class="col col-2">
@@ -39,68 +39,402 @@
                     </div>
                     <h2 ng-bind="m._('products','slabs')"></h2>
 
+                    <p>
+                        Thickness: <b>180 — 355 mm</b><br/>
+                        Width: <b>75 — 225 cm</b><br/>
+                        Length: <b>6 — 12 m</b>
+                    </p>
+
+                    <p>
+                        Production site: Novolipetsk (Lipetsk Region)
+                    </p>
                     <h4>Usage</h4>
 
-                    <p style="font-size: 18px;">
-                        NLMK manufactures steel slabs with various chemical properties and in various sizes. The company uses slabs mainly in flat steel production at the Lipetsk plant, and also supplies them to the Group’s mills in Europe and the USA, as well as to other consumers in Russia and abroad. ‘Wide’ slabs are further converted into thick plates, including at NLMK’s subsidiaries in Europe – DanSteel and Clabecq.
+                    <div sphere="pere"></div>
+                    <div class="scroll-paragraph">
+                        <p>
+                            NLMK produces steel slabs with various chemical properties and in different sizes. The
+                            company uses slabs mainly in flat steel production at the Lipetsk plant, and also supplies
+                            them to the Groupǯs mills in Europe and the USA, as well as to other consumers in Russia and
+                            abroad. ǮWideǯ slabs are further converted into thick plates, including at NLMKǯs
+                            subsidiaries in Europe – DanSteel and Clabecq.
+                        </p>
+
+                        <p>
+                            Today, NLMK offers Russian consumers unique metal goods which previously had to be imported
+                            into the country. For example, as part of its strategic partnership with OMK Group,
+                            Novolipetsk manufactures slabs for the production of large-diameter pipes. In a record space
+                            of time, specialists at the plant managed to set up production of steel slabs with more
+                            rigorous demands on the chemical content and macrostructure of the metal, in standard sizes
+                            that were new to Russia.
+                        </p>
+
+                        <p>
+                            As a result, a completely Russian high-tech production chain was created as a substitute for
+                            imports, dealing with everything from mining and smelting to the manufacture of products
+                            important to the country. In less than two years of collaboration, Novolipetsk supplied OMK
+                            with over one million tonnes of steel slabs for the manufacture of large diameter pipes used
+                            in projects such as
+
+                        <p class="italic"> South Stream, Nord Stream</p>, and <p class="italic"> Power of Siberia</p>.
+                        </p>
+                    </div>
+
+                    <div class="break"></div>
+                    <div class="img">
+                        <img src="/images/production/group/zagotovka.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','blank_quadr')"></h2>
+
+                    <p>
+                        Length: <b>6,000 — 11,700mm</b><br/>
+                        Cross-section: <b>125 х 125mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: NLMK Kaluga (Kaluga Region), NSMMZ (Urals Region)
+                    </p>
+
+                    <h4>Usage</h4>
+
+                    <div sphere="pere"></div>
+                    <p class="scroll-paragraph">
+                        The bulk of NLMKǯs billets are delivered to steel companies specializing in the production of
+                        rebar and other products mainly for the construction industry.
                     </p>
                 </div>
+
                 <div class="text" ng-show="tab==1">
                     <div class="img">
                         <img src="/images/production/russia/2.jpg"/>
                     </div>
                     <h2 ng-bind="m._('products','hire_hot')"></h2>
+
+                    <p>
+                        Width: <b>up to 1,850mm</b><br/>
+                        Thickness: <b>from 1.5 to 16mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: Novolipetsk (Lipetsk Region)
+                    </p>
                     <h4>Usage</h4>
 
+                    <div sphere="auto,mach,obor,byto,build,infr,sudo"></div>
                     <p style="font-size: 18px;">
-                        NLMK manufactures hot-rolled steel up to 1,850 mm in width and in thicknesses from 1.5 mm to 16 mm. Hot-rolled steel is mainly used in the production of steel structures, guardrails, ship hulls, machine casings, road-building machinery components, pressure vessels, and building structures.
-
+                        Hot-rolled flat steel is used in the production of cold-rolled coils and other high value added
+                        products at the Lipetsk plant and at VIZ-Steel. Hot-rolled steel is mainly used in the
+                        production of steel structures, guardrails, ship hulls, machine casings, road-building machinery
+                        components, pressure vessels, and building structures.
                     </p>
-                </div>
-                <div class="text" ng-show="tab==2">
+
+                    <div class="break"></div>
                     <div class="img">
-                        <img src="/images/production/russia/3.jpg"/>
+                        <img src="/images/production/group/holodnokatanniy_prokat.jpg"/>
                     </div>
                     <h2 ng-bind="m._('products','hire_cold')"></h2>
 
+                    <p>
+                        Width: <b>up to 1,820mm</b><br/>
+                        Thickness: <b>from 0.35 to 2.50mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: Novolipetsk (Lipetsk Region)
+                    </p>
                     <h4>Usage</h4>
 
-                    <p style="font-size: 18px;">NLMK manufactures cold-rolled steel up to 1,820 mm in width and in thicknesses from 0.35 mm to 2.5 mm. It is widely used in the production of body parts for machines and equipment, load-bearing structures, pipes, lighting masts, and agricultural equipment. </p>
-
+                    <div sphere="auto,mach,obor,byto,build"></div>
+                    <div class="scroll-paragraph">
+                        <p>
+                            NLMK occupies leading positions in the production of cold-rolled steel, with a 24% share of
+                            the Russian market. NLMKǯs cold-rolled flat steel is used to produce pre-painted and
+                            electrical steel at the Lipetsk plant, and is also sold to other companies in Russia and
+                            abroad. It is widely used in the production of body parts for machines and equipment,
+                            load-bearing structures, pipes, lighting masts, and agricultural equipment.
+                        </p>
+                    </div>
                 </div>
+
+                <div class="text" ng-show="tab==2">
+                    <div class="img">
+                        <img src="/images/production/group/otsinkovanniy_prokat.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','hire_galvanized')"></h2>
+
+                    <p>
+                        Width: <b>up to 1,800mm</b><br/>
+                        Thickness: <b>0.22 — 3.0mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: Novolipetsk (Lipetsk Region)
+                    </p>
+                    <h4>Usage</h4>
+
+                    <div sphere="auto,mach,byto,obor,build"></div>
+                    <p style="font-size: 18px;">
+                        NLMK is one of the largest manufacturers of galvanized steel in Russia, with a 17% share of the
+                        market. Galvanized steel is used in the production of machine body parts, roofing materials,
+                        load-bearing structures in hostile environments, car parts and components of household
+                        electrical devices. NLMK also manufactures titanium-alloy steel with an ultra-low carbon content
+                        for extra deep drawing (IF steel), which increases the plasticity of galvanized steel.
+                    </p>
+
+                    <div class="break"></div>
+                    <div class="img">
+                        <img src="/images/production/group/prokat_s_polimerniim_pokritiami.jpg"/>
+                    </div>
+                    <h2 ng-bind="m._('products','hire_polymer')"></h2>
+
+                    <p>
+                        Thickness of steel: <b>0.3 — 2.0mm</b><br/>
+                        Width of steel: <b>900 — 1,800mm</b><br/>
+                        Width after slitting: <b>100 — 850mm</b><br/>
+                        Coil mass: <b>5 — 15tonnes</b><br/>
+                        Mass of plate batch: <b>up to 10tonnes</b><br/>
+                        Length of plates: <b>1,500 — 3,500mm</b><br/>
+                    </p>
+
+                    <p>
+                        Место производства: Новолипецкий металлургический комбинат (Липецкая
+                        область)
+                    </p>
+                    <h4>Usage</h4>
+
+                    <div sphere="byto,build"></div>
+                    <p style="font-size: 18px;">
+                        НЛМК является крупнейшим производителем проката с полимерным покрытием в России, доля на рынке
+                        РФ составляет 21%. Современное оборудование и передовая технология обеспечивают получение
+                        высококачественного металла с покрытием из пигментированных лакокрасочных материалов. Прокат с
+                        полимерным покрытием используется в строительстве для производства кровельных и отделочных
+                        материалов, корпусов бытовой и коммерческой техники («белая техника»). Эта сталь обладает
+                        высокой устойчивостью к коррозии, имеет декоративный вид и сочетает в себе прочность и
+                        пластичность.
+                    </p>
+                </div>
+
                 <div class="text" ng-show="tab==3">
                     <div class="img">
-                        <img src="/images/production/russia/4.jpg"/>
+                        <img src="/images/production/group/elektrotehni4_stal.jpg"/>
                     </div>
-                    <h2 ng-bind="m._('products','hire_cold_coated')"></h2>
+                    <h2 ng-bind="m._('products','steel_electro')"></h2>
+
+                    <p>
+                        Width: <b>up to 1,000mm</b><br/>
+                        Thickness: <b>0.23 — 0.5mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: Novolipetsk (Lipetsk Region), VIZ-Steel (Urals Region)
+                    </p>
                     <h4>Usage</h4>
 
-                    <p style="font-size: 18px;">
-                        NLMK manufactures hot-dip galvanized steel and pre-painted steel. Galvanized steel in gauges from 0.22 mm to 3.0 mm is used in the production of machine body parts, roofing materials, load-bearing structures in hostile environments, and car parts and components. Steel with pigmented coatings is used in construction for the production of roofing and finishing materials, and casings for consumer and commercial appliances (white goods). This type of steel boasts high resistance to atmospheric corrosion, has decorative qualities, and combines strength and plasticity.
+                    <div sphere="ener"></div>
+                    <p style="font-size: 18px;">NLMK is one of the leading manufacturers of electrical steel, occupying
+                        around 85% of the Russian market for this high-tech product. The facilities at the main plant in
+                        Lipetsk and at VIZ-Steel in Yekaterinburg have a combined annual processing capacity of around
+                        350,000 tonnes of transformer steel and 380,000 tonnes of dynamo steel. NLMK Group also produces
+                        7% of the world’s transformer (anisotropic) steel. This is used in the electrical industry for
+                        the manufacture of transformer cores and fixed components for electrical equipment. Dynamo
+                        (isotropic) steel is used in the production of electrical equipment, such as components for
+                        electric motors and generators.
                     </p>
                 </div>
+
                 <div class="text" ng-show="tab==4">
                     <div class="img">
-                        <img src="/images/production/russia/5.jpg"/>
+                        <img src="/images/production/group/katanka.jpg"/>
                     </div>
-                    <h2 ng-bind="m._('products','hire_electro')"></h2>
+                    <h2>Carbon-steel wire rods</h2>
+
+                    <p>
+                        Diameter: <b>5.5 — 22mm</b><br/>
+                        Mass of coil: <b>1,200 — 1,450kg</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: NSMMZ (Urals Region)
+                    </p>
+                    <h4>Usage</h4>
+
+                    <div sphere="build"></div>
+                    <p style="font-size: 18px;">
+                        NLMK sells wire rods on the domestic market. The main consumers are manufacturers of metalware
+                        (wires, screws and nails). Wire rod is used mainly in the construction industry.
+                    </p>
+
+                    <div class="break"></div>
+                    <div class="img">
+                        <img src="/images/production/group/armatura.jpg"/>
+                    </div>
+                    <h2>Rebar</h2>
+
+                    <p>
+                        Grade: <b>А500С</b><br/>
+                        Diameter: <b>12 — 25mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: NLMK Kaluga (Kaluga Region), NSMMZ (Urals Region)
+                    </p>
+                    <h4>Usage</h4>
+
+                    <div sphere="build"></div>
+                    <p style="font-size: 18px;">
+                        NLMK manufactures rebar at NLMK Kaluga, located close to Moscow – the
+                        largest construction market in Russia. The bulk of sales are to the domestic market. Rebar is
+                        used mainly to reinforce concrete structures.
+                    </p>
+
+                    <div class="break"></div>
+                    <div class="img">
+                        <img src="/images/production/group/11_2.jpg"/>
+                    </div>
+                    <h2>Angle bar</h2>
+
+                    <p>
+                        Angle bar sizes: <b>63, 75, 90 and 100 mm</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: NLMK Kaluga (Kaluga Region)
+                    </p>
+                    <h4>Usage</h4>
+
+                    <div sphere="build"></div>
+                    <p style="font-size: 18px;">
+                        Steel angle bar is produced at NLMK Kaluga which is located in close vicinity of Moscow, the
+                        largest construction market in Russia. Angle bar is a long steel product primarily sold on the
+                        domestic market and is most commonly used in construction rather than industrial environments.
+                        Thanks to its working characteristics, good weldability, strength and resistance to various
+                        types of stress, angle bar is widely used to support steel plates, wooden panels and
+                        plasterboard, and to create square corners. Angle bar is also used to strengthen structures.
+                    </p>
+
+                    <div class="break"></div>
+                    <div class="img">
+                        <img src="/images/production/group/metizy.jpg"/>
+                    </div>
+                    <h2>Metalware</h2>
+
+                    <p>
+                        <b>885 different types and sizes of metalware</b><br/>
+                    </p>
+                    Production site: NLMK-Metalware (Urals Region)
+                    <p>
+
+                    </p>
                     <h4>Usage</h4>
 
                     <p style="font-size: 18px;">
-                        NLMK is one of the leading manufacturers of electrical steel. The main plant in Lipetsk and VIZ-Steel in Yekaterinburg have a combined annual processing capacity of around 350,000 tonnes of transformer steel and 380,000 tonnes of dynamo steel. NLMK produces about 7% of the world’s transformer steel. It is used in the electrical industry for the manufacture of transformer cores and fixed components for electrical equipment. Dynamo steel is used to manufacture electrical equipment.
+                        NLMK Metalware produces a wide range of metalware, from construction nails to wire for
+                        reinforcing concrete structures. It manufactures 885 different types and sizes of metalware. Its
+                        products are used primarily in the construction industry.
+                    </p>
+
+                    <p style="font-size: 18px;">
+                        The product with the highest demand is wire rod for reinforcing concrete structures, galvanized
+                        wire, welding wire, construction nails and fixing hardware. The company exports its products to
+                        18 countries worldwide.
                     </p>
                 </div>
+
                 <div class="text" ng-show="tab==5">
                     <div class="img">
-                        <img src="/images/production/russia/6.jpg"/>
+                        <img src="/images/production/group/zheleznorudniy_kontsentrat.jpg"/>
                     </div>
-                    <h2 ng-bind="m._('products','hire_class')"></h2>
+                    <h2>Iron ore concentrate</h2>
+
+                    <p>
+                        Iron content: <b>66.5%</b><br/>
+                    </p>
+
+                    <p>
+                        Production site: Stoilensky (Belgorod Region)
+                    </p>
                     <h4>Usage</h4>
 
-                    <p style="font-size: 18px;">
-                        NLMK manufactures continually cast billets which are delivered to steel companies specializing in the production of rebar and other products mainly for the construction industry. The companies in the Group’s Russian division also produce rebar used for reinforcing concrete structures, and in the manufacture of a wide range of metalware.
+                    <div sphere="pere"></div>
+                    <div class="scroll-paragraph">
+                        <p>
+                            Stoilensky produces iron ore concentrate (with an average iron content of 66.5%) and sinter
+                            ore (52%), which is used as a raw material in steelworks.
+                        </p>
+
+                        <p>
+                            Stoilensky’s production fully meets NLMK Group’s demand for iron ore concentrate.
+                            Concentrate reserves are estimated at 5 billion tonnes, meaning the Group’s current output can be
+                            sustained for over 180 years. The concentrate has one of the lowest production costs in the industry,
+                            amounting to an average of USD 20 per tonne.
+                        </p>
+                    </div>
+
+                    <div class="break"></div>
+                    <div class="img">
+                        <img src="/images/production/group/flusoviy_izvestniak.jpg"/>
+                    </div>
+                    <h2>Fluxing limestone</h2>
+
+                    <p>
+                        Production site: Stagdok (Lipetsk Region)
                     </p>
+                    <h4>Usage</h4>
+
+                    <div sphere="pere"></div>
+                    <div class="scroll-paragraph">
+                        <p>
+                            Fluxing limestone is used as an addition agent in furnace burdens, in pellets or sinter.
+                        </p>
+
+                        <p>
+                            Carbonates are used in the production of both limestone used to manufacture construction
+                            lime and limestone used as a fluxing material in steelmaking. The stone is mined in an open pit
+                            and includes the use of explosives.
+                        </p>
+
+                        <p>
+                            Supplies from Stagdok and Dolomit fully cover NLMK Group’s requirements for the main types
+                            of flux.
+                        </p>
+                    </div>
+
+                    <div class="break"></div>
+                    <div class="img">
+                        <img src="/images/production/group/koks.jpg"/>
+                    </div>
+                    <h2>Coke</h2>
+
+                    <p>
+                        Production site: Altai-Koks (Altai Region, Siberian Federal District)
+                    </p>
+                    <h4>Usage</h4>
+
+                    <div sphere="pere"></div>
+                    <div class="scroll-paragraph">
+                        <p>
+
+                            Altai-Koks produces around 4 million tonnes of coke per year, dry weight. Most of its
+                            production is sent to the Lipetsk plant. Other consumers are Russian, CIS, European, and Asian
+                            companies.
+                        </p>
+
+                        <p>
+                            The main output is produced on five coke batteries. The launch of the fifth coke battery in
+                            2006 gave the company the capacity to produce 80 mm-grade foundry coke. This fraction is in high
+                            demand on the market and is used in the production of high-tech thermal insulating
+                            materials.
+                        </p>
+
+                        <p>
+                            The company also produces a wide range of high-quality chemical
+                            products.
+                            By-products of coke production include various chemical materials including coal tar,
+                            benzene, and ammonium sulphate.
+                        </p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

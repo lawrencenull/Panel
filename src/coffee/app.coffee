@@ -66,9 +66,9 @@ class Words extends Constant
         hot_dip: 'Hot-dip galvanized steel'
         hire_flat: 'Hire flat'
         hire_class_hardware: 'Hire class & hardware'
-        hire_flat: 'Flat-rolled products'
+        hire_flat_rolled: 'Flat-rolled products'
         hire_class_hardware: 'Long products and metalware'
-        hire_hot_coated: 'Горячеоцинкованный прокат'
+        hire_hot_coated: 'Hot-rolled coated steel'
         hire_polymer: 'Pre-painted steel'
         steel_blank: 'Billets'
         steel_concetrat: 'Iron ore conentrate'
@@ -533,6 +533,7 @@ class Popup extends Service
   getPopupTemplate:  ->
       url = if @isActive then 'templates/' + @$routeParams.division + '/actives/' + @url else @url
       url += '_' + @i18nService.currentLanguage + '.html'
+      console.log url
       url
 
 
