@@ -339,6 +339,7 @@ footer .nav .selector.map .next {
 }
 .popup-video videogular{
     height: 745px;
+    max-width: 1600px;
 }
 
 
