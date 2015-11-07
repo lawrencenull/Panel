@@ -298,15 +298,20 @@ footer .nav .selector.map .next {
 }
 
 .popup.small {
-    width: 890px;
-    height: 345px;
+    width: 1240px;
+    height: 546px;
     position: absolute;
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    left: 516px;
-    top: 440px;
+    left: 379px;
+    top: 305px;
     z-index: 100;
+}
+.popup.small .img{
+    float: left;
+    margin-right: 20px;
+    margin-top: 10px;
 }
 
 .popup.small p {
