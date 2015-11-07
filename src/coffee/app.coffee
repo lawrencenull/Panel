@@ -110,6 +110,7 @@ class Words extends Constant
         hire_plate: 'Толстолистовой прокат'
         hire_electro: 'Холоднокатаный прокат из электротехнической стали'
         hire_flat: 'Плоский прокат'
+        hire_flat_rolled: 'Плоский прокат'
         hire_class_hardware: 'Сортовой прокат и метизы'
         hire_polymer: 'Прокат с полимерным покрытием'
         hire_hot_coated: 'Горячеоцинкованный прокат'
