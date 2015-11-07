@@ -1,5 +1,30 @@
 <div class="content">
-    zaluoa!
+    <div ng-init="ggal=1;gimg=1;gsize=[
+    [1,2,3,4,5,6,7,8,9],
+    [1,2,3,4,5,6,7,8,9,10,11,12],
+    [1,2,3,4,5,6,7,8,9,10,11,12],
+    [1,2,3,4,5,6,7,8,9,10,11,12],
+    [1,2,3,4,5,6,7,8,9,10,11,12],
+    [1,2,3,4,5,6,7,8,9,10,11,12]
+    ];
+    gnames=['History','Manufacturing','Panoramas','Products','Employees','Ecology']
+    " class="gallery">
+        <div class="list-img gal">
+            <div class="item" ng-class="{'active':$parent.ggal==g}" ng-click="$parent.ggal=g;$parent.gimg=1" ng-repeat="g in [1,2,3,4,5,6]">
+                <img ng-src="/images/gallery/{{g}}/{{g}}_t.jpg">
+            </div>
+        </div>
+        <div class="list-img gal left">
+            <h1 ng-bind="gnames[ggal-1]"></h1>
+            <div class="item" ng-class="{'active':$parent.gimg==p}" ng-click="$parent.gimg=p" ng-repeat="p in gsize[ggal-1]">
+                <img ng-src="/images/gallery/{{ggal}}/{{$parent.ggal}}_{{p}}_t.jpg">
+            </div>
+        </div>
+        <div class="full-img">
+            <img ng-src="/images/gallery/{{ggal}}/{{ggal}}_{{gimg}}.jpg">
+        </div>
+
+    </div>
 </div>
 <div class="nav">
     <div class="close" ng-click="m.closePopup()"></div>

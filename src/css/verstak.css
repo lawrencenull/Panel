@@ -318,6 +318,8 @@ footer .nav .item.active .border--bottom {
 }
 .popup .gallery .list-img.gal.left .item {
     float: left;
+    height: 95px;
+    width: 95px;
 }
 .popup .gallery .list-img .item {
     float: left;
@@ -390,6 +392,11 @@ footer .nav .item.active .border--bottom {
     background: url(/img/popup--tabs--item-after-active.png) top left no-repeat; }
 .popup .nav .tabs .item.before-active {
     background: url(/img/popup--tabs--item-before-active.png) bottom left no-repeat; }
+
+
+.list-img.gal.left h1{
+    padding-bottom: 20px;
+}
 
 /* history */
 #content.history h1 {
